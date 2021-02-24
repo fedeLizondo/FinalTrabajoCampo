@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProyectoActor;
 use App\Http\Controllers\ProyectoActorController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\ProyectoDiagramaController;
@@ -12,7 +11,6 @@ use App\Http\Controllers\ProyectoGrupoController;
 use App\Http\Controllers\ProyectoMensajeController;
 use App\Http\Controllers\UserFavoritoController;
 use App\Http\Controllers\UserProyectoController;
-use App\Models\Proyecto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
