@@ -1,50 +1,64 @@
 <template>
-  <div
-    style="height: 90vh; width: 100%; border: 1px solid red; position: relative"
-  >
-    <vue-draggable-resizable
-      v-for="entidad in entidades"
-      :key="entidad.id"
-      :w="entidad.box.width"
-      :h="entidad.box.height"
-      :x="entidad.box.x"
-      :y="entidad.box.y"
-      @dragging="onDrag"
-      @resizing="onResize"
-      :parent="true"
-      :grid="[30, 30]"
-      :ref="'entidad' + entidad.id"
-      :id="entidad.id"
-    >
-      <div class="header">
-        {{ entidad.nombre }}
-        {{ entidad.id }}
-      </div>
+  <div class="row h-100">
+    <div style="border: 1px solid gray" class="col-md-9 h-100 ml-5">
+      <button class="btn btn-warning" v-on:click="makeRelations()">
+        Actualizar Relacion
+      </button>
+      <button class="btn btn-primary" v-on:click="crearEntidad()">
+        Entidades
+      </button>
+      <button class="btn btn-secondary" v-on:click="showRelaciones()">
+        Relaciones
+      </button>
 
-      <div class="atributos">
-        <ul>
-          <li v-for="(atributo, index) in entidad.atributos" :key="index">
-            {{ atributo }}
-          </li>
-        </ul>
-      </div>
+      <vue-draggable-resizable
+        v-for="entidad in entidades"
+        :key="entidad.id"
+        :w="entidad.box.width"
+        :h="entidad.box.height"
+        :x="entidad.box.x"
+        :y="entidad.box.y"
+        @dragging="onDrag"
+        @resizing="onResize"
+        :parent="true"
+        :grid="[30, 30]"
+        :ref="'entidad' + entidad.id"
+        :id="entidad.id"
+      >
+        <div class="header">
+          {{ entidad.nombre }}
+          {{ entidad.id }}
+        </div>
 
-      <div class="metodos">
-        <ul>
-          <li v-for="(metodo, index) in entidad.metodos" :key="index">
-            {{ metodo }}
-          </li>
-        </ul>
-      </div>
-    </vue-draggable-resizable>
-    <button v-on:click="makeRelations()">Generar Relacion</button>
+        <div class="atributos">
+          <ul>
+            <li v-for="(atributo, index) in entidad.atributos" :key="index">
+              {{ atributo }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="metodos">
+          <ul>
+            <li v-for="(metodo, index) in entidad.metodos" :key="index">
+              {{ metodo }}
+            </li>
+          </ul>
+        </div>
+      </vue-draggable-resizable>
+    </div>
+    <div class="col-md-3 h-100 mt-3">
+      <message-component />
+    </div>
   </div>
 </template>
 
 <script>
 import LeaderLine from "leader-line-vue";
+import MessageComponent from "./MessageComponent.vue";
 
 export default {
+  components: { MessageComponent },
   data: () => {
     return {
       width: 0,
@@ -87,6 +101,8 @@ export default {
           line: [],
         },
       ],
+      entidad: {},
+      relacion: {},
     };
   },
   methods: {
@@ -102,39 +118,58 @@ export default {
     },
     makeRelations: function () {
       this.relaciones.forEach((relacion) => {
-        if (relacion.line.length) {
+        if (relacion.line.length > 0) {
           relacion.line.forEach((element) => {
             element.position();
           });
         } else {
-            line = buildLine(element);
-            if(line){
-              relacion.line.push(line);
-            }
+          var linea = this.buildLine(relacion);
+          if (linea) {
+            relacion.line.push(linea);
           }
         }
-      )
+      });
       return "";
     },
-    buildLine: function(relacion){
+    buildLine: function (relacion) {
       if (
-            !!this.$refs["entidad" + relacion.from] &&
-            !!this.$refs["entidad" + relacion.to]
-          ){
-            const start = this.$refs["entidad" + relacion.from][0].$el;
-            const end = this.$refs["entidad" + relacion.to][0].$el;
+        !!this.$refs["entidad" + relacion.from] &&
+        !!this.$refs["entidad" + relacion.to]
+      ) {
+        const start = this.$refs["entidad" + relacion.from][0].$el;
+        const end = this.$refs["entidad" + relacion.to][0].$el;
 
-            return LeaderLine.setLine(start, end, {
-              dash: { animation: true },
-            });
-          }
-        else
-          return null;
-
-    }
+        return LeaderLine.setLine(start, end, {
+          dash: { animation: true },
+        });
+      } else return null;
+    },
+    onDrag: function (x, y) {
+      console.log(x, y);
+      this.makeRelations();
+    },
+    crearEntidad: function (params) {
+      db.collection("diagrama2").add({
+        entidad: {
+          id: "1",
+          nombre: "Pepe",
+          tipo: "Clase",
+          atributos: ["private pepe", Date.now() + ""],
+          metodos: ["public pepe(void):marco"],
+          box: {
+            x: 50,
+            y: 50,
+            height: 100,
+            width: 100,
+          },
+        },
+      });
+    },
   },
   computed: {},
-  mounted() {},
+  mounted() {
+    this.makeRelations();
+  },
 };
 </script>
 
