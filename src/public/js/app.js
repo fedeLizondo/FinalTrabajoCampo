@@ -1942,29 +1942,31 @@ __webpack_require__.r(__webpack_exports__);
       this.y = y;
     },
     makeRelations: function makeRelations() {
-      var _this = this;
-
-      console.log("Entre en make relations");
       this.relaciones.forEach(function (relacion) {
         if (relacion.line.length) {
           relacion.line.forEach(function (element) {
             element.position();
           });
         } else {
-          if (!!_this.$refs["entidad" + relacion.from] && !!_this.$refs["entidad" + relacion.to]) {
-            console.log(_this.$refs["entidad" + relacion.from][0]);
-            var start = _this.$refs["entidad" + relacion.from][0].$el;
-            var end = _this.$refs["entidad" + relacion.to][0].$el;
-            var line = leader_line_vue__WEBPACK_IMPORTED_MODULE_0__.default.setLine(start, end, {
-              dash: {
-                animation: true
-              }
-            });
+          line = buildLine(element);
+
+          if (line) {
             relacion.line.push(line);
           }
         }
       });
       return "";
+    },
+    buildLine: function buildLine(relacion) {
+      if (!!this.$refs["entidad" + relacion.from] && !!this.$refs["entidad" + relacion.to]) {
+        var start = this.$refs["entidad" + relacion.from][0].$el;
+        var end = this.$refs["entidad" + relacion.to][0].$el;
+        return leader_line_vue__WEBPACK_IMPORTED_MODULE_0__.default.setLine(start, end, {
+          dash: {
+            animation: true
+          }
+        });
+      } else return null;
     }
   },
   computed: {},
