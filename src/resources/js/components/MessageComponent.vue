@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-12">
-      <div class="card" style="height: 90vh">
+      <div class="card" style="height: 75vh">
         <div class="card-header" style="text-aligne: center">Mensajes</div>
 
         <div
@@ -9,10 +9,10 @@
           style="overflow: auto; display: flex; flex-direction: column-reverse"
         >
           <dl v-for="(message, index) in messages" v-bind:key="index">
-            <dt :class="{ 'text-right': true }">
+            <dt :class="{ 'text-right': user_id == message.user_id}">
               {{ message.name }}
             </dt>
-            <dd :class="{ 'text-right': true }">
+            <dd :class="{ 'text-right': user_id == message.user_id }">
               {{ message.mensaje }}
             </dd>
           </dl>
@@ -25,11 +25,14 @@
                 type="text"
                 v-model="newMessage"
                 class="form-control"
-                placeholder="Type your message..."
+                placeholder="Escribe aquí tu mensaje ..."
+                :disabled="enabledMessage"
               />
 
               <div class="input-group-append">
-                <button class="btn btn-primary">Send</button>
+                <button class="btn btn-primary" :disabled="enabledMessage">
+                  Enviar
+                </button>
               </div>
             </div>
           </form>
@@ -43,7 +46,7 @@
 import { BASE_URL } from "../constants/constants.js";
 export default {
   name: "mensajes",
-  props: ["proyecto_id", "diagrama_id", "especificacion_id"],
+  props: ["proyecto_id", "diagrama_id", "especificacion_id", "user_id"],
   data() {
     return {
       token: null,
@@ -58,52 +61,66 @@ export default {
       },
     };
   },
+  computed: {
+    enabledMessage() {
+      console.log(this.user_id);
+      return !this.user_id;
+    },
+  },
   methods: {
+    getRoute() {
+      return this.diagramas
+        ? "/diagrama/" + this.diagramas.id + "/"
+        : this.especificaciones
+        ? "/especificacion/" + this.especificaciones.id + "/"
+        : "/";
+    },
     sendMessage() {
-      console.log("Send message");
-      this.messages.unshift({ name: "el pepe", mensaje: this.newMessage });
-      this.newMessage = "";
+      const response = axios
+        .post(
+          BASE_URL +
+            "/api/proyecto/" +
+            this.proyecto_id +
+            this.getRoute() +
+            "mensaje",
+          { user: 1, mensaje: this.newMessage }
+        )
+        .then((response) => {
+          this.messages.unshift(response.data.data);
+          this.newMessage = "";
+        });
     },
     getMessages() {
-      const end = this.diagramas
-        ? "/diagrama/" + this.diagramas.id
-        : this.especificaciones
-        ? "/especificacion/" + this.especificaciones.id
-        : "/";
       const response = axios
-        .get(BASE_URL + "/api/proyecto/" + this.proyecto_id + end + "mensaje")
+        .get(
+          BASE_URL +
+            "/api/proyecto/" +
+            this.proyecto_id +
+            this.getRoute() +
+            "mensaje"
+        )
         .then((response) => {
-          this.messages = response.data.data;
+          this.messages = response.data.data.reverse();
         });
     },
     updateMessage($mensaje) {
-      const end = this.diagramas
-        ? "/diagrama/" + this.diagramas.id
-        : this.especificaciones
-        ? "/especificacion/" + this.especificaciones.id
-        : "/";
       const response = axios.put(
         BASE_URL +
           "/api/proyecto/" +
           this.proyecto_id +
-          end +
-          "/mensaje/" +
+          this.getRoute() +
+          "mensaje/" +
           $mensaje.id,
         $mensaje
       );
     },
     deleteMessage($mensaje) {
-      const end = this.diagramas
-        ? "/diagrama/" + this.diagramas.id
-        : this.especificaciones
-        ? "/especificacion/" + this.especificaciones.id
-        : "/";
       const response = axios.delete(
         BASE_URL +
           "/api/proyecto/" +
           this.proyecto_id +
-          end +
-          "/mensaje/" +
+          this.getRoute() +
+          "mensaje/" +
           $mensaje.id
       );
     },

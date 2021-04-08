@@ -33,11 +33,13 @@
       </p>
 
       <div v-else class="card-body">
+        <a href="/">
         <proyecto-row-component
           v-for="(item, index) in seleccionados"
           :key="index"
           :item="item"
         />
+        </a>
       </div>
     </div>
   </div>
@@ -45,16 +47,13 @@
 
 <script>
 import ProyectoRowComponent from "./ProyectoRowComponent.vue";
+import { BASE_URL } from "../../../constants/constants.js";
 export default {
   components: { ProyectoRowComponent },
   data() {
     return {
-      seleccionados: [
-        { nombre: "el pepe", fav:true },
-        { nombre: "do pepe", fav:false },
-        { nombre: "tre pepe", fav:true },
-      ],
-      showOptionsList: false,
+      seleccionados: [],
+      //showOptionsList: false,
       selectedItem: null,
       inputText: "",
       listOfPrices: [],
@@ -62,15 +61,20 @@ export default {
     };
   },
   methods: {
-    update: function (value) {
-      this.showOptionsList = value.length > 0;
-      if (!!this.selectedItem && value.length === 0) {
-        this.selectedItem.listaDePrecios.forEach((element) => {
-          element.cantAComprar = 0;
-        });
-        this.selectedItem = null;
-      }
+    update: async function (value) {
+      //this.showOptionsList = value.length > 0;
+
+      const response = axios.get(BASE_URL + "/api/proyecto?search=" + this.inputText+"&page=1");
+      response.then((res) => (this.seleccionados = res.data.data));
     },
+
+    getProyectos: async function () {
+      const response = axios.get(BASE_URL + "/api/proyecto");
+      response.then((res) => (this.seleccionados = res.data.data));
+    },
+  },
+  mounted() {
+    this.getProyectos();
   },
 };
 </script>

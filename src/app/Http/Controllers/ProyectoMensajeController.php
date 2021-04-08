@@ -19,7 +19,7 @@ class ProyectoMensajeController extends Controller
     {
         return ProyectoMensajeResource::collection(
             $proyecto->mensajes()
-            ->join('users', 'users.id', '=', 'mensajes.user_id')
+                ->join('users', 'users.id', '=', 'mensajes.user_id')
                 /*->orderBy('proyectos.created_at','desc')*/
                 ->select('mensajes.*')
                 ->addSelect('users.name')
@@ -46,6 +46,8 @@ class ProyectoMensajeController extends Controller
             'user_id' => $request->user,
             'mensaje' => $request->mensaje
         ]);
+
+        $mensaje['name'] = User::find($request->user)->name;
 
         return new ProyectoMensajeResource($mensaje);
     }

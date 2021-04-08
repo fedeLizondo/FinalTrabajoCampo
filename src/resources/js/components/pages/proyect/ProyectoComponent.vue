@@ -1,29 +1,10 @@
 <template>
   <div class="row h-100">
-
+    <h1 class="col-12 text-center">{{ proyecto.id + " - " + proyecto.nombre }}</h1>
     <div class="col-md-6 col-lg-3 mt-2">
-      <div class="card">
-        <div class="card-header">
-          Actores
-          <button class="btn btn-primary" @click="createActor">crear</button>
-        </div>
-        <div class="card-body">
-          <div id="container">
-            <div
-              id="row"
-              class="shadow-sm row rounded"
-              v-for="actor in actores"
-              :key="actor.id"
-            >
-              {{ actor.nombre }}
-              <button class="btn btn-warning" @click="this.$refs.modalActor.openModal();">modificar</button>
-              <button class="btn btn-danger">eliminar</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <actor-list-component :proyecto_id="proyecto_id" />
     </div>
- 
+
     <div class="col-md-6 col-lg-3 mt-2">
       <div class="card">
         <div class="card-header">
@@ -71,91 +52,68 @@
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
-      <message-component :proyecto_id="this.proyecto_id" />
+      <message-component :proyecto_id="this.proyecto_id" :user_id="user_id" />
     </div>
-
-    <modal-component ref="modalActor">
-      <template v-slot:header>
-        <h3>Confirmar datos</h3>
-      </template>
-
-      <template v-slot:body>
-       Es un Mensaje
-      </template>
-
-      <template v-slot:footer>
-        <div class="d-flex align-items-center justify-content-between">
-          <button
-            class="btn btn-danger"
-            @click="$refs.modalClient.closeModal()"
-          >
-            Salir
-          </button>
-          <button
-            class="btn btn-success"
-            @click="actualizarCliente"
-            :disabled="!isValidClienteForPedido"
-          >
-            Confirmar <font-awesome-icon :icon="['fas', 'dolly']" />
-          </button>
-        </div>
-      </template>
-    </modal-component>
-
   </div>
 </template>
 
 <script>
 import MessageComponent from "../../MessageComponent.vue";
 import { BASE_URL } from "../../../constants/constants.js";
-import ModalComponent from '../../assets/ModalComponent.vue';
+import ActorListComponent from "./Actor/ActorListComponent.vue";
+
 export default {
-  components: { MessageComponent, ModalComponent },
-  props: ["proyecto_id"],
+  components: { MessageComponent, ActorListComponent },
+  props: ["proyecto_id", "user_id"],
   data() {
     return {
-      actor: {},
+      actor: {
+        nombre: "test",
+        descripcion: "",
+      },
       especificacion: {},
       diagrama: {},
       actores: [],
       especificaciones: [],
       diagramas: [],
+      proyecto: {
+        id: 0,
+        nombre: "Ocurrio un error",
+      },
+      favoritos: []
     };
   },
   methods: {
-    getActor: function () {
-      const response = axios.get(
-        BASE_URL + "/api/proyecto/" + this.proyecto_id + "/actor"
-      );
-      this.actores = response.data;
-    },
-    updateActor: function ($actor) {
-      const response = axios.put(
-        BASE_URL + "/api/proyecto/" + this.proyecto_id + "/actor/" + $actor.id,
-        $actor
-      );
-    },
-    deleteActor: function ($actor) {},
-    getDiagrama: function () {
+    getDiagrama: async function () {
       const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.proyecto_id + "/diagrama"
       );
-      this.diagramas = response.data;
+      response.then((res) => (this.diagramas = res.data.data));
     },
-    getEspecificacion: function () {
+    getEspecificacion: async function () {
       const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.proyecto_id + "/especificacion"
       );
-      this.especificaciones = response.data;
+
+      response.then((res) => (this.especificaciones = res.data.data));
     },
-    createActor: function () {
-      this.$refs.modalActor.openModal();
+    getProyecto: function () {
+      const response = axios.get(
+        BASE_URL + "/api/proyecto/" + this.proyecto_id
+      );
+      response.then((res) => (this.proyecto = res.data.data));
+    },
+    getFavoritos: function () {
+        const response = axios.get(
+        BASE_URL + "/api/proyecto/" + this.proyecto_id
+      );
+      response.then((res) => (this.proyecto = res.data.data));
     }
   },
   mounted() {
-    this.getActor();
     this.getEspecificacion();
     this.getDiagrama();
+    this.getProyecto();
   },
 };
 </script>
