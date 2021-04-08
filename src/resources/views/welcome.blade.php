@@ -52,11 +52,12 @@
         @endif
     </div>
 
-        <div id="app" class="h-100">
-            <diagrama-clase-componente></diagrama-clase-componente>
-        </div>
+    <div id="app" class="h-100">
+        <!-- search-component></search-component -->
+        <proyecto-component proyecto_id="1"></proyecto-component>
+        <!--diagrama-clase-componente></diagrama-clase-componente-->
     </div>
-    </div>
+    
 </body>
 
 </html>

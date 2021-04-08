@@ -1,0 +1,79 @@
+<template>
+  <div class="container-fluid">
+    <div class="card sticky-top">
+      <!-- Search box -->
+      <div class="row">
+        <div class="col-12">
+          <div class="input-group">
+            <input
+              class="form-control ds-input"
+              type="text"
+              placeholder="Ingrese nombre del proyecto"
+              v-model.trim="inputText"
+              v-on:input="update($event.target.value)"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">
+                <font-awesome-icon :icon="['fas', 'search']" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- List of elements -->
+    <div class="card">
+      <p
+        v-if="seleccionados.length === 0"
+        class="text-muted h2 text-center align-middle m-5"
+      >
+        No hay proyectos que contenga {{ inputText }}
+        <font-awesome-icon :icon="['fas', 'exclamation']" />
+      </p>
+
+      <div v-else class="card-body">
+        <proyecto-row-component
+          v-for="(item, index) in seleccionados"
+          :key="index"
+          :item="item"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import ProyectoRowComponent from "./ProyectoRowComponent.vue";
+export default {
+  components: { ProyectoRowComponent },
+  data() {
+    return {
+      seleccionados: [
+        { nombre: "el pepe", fav:true },
+        { nombre: "do pepe", fav:false },
+        { nombre: "tre pepe", fav:true },
+      ],
+      showOptionsList: false,
+      selectedItem: null,
+      inputText: "",
+      listOfPrices: [],
+      enabledAdd: false,
+    };
+  },
+  methods: {
+    update: function (value) {
+      this.showOptionsList = value.length > 0;
+      if (!!this.selectedItem && value.length === 0) {
+        this.selectedItem.listaDePrecios.forEach((element) => {
+          element.cantAComprar = 0;
+        });
+        this.selectedItem = null;
+      }
+    },
+  },
+};
+</script>
+
+<style>
+</style>

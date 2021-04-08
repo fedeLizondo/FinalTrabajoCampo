@@ -1,6 +1,6 @@
 <template>
   <div class="row h-100">
-    <div style="border: 1px solid gray" class="col-md-9 h-100 ml-5">
+    <div style="border: 1px solid gray" class="col-md-8 h-100 ml-5">
       <button class="btn btn-warning" v-on:click="makeRelations()">
         Actualizar Relacion
       </button>
@@ -24,31 +24,34 @@
         :grid="[30, 30]"
         :ref="'entidad' + entidad.id"
         :id="entidad.id"
+        style="min-width:100px;min-height:100px;"
       >
-        <div class="header">
-          {{ entidad.nombre }}
-          {{ entidad.id }}
-        </div>
+        <div class="card" style="display: block;overflow:hidden;">
+          <div class="card-header">
+            {{ entidad.nombre }}
+            {{ entidad.id }}
+          </div>
 
-        <div class="atributos">
-          <ul>
-            <li v-for="(atributo, index) in entidad.atributos" :key="index">
-              {{ atributo }}
-            </li>
-          </ul>
-        </div>
+          <div class="atributos shadow-sm row rounded">
+            <ul>
+              <li v-for="(atributo, index) in entidad.atributos" :key="index">
+                {{ atributo }}
+              </li>
+            </ul>
+          </div>
 
-        <div class="metodos">
-          <ul>
-            <li v-for="(metodo, index) in entidad.metodos" :key="index">
-              {{ metodo }}
-            </li>
-          </ul>
+          <div class="metodos shadow-sm row rounded" >
+            <ul>
+              <li v-for="(metodo, index) in entidad.metodos" :key="index">
+                {{ metodo }}
+              </li>
+            </ul>
+          </div>
         </div>
       </vue-draggable-resizable>
     </div>
-    <div class="col-md-3 h-100 mt-3">
-      <message-component />
+    <div class="col-md-3 h-90">
+      <message-component :proyecto_id="4" />
     </div>
   </div>
 </template>

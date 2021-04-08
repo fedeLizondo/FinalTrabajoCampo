@@ -17,7 +17,14 @@ class ProyectoMensajeController extends Controller
      */
     public function index(Proyecto $proyecto)
     {
-        return ProyectoMensajeResource::collection($proyecto->mensajes);
+        return ProyectoMensajeResource::collection(
+            $proyecto->mensajes()
+            ->join('users', 'users.id', '=', 'mensajes.user_id')
+                /*->orderBy('proyectos.created_at','desc')*/
+                ->select('mensajes.*')
+                ->addSelect('users.name')
+                ->get()
+        );
     }
 
     /**
