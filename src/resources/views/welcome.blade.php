@@ -55,6 +55,7 @@
     <div id="app" class="h-100">
         <!-- search-component></search-component -->
         @auth
+        {{Auth::id()}}
         {{Auth::user()}}
         <proyecto-component proyecto_id="1" user_id={{ Auth::user()->id }} ></proyecto-component>
         @else
