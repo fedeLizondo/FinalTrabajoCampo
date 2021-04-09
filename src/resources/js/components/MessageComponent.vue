@@ -9,7 +9,7 @@
           style="overflow: auto; display: flex; flex-direction: column-reverse"
         >
           <dl v-for="(message, index) in messages" v-bind:key="index">
-            <dt :class="{ 'text-right': user_id == message.user_id}">
+            <dt :class="{ 'text-right': user_id == message.user_id }">
               {{ message.name }}
             </dt>
             <dd :class="{ 'text-right': user_id == message.user_id }">
@@ -83,7 +83,7 @@ export default {
             this.proyecto_id +
             this.getRoute() +
             "mensaje",
-          { user: 1, mensaje: this.newMessage }
+          { user: this.user_id, mensaje: this.newMessage }
         )
         .then((response) => {
           this.messages.unshift(response.data.data);
