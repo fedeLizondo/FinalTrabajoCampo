@@ -30,11 +30,13 @@ Vue.config.productionTip = false;
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 //Vue.use(VueFire);
 
-Vue.use(VueRouter);
+
 const router = new VueRouter({
     mode: 'history',
     routes
 });
+
+Vue.use(VueRouter);
 
 /**
  * The following block of code may be used to automatically register your
@@ -73,4 +75,5 @@ window.db = db;
 
 const app = new Vue({
     el: '#app',
+    router
 });
