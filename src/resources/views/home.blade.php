@@ -20,7 +20,7 @@
         </div>
     </div>
 </div-->
-<div class="app">
+<div id="app">
     <search-component></search-component>
     <router-view></router-view>
 </div>
