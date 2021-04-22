@@ -1,7 +1,8 @@
-import Home from './components/Home.vue';
+import Home from './components/pages/home/HomeComponent.vue';
 import Example from './components/Example.vue';
 import Proyecto from './components/pages/project/ProyectoComponent.vue'
 import Search from './components/pages/search/SearchComponent.vue'
+
 
 export const routes = [
     { path: '/', component: Home, name: 'Home' },
