@@ -13,8 +13,6 @@ import 'vue-draggable-resizable/dist/VueDraggableResizable.css';
 import Vuex from 'vuex';
 import firebase from 'firebase';
 import VueRouter from 'vue-router';
-import Home from './components/Home.vue';
-
 import { routes } from './routes';
 
 //import VueFire from 'vuefire';
@@ -33,7 +31,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 //Vue.use(VueFire);
 
 Vue.use(VueRouter);
-
 const router = new VueRouter({
     mode: 'history',
     routes
