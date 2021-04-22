@@ -33,7 +33,7 @@ export default {
   props: ["item"],
   methods: {
     moveToProject: function (id) {
-      this.$router.push({ name: "Proyecto", params: { id: item.id } });
+      this.$router.push({ name: "Proyecto", params: { id: id } });
     },
   },
 };
