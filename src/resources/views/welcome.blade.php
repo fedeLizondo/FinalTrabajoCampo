@@ -59,7 +59,7 @@
         <router-view user_id={{ Auth::user()->id }} />
 
         @else
-        <proyecto-component proyecto_id="1"></proyecto-component>
+        <!--proyecto-component proyecto_id="1"></proyecto-component-->
         <router-view/>
         @endauth
         <!--diagrama-clase-componente></diagrama-clase-componente-->
