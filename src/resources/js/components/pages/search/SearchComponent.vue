@@ -33,13 +33,11 @@
       </p>
 
       <div v-else class="card-body">
-        <a href="/">
         <proyecto-row-component
           v-for="(item, index) in seleccionados"
           :key="index"
           :item="item"
         />
-        </a>
       </div>
     </div>
   </div>
