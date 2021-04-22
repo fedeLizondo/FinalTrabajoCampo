@@ -3,7 +3,7 @@ import Example from './components/Example.vue';
 import Proyecto from './components/pages/project/ProyectoComponent.vue'
 
 export const routes = [
-    { path: '/vue', component: Home, name: 'Home' },
+    { path: '/vue', component: Proyecto, name: 'Home' },
     { path: '/vue/example', component: Example, name: 'Example' },
     { path: '/vue/proyecto/:id', componente: Proyecto, name: 'Proyecto', params: true }
 ];
