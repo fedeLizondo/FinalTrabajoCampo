@@ -12,7 +12,9 @@ import VueDraggableResizable from 'vue-draggable-resizable';
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css';
 import Vuex from 'vuex';
 import firebase from 'firebase';
-import vueRouter from 'vue-router'
+import VueRouter from 'vue-router';
+import Home from './components/Home.vue';
+
 import { routes } from './routes';
 
 //import VueFire from 'vuefire';
@@ -30,13 +32,13 @@ Vue.config.productionTip = false;
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 //Vue.use(VueFire);
 
+Vue.use(vueRouter);
 
 const router = new VueRouter({
     mode: 'history',
     routes
 });
 
-Vue.use(vueRouter);
 
 /**
  * The following block of code may be used to automatically register your
