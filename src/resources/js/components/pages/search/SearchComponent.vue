@@ -54,8 +54,6 @@ export default {
       //showOptionsList: false,
       selectedItem: null,
       inputText: "",
-      listOfPrices: [],
-      enabledAdd: false,
     };
   },
   methods: {
