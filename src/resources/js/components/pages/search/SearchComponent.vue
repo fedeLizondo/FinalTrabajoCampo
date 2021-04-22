@@ -67,7 +67,8 @@ export default {
     },
 
     getProyectos: async function () {
-      if(!inputText){
+      console.log(this.inputText)
+      if(!this.inputText){
         const response = axios.get(BASE_URL + "/api/proyecto");
         response.then((res) => (this.seleccionados = res.data.data));
       }else{
