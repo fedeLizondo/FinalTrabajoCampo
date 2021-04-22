@@ -36,7 +36,7 @@ const router = new VueRouter({
     routes
 });
 
-Vue.use(VueRouter);
+Vue.use(vueRouter);
 
 /**
  * The following block of code may be used to automatically register your
