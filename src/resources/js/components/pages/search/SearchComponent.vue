@@ -53,14 +53,16 @@ export default {
       seleccionados: [],
       //showOptionsList: false,
       selectedItem: null,
-      inputText: "",
+      inputText: this.$router.query.search || "",
     };
   },
   methods: {
     update: async function (value) {
       //this.showOptionsList = value.length > 0;
 
-      const response = axios.get(BASE_URL + "/api/proyecto?search=" + this.inputText+"&page=1");
+      const response = axios.get(
+        BASE_URL + "/api/proyecto?search=" + this.inputText + "&page=1"
+      );
       response.then((res) => (this.seleccionados = res.data.data));
     },
 
