@@ -22,6 +22,11 @@
 </div-->
 <div id="app">
     <search-component></search-component>
-    <router-view></router-view>
+    @auth
+        <!--proyecto-component proyecto_id="1" user_id={{ Auth::user()->id }} ></proyecto-component-->
+        <router-view user_id={{ Auth::user()->id }} />
+    @else
+    <router-view/>
+    @endauth
 </div>
 @endsection
