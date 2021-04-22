@@ -2,6 +2,7 @@ import Home from './components/pages/home/HomeComponent.vue';
 import Example from './components/Example.vue';
 import Proyecto from './components/pages/project/ProyectoComponent.vue'
 import Search from './components/pages/search/SearchComponent.vue'
+import Main from './components/pages/main/MainComponent.vue'
 
 
 export const routes = [
@@ -9,4 +10,5 @@ export const routes = [
     { path: '/example', component: Example, name: 'Example' },
     { path: '/proyecto/:id', component: Proyecto, name: 'Proyecto', params: true },
     { path: '/search', component: Search, name: 'Search', params: true },
+    { path: '/home', component: Main, name: 'Main', params: true },
 ];

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h1>bienvenidos a la pagina principal</h1>
+    <h1 class="text-center">Modela</h1>
+    <h2>bienvenidos a la pagina principal</h2>
     <div class="row">
       <div class="col-8">
         <div class="input-group">
