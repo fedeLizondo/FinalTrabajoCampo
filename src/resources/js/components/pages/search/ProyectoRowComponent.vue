@@ -1,7 +1,10 @@
 <template>
   <div id="container">
-    <div id="row" class="shadow-sm row rounded p-2">
-      <router-link :to="{ name: 'Proyecto', params: { id: item.id } }">
+    <div
+      id="row"
+      class="shadow-sm row rounded p-2"
+      @click="moveToProject(item.id)"
+    >
         <div
           class="col-10 col-lg-11 d-flex justify-content-start align-items-center"
         >
@@ -21,7 +24,6 @@
             size="lg"
           />
         </div>
-      </router-link>
     </div>
   </div>
 </template>
@@ -29,6 +31,11 @@
 <script>
 export default {
   props: ["item"],
+  methods: {
+    moveToProject: function (id) {
+      this.$router.push({ name: "Proyecto", params: { id: item.id } });
+    },
+  },
 };
 </script>
 
