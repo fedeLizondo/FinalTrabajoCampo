@@ -59,6 +59,7 @@
         @else
         <proyecto-component proyecto_id="1"></proyecto-component>
         @endauth
+        <router-view></router-view>
         <!--diagrama-clase-componente></diagrama-clase-componente-->
     </div>
     

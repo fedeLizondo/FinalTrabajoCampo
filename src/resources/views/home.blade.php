@@ -22,5 +22,6 @@
 </div-->
 <div class="app">
     <search-component></search-component>
+    <router-view></router-view>
 </div>
 @endsection

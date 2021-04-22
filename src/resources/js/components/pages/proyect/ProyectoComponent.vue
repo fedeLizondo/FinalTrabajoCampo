@@ -114,6 +114,7 @@ export default {
     this.getEspecificacion();
     this.getDiagrama();
     this.getProyecto();
+    this.getFavoritos();
   },
 };
 </script>
