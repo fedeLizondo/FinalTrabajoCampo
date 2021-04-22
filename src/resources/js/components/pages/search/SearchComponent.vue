@@ -67,8 +67,13 @@ export default {
     },
 
     getProyectos: async function () {
-      const response = axios.get(BASE_URL + "/api/proyecto");
-      response.then((res) => (this.seleccionados = res.data.data));
+      if(!inputText){
+        const response = axios.get(BASE_URL + "/api/proyecto");
+        response.then((res) => (this.seleccionados = res.data.data));
+      }else{
+        this.update();
+      }
+      
     },
   },
   mounted() {
