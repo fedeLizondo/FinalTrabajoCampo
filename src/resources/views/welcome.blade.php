@@ -55,11 +55,13 @@
     <div id="app" class="h-100">
         <!-- search-component></search-component -->
         @auth
-        <proyecto-component proyecto_id="1" user_id={{ Auth::user()->id }} ></proyecto-component>
+        <!--proyecto-component proyecto_id="1" user_id={{ Auth::user()->id }} ></proyecto-component-->
+        <router-view user_id={{ Auth::user()->id }} />
+
         @else
         <proyecto-component proyecto_id="1"></proyecto-component>
+        <router-view/>
         @endauth
-        <router-view></router-view>
         <!--diagrama-clase-componente></diagrama-clase-componente-->
     </div>
     
