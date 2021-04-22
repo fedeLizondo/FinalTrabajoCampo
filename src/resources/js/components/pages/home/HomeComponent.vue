@@ -1,8 +1,8 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <h1>bienvenidos a la pagina principal</h1>
     <div class="row">
-      <div class="col-12">
+      <div class="col-8">
         <div class="input-group">
           <input
             class="form-control ds-input"
