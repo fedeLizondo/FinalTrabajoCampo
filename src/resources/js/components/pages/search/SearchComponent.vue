@@ -53,7 +53,7 @@ export default {
       seleccionados: [],
       //showOptionsList: false,
       selectedItem: null,
-      inputText: this.$router.query.search || "",
+      inputText: this.$route.query.search || "",
     };
   },
   methods: {
