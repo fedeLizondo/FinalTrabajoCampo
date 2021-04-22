@@ -32,14 +32,12 @@ Vue.config.productionTip = false;
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 //Vue.use(VueFire);
 
-Vue.use(vueRouter);
+Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: 'history',
     routes
 });
-
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
