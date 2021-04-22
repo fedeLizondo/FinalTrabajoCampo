@@ -86,13 +86,13 @@ export default {
   methods: {
     getDiagrama: async function () {
       const response = axios.get(
-        BASE_URL + "/api/proyecto/" + $route.params.id + "/diagrama"
+        BASE_URL + "/api/proyecto/" + this.$route.params.id + "/diagrama"
       );
       response.then((res) => (this.diagramas = res.data.data));
     },
     getEspecificacion: async function () {
       const response = axios.get(
-        BASE_URL + "/api/proyecto/" + $route.params.id + "/especificacion"
+        BASE_URL + "/api/proyecto/" + this.$route.params.id + "/especificacion"
       );
 
       response.then((res) => (this.especificaciones = res.data.data));
@@ -100,13 +100,13 @@ export default {
     getProyecto: function () {
       console.log("Llame al getProyecto");
       const response = axios.get(
-        BASE_URL + "/api/proyecto/" + $route.params.id
+        BASE_URL + "/api/proyecto/" + this.$route.params.id
       );
       response.then((res) => (this.proyecto = res.data.data));
     },
     getFavoritos: function () {
         const response = axios.get(
-        BASE_URL + "/api/proyecto/" + $route.params.id
+        BASE_URL + "/api/proyecto/" + this.$route.params.id
       );
       response.then((res) => (this.proyecto = res.data.data));
     }
