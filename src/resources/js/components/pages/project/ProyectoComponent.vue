@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="col-md-6 col-lg-3 mt-2">
+    <!--div class="col-md-6 col-lg-3 mt-2">
       <div class="card">
         <div class="card-header">
           Especificaciónes
@@ -49,6 +49,9 @@
           </div>
         </div>
       </div>
+    </div-->
+    <div class="col-md-6 col-lg-3 mt-2">
+      <especificacion-list-component :proyecto_id="$route.params.id" />
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
@@ -61,9 +64,10 @@
 import MessageComponent from "../../MessageComponent.vue";
 import { BASE_URL } from "../../../constants/constants.js";
 import ActorListComponent from "./Actor/ActorListComponent.vue";
+import EspecificacionListComponent from "./Especificacion/EspecificacionListComponent.vue"
 
 export default {
-  components: { MessageComponent, ActorListComponent },
+  components: { MessageComponent, ActorListComponent, EspecificacionListComponent },
   props: ["proyecto_id", "user_id"],
   data() {
     return {
