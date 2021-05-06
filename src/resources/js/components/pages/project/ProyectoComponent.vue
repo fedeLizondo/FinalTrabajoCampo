@@ -51,7 +51,7 @@
       </div>
     </div-->
     <div class="col-md-6 col-lg-3 mt-2">
-      <especificacion-list-component :proyecto_id="$route.params.id" />
+      <especificacion-list-component :proyecto_id="$route.params.id"/>
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
