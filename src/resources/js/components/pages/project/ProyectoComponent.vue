@@ -98,7 +98,6 @@ export default {
       response.then((res) => (this.especificaciones = res.data.data));
     },
     getProyecto: function () {
-      console.log("Llame al getProyecto");
       const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.$route.params.id
       );

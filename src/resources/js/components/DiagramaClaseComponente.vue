@@ -59,6 +59,7 @@
 <script>
 import LeaderLine from "leader-line-vue";
 import MessageComponent from "./MessageComponent.vue";
+import {db} from "../firebase/db";
 
 export default {
   components: { MessageComponent },

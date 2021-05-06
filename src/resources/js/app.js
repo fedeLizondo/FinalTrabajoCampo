@@ -16,6 +16,8 @@ import VueRouter from 'vue-router';
 import { routes } from './routes';
 
 //import VueFire from 'vuefire';
+import {firestorePlugin} from 'vuefire'
+import Vue from 'vue';
 
 require('./bootstrap');
 
@@ -35,6 +37,8 @@ const router = new VueRouter({
     mode: 'history',
     routes
 });
+
+Vue.use(firestorePlugin);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -46,7 +50,7 @@ const router = new VueRouter({
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-require("firebase/firestore");
+/*require("firebase/firestore");
 
 var firebaseConfig = {
     apiKey: "AIzaSyDA509a0KenvzXN_I-O6R_lib31PBO5mJA",
@@ -60,7 +64,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
-window.db = db;
+window.db = db;*/
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
