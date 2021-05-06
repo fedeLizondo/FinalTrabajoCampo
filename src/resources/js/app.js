@@ -15,8 +15,8 @@ import firebase from 'firebase';
 import VueRouter from 'vue-router';
 import { routes } from './routes';
 
-import VueFire from 'vuefire';
-//import {firestorePlugin} from 'vuefire'
+//import VueFire from 'vuefire';
+import {firestorePlugin} from 'vuefire'
 import Vue from 'vue';
 
 require('./bootstrap');
@@ -30,7 +30,6 @@ library.add(far);
 
 Vue.config.productionTip = false;
 Vue.component('font-awesome-icon', FontAwesomeIcon);
-Vue.use(VueFire);
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -38,7 +37,7 @@ const router = new VueRouter({
     routes
 });
 
-//Vue.use(firestorePlugin);
+Vue.use(firestorePlugin,{wait:true});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
