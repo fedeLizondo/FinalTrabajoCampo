@@ -47,7 +47,7 @@
 <script>
 import ModalComponent from "../../../assets/ModalComponent.vue";
 import FormCUComponent from "./FormCU.vue";
-import FormERSComponent from "./FormCU.vue";
+import FormERSComponent from "./FormERS.vue";
 import { BASE_URL } from "../../../../constants/constants.js";
 import { db } from "../../../../firebase/db";
 
