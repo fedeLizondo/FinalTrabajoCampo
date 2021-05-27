@@ -5,14 +5,23 @@
     </template>
 
     <template v-slot:body>
-        <div class="form-group">
-    <label for="selectEspecificacion">Especificación</label>
-    <select class="form-control" id="selectEspecificacion" v-model="selected" required>
-      <option value="ERS">ERS</option>
-      <option value="CU">CU</option>
-    </select>
-  </div>
-      <component :is="currentComponent" v-bind="currentProperties" v-on:changeShowPedido="showPedido = !showPedido"></component>
+      <div class="form-group">
+        <label for="selectEspecificacion">Especificación</label>
+        <select
+          class="form-control"
+          id="selectEspecificacion"
+          v-model="selected"
+          required
+        >
+          <option value="ERS">ERS</option>
+          <option value="CU">CU</option>
+        </select>
+      </div>
+      <component
+        :is="currentComponent"
+        v-bind="currentProperties"
+        v-on:changeShowPedido="showPedido = !showPedido"
+      ></component>
     </template>
 
     <template v-slot:footer>
@@ -37,10 +46,10 @@
 
 <script>
 import ModalComponent from "../../../assets/ModalComponent.vue";
-import FormCUComponent from "./FormCU.vue"
-import FormERSComponent from "./FormCU.vue"
-import { BASE_URL } from "../../../../constants/constants.js"; 
-import {db} from "../../../../firebase/db"
+import FormCUComponent from "./FormCU.vue";
+import FormERSComponent from "./FormCU.vue";
+import { BASE_URL } from "../../../../constants/constants.js";
+import { db } from "../../../../firebase/db";
 
 export default {
   components: { ModalComponent, FormCUComponent, FormERSComponent },
@@ -48,7 +57,7 @@ export default {
   data() {
     return {
       isValidActor: true,
-      selected: "ERS"
+      selected: "ERS",
     };
   },
   computed: {
@@ -56,11 +65,11 @@ export default {
       return !this.isValidActor;
     },
     currentProperties: function () {
-     return {}
+      return {};
     },
     currentComponent: function () {
-      return (this.selected == "ERS") ? "FormCUComponent" : "FormERSComponent";
-    }
+      return this.selected == "ERS" ? "FormERSComponent" : "FormCUComponent";
+    },
   },
   methods: {
     closeModal() {
@@ -78,8 +87,10 @@ export default {
       }
     },
     postActor: function () {
-
-       db.collection('especificaciones').doc(this.proyecto_id).collection('especificaciones').add(this.especificacion);
+      db.collection("especificaciones")
+        .doc(this.proyecto_id)
+        .collection("especificaciones")
+        .add(this.especificacion);
       /*const response = axios.post(
         BASE_URL + "/api/proyecto/" + this.proyecto_id + "/actor",
         this.especificacion
@@ -87,7 +98,11 @@ export default {
       response.then((response) =>  this.especificaciones.push(response.data.data));*/
     },
     updateActor: function () {
-      db.collection('especificaciones').doc(this.proyecto_id).collection('especificaciones').doc(this.especificacion.id).update(this.especificacion);
+      db.collection("especificaciones")
+        .doc(this.proyecto_id)
+        .collection("especificaciones")
+        .doc(this.especificacion.id)
+        .update(this.especificacion);
     },
   },
 };
