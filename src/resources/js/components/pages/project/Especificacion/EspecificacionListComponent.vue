@@ -54,7 +54,7 @@
             </div>
           </div-->
     </ul>
-    <actor-modal-component
+    <especificacion-modal-component
       :isUpdate="editMode"
       :especificacion="especificacion"
       :especificaciones="especificaciones"
@@ -65,12 +65,12 @@
 </template>
 
 <script>
-import ActorModalComponent from "./EspecificacionComponent";
+import EspecificacionModalComponent from "./EspecificacionComponent";
 import { BASE_URL } from "../../../../constants/constants.js";
 import { db } from "../../../../firebase/db.js"
 
 export default {
-  components: { ActorModalComponent },
+  components: { EspecificacionModalComponent },
   props: ["proyecto_id"],
   data() {
     return {
