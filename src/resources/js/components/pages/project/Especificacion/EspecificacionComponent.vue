@@ -12,6 +12,7 @@
           id="selectEspecificacion"
           v-model="selected"
           required
+          :disabled=isUpdate
         >
           <option value="ERS">ERS</option>
           <option value="CU">CU</option>
