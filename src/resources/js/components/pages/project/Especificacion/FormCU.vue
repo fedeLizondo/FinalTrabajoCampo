@@ -16,7 +16,7 @@
 
     <div class="form-group">
       <label for="precondicion">Precondición</label>
-      <input type="text" class="form-control" id="precondicion" v-model="especificacion.actor"/>
+      <input type="text" class="form-control" id="precondicion" v-model="especificacion.precondicion"/>
     </div>
 
     <div class="form-group">
