@@ -10,7 +10,7 @@
         <select
           class="form-control"
           id="selectEspecificacion"
-          v-model="selected"
+          v-model="espForm.type"
           required
           :disabled=isUpdate
         >
@@ -58,7 +58,16 @@ export default {
   data() {
     return {
       isValidActor: true,
-      selected: "ERS",
+      espForm:{
+        type: "ERS",
+        nombre: "",
+        descripcion: "",
+        actor:"",
+        precondicion: "",
+        caminoPrincipal: "",
+        caminoAlternativo: "",
+        postcondicion: ""
+      }
     };
   },
   computed: {
@@ -66,10 +75,12 @@ export default {
       return !this.isValidActor;
     },
     currentProperties: function () {
-      return {};
+      return {
+        especificacion: this.espForm
+      };
     },
     currentComponent: function () {
-      return this.selected == "ERS" ? "FormERSComponent" : "FormCUComponent";
+      return this.espForm.type == "ERS" ? "FormERSComponent" : "FormCUComponent";
     },
   },
   methods: {
