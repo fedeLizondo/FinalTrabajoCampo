@@ -44,9 +44,6 @@
       :proyecto_id="proyecto_id"
       ref="modalDiagrama"
     />
-
-<diagrama-component>
-
   </div>
 </template>
 
