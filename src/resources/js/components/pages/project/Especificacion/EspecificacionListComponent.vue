@@ -86,8 +86,14 @@ export default {
     createActor: function () {
       this.editMode = false;
       this.especificacion = {
+        type: "ERS",
         nombre: "",
         descripcion: "",
+        actor:"",
+        precondicion: "",
+        caminoPrincipal: "",
+        caminoAlternativo: "",
+        postcondicion: ""
       };
       this.$refs.modalEspecificacion.openModal();
     },
