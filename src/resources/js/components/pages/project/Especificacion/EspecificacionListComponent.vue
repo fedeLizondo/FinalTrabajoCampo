@@ -2,24 +2,24 @@
   <div class="card">
     <div class="card-header">
       Especificaciones
-      <button class="btn btn-primary" @click="createActor">crear</button>
+      <button class="btn btn-primary" @click="createEspecificacion">crear</button>
     </div>
     <ul class="list-group list-group-flush">
       <li
         id="ActorRowComponent"
         class="card mb-1 shadow-sm w-100"
-        v-for="(actor, index) in especificaciones"
+        v-for="(especificacion, index) in especificaciones"
         :key="index"
       >
         <div class="card-body">
           <div class="cart-title">
-            {{ actor.nombre }}
+            {{ especificacion.nombre }}
             <button
               type="button"
               class="close ml-1"
               aria-label="Close"
               style="color: #e74c3c"
-              v-on:click="deleteActor(actor)"
+              v-on:click="deleteEspecificacion(especificacion)"
             >
               <font-awesome-icon :icon="['fas', 'times']" />
             </button>
@@ -29,7 +29,7 @@
               class="close"
               aria-label="Update"
               style="color: #e67e22"
-              v-on:click="toggleUpdate(actor)"
+              v-on:click="toggleUpdate(especificacion)"
             >
               <font-awesome-icon :icon="['fas', 'edit']" />
             </button>
@@ -66,7 +66,6 @@
 
 <script>
 import EspecificacionModalComponent from "./EspecificacionComponent";
-import { BASE_URL } from "../../../../constants/constants.js";
 import { db } from "../../../../firebase/db.js"
 
 export default {
@@ -89,7 +88,7 @@ export default {
     };
   },
   methods: {
-    createActor: function () {
+    createEspecificacion: function () {
       this.editMode = false;
       this.especificacion = {
         type: "ERS",
@@ -103,23 +102,16 @@ export default {
       };
       this.$refs.modalEspecificacion.openModal();
     },
-    getActor: function () {
-      /*const response = axios.get(
-        BASE_URL + "/api/proyecto/" + this.proyecto_id + "/actor"
-      );
-      response.then((res) => (this.especificaciones = res.data.data));*/
+    deleteEspecificacion: function (especificacion) {
+      db.collection("especificaciones").doc(""+this.proyecto_id+"").collection("especificaciones").doc(especificacion.id).delete();
     },
-    deleteActor: function (actor) {
-      db.collection("especificaciones").doc(""+this.proyecto_id+"").collection("especificaciones").doc(actor.id).delete();
-    },
-    toggleUpdate: function (actor) {
+    toggleUpdate: function (especificacion) {
       this.editMode = true;
-      this.especificacion = actor;
+      this.especificacion = especificacion;
       this.$refs.modalEspecificacion.openModal();
     },
   },
   mounted() {
-    this.getActor();
   },
   firestore(){
     return {
