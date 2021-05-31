@@ -84,7 +84,7 @@ export default {
       this.isValidDiagrama = true;
       this.$refs.modalInternoDiagrama.openModal();
     },
-    guardarEspecificacion() {
+    guardarDiagrama() {
       if (this.isValidDiagrama) {
         this.isValidDiagrama = false;
         this.isUpdate ? this.updateDiagrama() : this.postDiagrama();
