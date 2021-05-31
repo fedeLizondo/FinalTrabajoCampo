@@ -96,11 +96,6 @@ export default {
         .doc(this.proyecto_id)
         .collection("diagramas")
         .add(this.diagrama);
-      /*const response = axios.post(
-        BASE_URL + "/api/proyecto/" + this.proyecto_id + "/actor",
-        this.especificacion
-      );
-      response.then((response) =>  this.especificaciones.push(response.data.data));*/
     },
     updateDiagrama: function () {
       db.collection("especificaciones")
