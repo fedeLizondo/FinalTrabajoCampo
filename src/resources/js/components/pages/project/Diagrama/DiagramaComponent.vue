@@ -78,17 +78,17 @@ export default {
   },
   methods: {
     closeModal() {
-      this.$refs.modalinternoEspecificacion.closeModal();
+      this.$refs.modalInternoDiagrama.closeModal();
     },
     openModal() {
       this.isValidDiagrama = true;
-      this.$refs.modalinternoEspecificacion.openModal();
+      this.$refs.modalInternoDiagrama.openModal();
     },
     guardarEspecificacion() {
       if (this.isValidDiagrama) {
         this.isValidDiagrama = false;
         this.isUpdate ? this.updateDiagrama() : this.postDiagrama();
-        this.$refs.modalinternoEspecificacion.closeModal();
+        this.$refs.modalInternoDiagrama.closeModal();
       }
     },
     postDiagrama: function () {
