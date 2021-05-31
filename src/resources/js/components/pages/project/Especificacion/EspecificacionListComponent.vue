@@ -76,8 +76,14 @@ export default {
     return {
       editMode: false,
       especificacion: {
+        type: "ERS",
         nombre: "",
         descripcion: "",
+        actor:"",
+        precondicion: "",
+        caminoPrincipal: "",
+        caminoAlternativo: "",
+        postcondicion: ""
       },
       especificaciones: [],
     };
