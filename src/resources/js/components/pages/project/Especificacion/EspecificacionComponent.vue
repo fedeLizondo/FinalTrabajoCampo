@@ -35,7 +35,7 @@
         </button>
         <button
           class="btn btn-secondary"
-          @click="guardarActor"
+          @click="guardarEspecificacion"
           :disabled="enableGuardar"
         >
           Guardar
@@ -49,7 +49,6 @@
 import ModalComponent from "../../../assets/ModalComponent.vue";
 import FormCUComponent from "./FormCU.vue";
 import FormERSComponent from "./FormERS.vue";
-import { BASE_URL } from "../../../../constants/constants.js";
 import { db } from "../../../../firebase/db";
 
 export default {
@@ -57,12 +56,12 @@ export default {
   props: ["especificacion", "isUpdate", "especificaciones", "proyecto_id"],
   data() {
     return {
-      isValidActor: true,
+      isValidEspecificacion: true,
     };
   },
   computed: {
     enableGuardar() {
-      return !this.isValidActor;
+      return !this.isValidEspecificacion;
     },
     currentProperties: function () {
       return {
@@ -78,17 +77,17 @@ export default {
       this.$refs.modalinternoEspecificacion.closeModal();
     },
     openModal() {
-      this.isValidActor = true;
+      this.isValidEspecificacion = true;
       this.$refs.modalinternoEspecificacion.openModal();
     },
-    guardarActor() {
-      if (this.isValidActor) {
-        this.isValidActor = false;
-        this.isUpdate ? this.updateActor() : this.postActor();
+    guardarEspecificacion() {
+      if (this.isValidEspecificacion) {
+        this.isValidEspecificacion = false;
+        this.isUpdate ? this.updateEspecificacion() : this.postEspecificacion();
         this.$refs.modalinternoEspecificacion.closeModal();
       }
     },
-    postActor: function () {
+    postEspecificacion: function () {
       db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("especificaciones")
@@ -99,7 +98,7 @@ export default {
       );
       response.then((response) =>  this.especificaciones.push(response.data.data));*/
     },
-    updateActor: function () {
+    updateEspecificacion: function () {
       db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("especificaciones")
