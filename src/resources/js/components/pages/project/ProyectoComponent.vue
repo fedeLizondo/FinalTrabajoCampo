@@ -6,50 +6,9 @@
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
-      <div class="card">
-        <div class="card-header">
-          Diagramas
-          <button class="btn btn-primary">crear</button>
-        </div>
-        <div class="card-body">
-          <div id="container">
-            <div
-              id="row"
-              class="shadow-sm row rounded"
-              v-for="diagrama in diagramas"
-              :key="diagrama.id"
-            >
-              {{ actor.nombre }}
-              <button class="btn btn-warning">modificar</button>
-              <button class="btn btn-danger">eliminar</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <diagrama-list-component :proyecto_id="$route.params.id"/>
     </div>
 
-    <!--div class="col-md-6 col-lg-3 mt-2">
-      <div class="card">
-        <div class="card-header">
-          Especificaciónes
-          <button class="btn btn-primary">crear</button>
-        </div>
-        <div class="card-body">
-          <div id="container">
-            <div
-              id="row"
-              class="shadow-sm row rounded"
-              v-for="especificacion in especificaciones"
-              :key="especificacion.id"
-            >
-              {{ especificacion.nombre }}
-              <button class="btn btn-warning">modificar</button>
-              <button class="btn btn-danger">eliminar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div-->
     <div class="col-md-6 col-lg-3 mt-2">
       <especificacion-list-component :proyecto_id="$route.params.id"/>
     </div>
@@ -65,9 +24,10 @@ import MessageComponent from "../../MessageComponent.vue";
 import { BASE_URL } from "../../../constants/constants.js";
 import ActorListComponent from "./Actor/ActorListComponent.vue";
 import EspecificacionListComponent from "./Especificacion/EspecificacionListComponent.vue"
+import DiagramaListComponent from './Diagrama/DiagramaListComponent.vue';
 
 export default {
-  components: { MessageComponent, ActorListComponent, EspecificacionListComponent },
+  components: { MessageComponent, ActorListComponent, EspecificacionListComponent, DiagramaListComponent },
   props: ["proyecto_id", "user_id"],
   data() {
     return {
