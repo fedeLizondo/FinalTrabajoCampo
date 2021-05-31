@@ -52,7 +52,7 @@
         @endif
     </div>
 
-    <div id="app" class="h-100">
+    <div id="app" class="h-100 container-fluid">
         <!-- search-component></search-component -->
         @auth
         <!--proyecto-component proyecto_id="1" user_id={{ Auth::user()->id }} ></proyecto-component-->

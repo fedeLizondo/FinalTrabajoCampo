@@ -20,7 +20,7 @@
         </div>
     </div>
 </div-->
-<div id="app">
+<div id="app" class="container-fluid">
     <!--search-component></search-component-->
     @auth
         <!--proyecto-component proyecto_id="1" user_id={{ Auth::user()->id }} ></proyecto-component-->
