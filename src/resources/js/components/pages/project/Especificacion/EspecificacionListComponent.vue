@@ -13,7 +13,7 @@
       >
         <div class="card-body">
           <div class="cart-title">
-            {{ especificacion.nombre }}
+            {{  especificacion.type +": "+ especificacion.nombre }}
             <button
               type="button"
               class="close ml-1"
