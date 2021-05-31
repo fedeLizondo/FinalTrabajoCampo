@@ -78,6 +78,7 @@ export default {
         entidades: {},
         relaciones: {}
       };
+      console.log("PRINT FROM CREATE");
       this.$refs.modalDiagrama.openModal();
     },
     deleteDiagrama: function (diagrama) {
