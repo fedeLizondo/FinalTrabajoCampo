@@ -1,5 +1,5 @@
 <template>
-  <div class="row h-100">
+  <div class="row h-100" style="witdh:100%">
     <div style="border: 1px solid gray" class="col-md-8 h-100 ml-5">
       <button class="btn btn-warning" v-on:click="makeRelations()">
         Actualizar Relacion
@@ -24,7 +24,7 @@
         :grid="[30, 30]"
         :ref="'entidad' + entidad.id"
         :id="entidad.id"
-        style="min-width:300px;min-height:600px;"
+        style="min-width:100px;min-height:100px;"
       >
         <div class="card" style="display: block;overflow:hidden;">
           <div class="card-header">
