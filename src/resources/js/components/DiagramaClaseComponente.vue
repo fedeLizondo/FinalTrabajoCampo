@@ -79,8 +79,8 @@ export default {
           box: {
             x: 50,
             y: 50,
-            height: 100,
-            width: 100,
+            height: 200,
+            width: 200,
           },
         },
         {
@@ -90,7 +90,7 @@ export default {
           atributos: ["private pepe"],
           metodos: ["public pepe(void):marco"],
           box: {
-            x: 200,
+            x: 500,
             y: 50,
             height: 200,
             width: 200,
@@ -118,7 +118,7 @@ export default {
     },
     onDrag: function (x, y) {
       this.x = x;
-      this.y = y;
+      this.y = y + 200;
     },
     makeRelations: function () {
       this.relaciones.forEach((relacion) => {
