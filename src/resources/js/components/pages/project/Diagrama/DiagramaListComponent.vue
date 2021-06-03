@@ -13,7 +13,7 @@
       >
         <div class="card-body">
           <div class="cart-title">
-            {{  diagrama.type +": "+ diagrama.nombre }}
+            <a href="/test"> {{  diagrama.type +": "+ diagrama.nombre }}</a>
             <button
               type="button"
               class="close ml-1"
