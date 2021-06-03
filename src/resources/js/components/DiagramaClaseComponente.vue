@@ -24,7 +24,7 @@
         :grid="[30, 30]"
         :ref="'entidad' + entidad.id"
         :id="entidad.id"
-        style="min-width:100px;min-height:100px;"
+        style="min-width:300px;min-height:600px;"
       >
         <div class="card" style="display: block;overflow:hidden;">
           <div class="card-header">
