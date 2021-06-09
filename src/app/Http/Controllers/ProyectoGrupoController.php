@@ -48,14 +48,19 @@ class ProyectoGrupoController extends Controller
         if (!is_null($user_id)) {
             $user = User::find($user_id);
             if (!is_null($user)) {
-                $email = $request->email;
+                $email = $user->email;
+            }
+        } else {
+            $user = User::where('email', 'ilike',"%".$email."%")->first();
+            if (!is_null($user)) {
+                $user_id = $user->id;
             }
         }
 
         $grupo = Grupo::create([
             'user_id' => $user_id,
             'proyecto_id' => $proyecto->id,
-            'email' => $request->email,
+            'email' => $email,
             'is_admin' => $request->is_admin
         ]);
 
