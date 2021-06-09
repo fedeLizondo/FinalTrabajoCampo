@@ -21,7 +21,7 @@ class ProyectoController extends Controller
 
         $proyectos = null;
         if (!is_null($search)) {
-            $proyectos = Proyecto::where('nombre', 'like', '%' . $search . '%')->paginate(50)->withQueryString();
+            $proyectos = Proyecto::where('nombre', 'ilike', '%' . $search . '%')->paginate(50)->withQueryString();
         } else {
             $proyectos = Proyecto::paginate(50)->withQueryString();
         }

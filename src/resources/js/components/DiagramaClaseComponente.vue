@@ -26,7 +26,7 @@
         :id="entidad.id"
         style="min-width:100px;min-height:100px;"
       >
-        <div class="card" style="display: block;overflow:hidden;">
+        <div class="card" style="display: block; overflow:hidden;">
           <div class="card-header">
             {{ entidad.nombre }}
             {{ entidad.id }}
