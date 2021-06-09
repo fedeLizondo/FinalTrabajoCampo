@@ -25,6 +25,7 @@ class UserProyectoController extends Controller
                 ->addSelect('proyecto_id')
                 ->addSelect('nombre')
                 ->addSelect('is_admin')  
+                ->addSelect('proyectos.created_at')
                 ->get()
         );
     }
