@@ -23,7 +23,7 @@ class UserFavoritoController extends Controller
         ->addSelect('favoritos.user_id')
         ->addSelect('proyecto_id')
         ->addSelect('nombre')
-        ->addSelect('proyectos.created_at')
+        ->addSelect('favoritos.created_at')
         ->get()
     );
 
