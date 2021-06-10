@@ -14,6 +14,7 @@
             >
               Ocultar
             </button>
+            <button class="btn btn-primary" @click="createProyecto">crear</button>
           </h2>
         </div>
 
