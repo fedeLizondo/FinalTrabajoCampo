@@ -13,8 +13,8 @@ export default {
    props: ["proyecto_id", "user_id"],
   data() {
     return {
-      proyectos = [],
-      favoritos = []
+      proyectos: [],
+      favoritos: []
     };
   },
   methods: {
