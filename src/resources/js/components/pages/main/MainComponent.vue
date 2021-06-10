@@ -57,7 +57,6 @@
             >
               Ocultar
             </button>
-            <button class="btn btn-primary" @click="createProyecto" disabled>crear</button>
           </h2>
         </div>
 
