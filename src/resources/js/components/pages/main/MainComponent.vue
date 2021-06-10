@@ -24,11 +24,17 @@
           data-parent="#accordion-proyectos"
         >
           <div class="card-body d-flex flex-wrap justify-content-center">
-            <div v-for="(proyecto, index) in proyectos" :key="index" class="p-2">
+            <div
+              v-for="(proyecto, index) in proyectos"
+              :key="index"
+              class="p-2"
+            >
               <div class="card" style="width: 18rem">
                 <div class="card-body">
-                  <h5 class="card-title"> {{proyecto.nombre}} </h5>
-                  <a href="/proyecto/{{proyecto.id}}" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title">{{ proyecto.nombre }}</h5>
+                  <a href="/proyecto/{{proyecto.id}}" class="btn btn-primary"
+                    >Go somewhere</a
+                  >
                 </div>
               </div>
             </div>
@@ -46,6 +52,7 @@
 </template>
 
 <script>
+import { BASE_URL } from "../ ../../constants/constants.js";
 export default {
   props: ["user_id"],
   data() {
