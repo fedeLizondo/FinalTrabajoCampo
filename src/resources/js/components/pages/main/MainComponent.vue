@@ -43,7 +43,48 @@
       </div>
     </div>
 
-    <h2>Listados para Favoritos</h2>
+    <div id="accordion-favoritos">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            Favoritos
+            <button
+              class="btn btn-link"
+              data-toggle="collapse"
+              data-target="#accordion-body"
+              aria-expanded="true"
+              aria-controls="accordion-body"
+            >
+              Ocultar
+            </button>
+            <button class="btn btn-primary" @click="createProyecto">crear</button>
+          </h2>
+        </div>
+
+        <div
+          id="accordion-body"
+          class="collapse show"
+          aria-labelledby="headingOne"
+          data-parent="#accordion-favoritos"
+        >
+          <div class="card-body d-flex flex-wrap justify-content-center">
+            <div
+              v-for="(favorito, index) in favoritos"
+              :key="index"
+              class="p-2"
+            >
+            <router-link :to="'/proyecto/'+ favoritos.proyecto_id"> 
+              <div class="card" style="width: 18rem">
+                <div class="card-body">
+                  <h5 class="card-title">{{ favoritos.nombre }}</h5>
+                </div>
+              </div>
+            </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -60,26 +101,28 @@ export default {
   methods: {
     getProyectos: async function () {
       const response = axios.get(
-        BASE_URL + "/api/"+this.user_id +"/proyecto"
+        BASE_URL + "/api/user/"+this.user_id +"/proyecto"
       );
       response.then((res) => (this.proyectos = res.data.data));
     },
     getFavoritos: async function () {
       const response = axios.get(
-        BASE_URL + "/api/" + this.user_id + "/favorito"
+        BASE_URL + "/api/user/" + this.user_id + "/favorito"
       );
       response.then((res) => (this.favoritos = res.data.data));
     },
     createProyecto: function () {
-     /* this.editMode = false;
-      this.diagrama = {
-        type: "CU",
-        nombre: "",
-        descripcion: "",
-        entidades: {},
-        relaciones: {}
-      };
-      this.$refs.modalDiagrama.openModal();*/
+     /* 
+        this.editMode = false;
+        this.diagrama = {
+          type: "CU",
+          nombre: "",
+          descripcion: "",
+          entidades: {},
+          relaciones: {}
+        };
+        this.$refs.modalDiagrama.openModal();
+      */
     },
   },
   mounted() {
