@@ -29,12 +29,13 @@
               :key="index"
               class="p-2"
             >
+            <router-link :to="'/proyecto/'+ proyecto.id"> 
               <div class="card" style="width: 18rem">
                 <div class="card-body">
                   <h5 class="card-title">{{ proyecto.nombre }}</h5>
-                  <a :href="'/proyecto/'+ proyecto.id" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
+            </router-link>
             </div>
           </div>
         </div>
@@ -61,8 +62,7 @@ export default {
   methods: {
     getProyectos: async function () {
       const response = axios.get(
-        //BASE_URL + "/api/"+this.user_id +"/proyecto"
-        BASE_URL + "/api/user/1/proyecto"
+        BASE_URL + "/api/"+this.user_id +"/proyecto"
       );
       response.then((res) => (this.proyectos = res.data.data));
     },
