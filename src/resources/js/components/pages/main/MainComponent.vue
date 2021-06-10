@@ -73,10 +73,10 @@
               :key="index"
               class="p-2"
             >
-            <router-link :to="'/proyecto/'+ favoritos.proyecto_id"> 
+            <router-link :to="'/proyecto/'+ favorito.proyecto_id"> 
               <div class="card" style="width: 18rem">
                 <div class="card-body">
-                  <h5 class="card-title">{{ favoritos.nombre }}</h5>
+                  <h5 class="card-title">{{ favorito.nombre }}</h5>
                 </div>
               </div>
             </router-link>
