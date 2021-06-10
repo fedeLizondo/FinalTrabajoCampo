@@ -63,7 +63,7 @@ export default {
     getProyectos: async function () {
       const response = axios.get(
         //BASE_URL + "/api/"+this.user_id +"/proyecto"
-        BASE_URL + "/api/1/proyecto"
+        BASE_URL + "/api/user/1/proyecto"
       );
       response.then((res) => (this.proyectos = res.data.data));
     },
