@@ -9,7 +9,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+   props: ["proyecto_id", "user_id"],
+  data() {
+    return {
+      proyectos = [],
+      favoritos = []
+    };
+  },
+  methods: {
+    getProyectos: async function () {
+      const response = axios.get(
+        BASE_URL + "/api/"+this.user_id +"/proyecto"
+      );
+      response.then((res) => (this.proyectos = res.data.data));
+    },
+    getFavoritos: async function () {
+      const response = axios.get(
+        BASE_URL + "/api/"+this.user_id +"/favorito" 
+      );
+      response.then((res) => (this.favoritos = res.data.data));
+    },
+  },
+  mounted() {
+    this.getProyectos();
+    this.getFavoritos();
+  }
+
+};
 </script>
 
 <style>

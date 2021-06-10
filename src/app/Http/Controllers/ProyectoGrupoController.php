@@ -42,7 +42,7 @@ class ProyectoGrupoController extends Controller
         }
 
         if (is_null($user_id) && is_null($email)) {
-            return response(array("data" => ["messages" => ["Debe ingresar almenos el user_id o el mail"]]), 400);
+              return response(array("data" => ["messages" => ["Debe ingresar almenos el user_id o el mail"]]), 400);
         }
 
         if (!is_null($user_id)) {
