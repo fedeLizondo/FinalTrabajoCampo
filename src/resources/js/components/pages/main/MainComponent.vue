@@ -10,7 +10,7 @@
 
 <script>
 export default {
-   props: ["proyecto_id", "user_id"],
+   props: ["user_id"],
   data() {
     return {
       proyectos: [],
@@ -20,7 +20,8 @@ export default {
   methods: {
     getProyectos: async function () {
       const response = axios.get(
-        BASE_URL + "/api/"+this.user_id +"/proyecto"
+        //BASE_URL + "/api/"+this.user_id +"/proyecto"
+        BASE_URL + "/api/1/proyecto"
       );
       response.then((res) => (this.proyectos = res.data.data));
     },
