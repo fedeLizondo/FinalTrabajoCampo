@@ -70,6 +70,17 @@ export default {
       );
       response.then((res) => (this.favoritos = res.data.data));
     },
+    createProyecto: function () {
+     /* this.editMode = false;
+      this.diagrama = {
+        type: "CU",
+        nombre: "",
+        descripcion: "",
+        entidades: {},
+        relaciones: {}
+      };
+      this.$refs.modalDiagrama.openModal();*/
+    },
   },
   mounted() {
     this.getProyectos();
