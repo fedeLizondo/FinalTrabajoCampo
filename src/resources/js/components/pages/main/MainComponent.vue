@@ -14,7 +14,7 @@
             >
               Ocultar
             </button>
-            <button class="btn btn-primary" @click="createProyecto">crear</button>
+            <button class="btn btn-primary" @click="createProyecto" disabled>crear</button>
           </h2>
         </div>
 
@@ -51,18 +51,18 @@
             <button
               class="btn btn-link"
               data-toggle="collapse"
-              data-target="#accordion-body"
+              data-target="#accordion-body2"
               aria-expanded="true"
-              aria-controls="accordion-body"
+              aria-controls="accordion-body2"
             >
               Ocultar
             </button>
-            <button class="btn btn-primary" @click="createProyecto">crear</button>
+            <button class="btn btn-primary" @click="createProyecto" disabled>crear</button>
           </h2>
         </div>
 
         <div
-          id="accordion-body"
+          id="accordion-body2"
           class="collapse show"
           aria-labelledby="headingOne"
           data-parent="#accordion-favoritos"
