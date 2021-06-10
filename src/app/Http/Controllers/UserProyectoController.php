@@ -19,7 +19,7 @@ class UserProyectoController extends Controller
         return UserProyectoResource::collection(
             $user->grupos()
                 ->join('proyectos', 'grupos.proyecto_id', '=', 'proyectos.id')
-                ->orderBy('proyectos.created_at','desc')
+                ->orderBy('proyectos.created_at','asc')
                 ->select('grupos.id')
                 ->addSelect('grupos.user_id')
                 ->addSelect('proyecto_id')

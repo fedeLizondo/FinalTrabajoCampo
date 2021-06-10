@@ -16,7 +16,18 @@ class UserFavoritoController extends Controller
      */
     public function index(User $user)
     {
-        return UserFavoritoResource::collection($user->favoritos);
+        return UserFavoritoResource::collection($user->favoritos()    
+        ->join('proyectos', 'favoritos.proyecto_id', '=', 'proyectos.id')
+        ->orderBy('proyectos.created_at','asc')
+        ->select('favoritos.id')
+        ->addSelect('favoritos.user_id')
+        ->addSelect('proyecto_id')
+        ->addSelect('nombre')
+        ->addSelect('proyectos.created_at')
+        ->get()
+    );
+
+
     }
 
     /**
