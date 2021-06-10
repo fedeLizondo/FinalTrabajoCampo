@@ -32,9 +32,7 @@
               <div class="card" style="width: 18rem">
                 <div class="card-body">
                   <h5 class="card-title">{{ proyecto.nombre }}</h5>
-                  <a href="/proyecto/{{proyecto.id}}" class="btn btn-primary"
-                    >Go somewhere</a
-                  >
+                  <a href="/proyecto/1" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
             </div>
