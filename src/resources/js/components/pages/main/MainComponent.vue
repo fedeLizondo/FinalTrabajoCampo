@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { BASE_URL } from "../ ../../constants/constants.js";
+import { BASE_URL } from "../../../constants/constants.js";
 export default {
   props: ["user_id"],
   data() {
