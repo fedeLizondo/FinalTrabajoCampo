@@ -5,7 +5,7 @@
     <router-link to="/vue"><a>Back to the root</a></router-link>
     <vue-mermaid
       :nodes="data"
-      type="classDiagram LR"
+      type="graph LR"
       @nodeClick="editNode"
     ></vue-mermaid>
   </div>
