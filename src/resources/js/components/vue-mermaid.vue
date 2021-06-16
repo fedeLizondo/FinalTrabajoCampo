@@ -99,6 +99,7 @@ export default {
         const parseCode = this.type + "\n";
         let orderStr = ""
         if(Array.isArray(order) && order.length > 0){
+          orderStr+="autonumber\n";
           order.forEach(element => {
             orderStr += `participant ${element}\n`;
           })
@@ -137,6 +138,7 @@ export default {
                   id: node.id,
                   text: node.text,
                   style: node.style,
+                  msg: node.msg,
                   editable: node.editable
                 });
                 node.next.forEach(id => {
@@ -145,6 +147,7 @@ export default {
                       id: node.id,
                       text: node.text,
                       link: node.link,
+                      msg: node.msg,
                       next: [id]
                     });
                   } else {
@@ -152,6 +155,7 @@ export default {
                       id: node.id,
                       text: node.text,
                       link: node.link,
+                      msg: node.msg,
                       next: [id]
                     });
                   }
@@ -182,7 +186,7 @@ export default {
                     return `${this.buildNode(item)}${this.buildLink(
                       item,
                       index
-                    )}${this.buildNode(next)}`;
+                    )}${this.buildNode(next)}${item.msg}`;
                   } else {
                     //TODO error
                     return `${this.buildNode(item)}`;
