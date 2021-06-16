@@ -210,12 +210,10 @@ export default {
       
       let prefix = "";
       if(Boolean(item.dataClass)){
-        prefix = `class ${item.id}{\n ${item.dataClass.join('\n')} \n}`;
-        console.log("--------");
-        console.log(prefix);
+        prefix = `class ${item.id}{\n${item.dataClass.join('\n')} \n}\n`;
       }
 
-      if(!Boolean(item.text)) return `${item.id}`;
+      if(!Boolean(item.text)) return `${prefix}${item.id}`;
       return `${prefix}${item.id}${edge.open}${item.text}${edge.close}`;
     },
     buildLink(item, index) {
