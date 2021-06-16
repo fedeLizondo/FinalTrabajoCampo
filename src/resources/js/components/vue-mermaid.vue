@@ -110,7 +110,7 @@ export default {
           if (Boolean(element.dataClass)) {
             getClass += `class ${element.id}{\n${element.dataClass.join(
               "\n"
-            )} \n}`;
+            )} \n}\n`;
           }
         });
         const groupNodes = this.getGroupNodes(nodes);
