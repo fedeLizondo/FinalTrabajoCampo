@@ -211,8 +211,10 @@ export default {
       let prefix = "";
       if(Boolean(item.dataClass)){
         prefix = `class ${item.id}{\n ${item.dataClass.join('\n')} \n}`;
+        console.log("--------");
+        console.log(prefix);
       }
-      
+
       if(!Boolean(item.text)) return `${item.id}`;
       return `${prefix}${item.id}${edge.open}${item.text}${edge.close}`;
     },
