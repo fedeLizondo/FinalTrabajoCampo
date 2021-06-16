@@ -9,42 +9,42 @@ export default {
   props: {
     type: {
       type: String,
-      default: "graph TD"
+      default: "graph TD",
     },
     nodes: {
       type: Array,
-      required: true
+      required: true,
     },
     styles: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
-    order:{
+    order: {
       type: Array,
-      default(){
-        return []
-      }
+      default() {
+        return [];
+      },
     },
     config: {
       type: Object,
       default() {
         return {};
-      }
+      },
     },
     defaultConfig: {
       type: Object,
       default() {
         return { theme: "default", startOnLoad: false, securityLevel: "loose" };
-      }
+      },
     },
     stopOnError: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data: function() {
+  data: function () {
     return {
       edges: [
         { type: "default", open: "[", close: "]" },
@@ -60,7 +60,7 @@ export default {
         { type: "parallelogram_alt", open: "[\\", close: "\\]" },
         { type: "trapezoid", open: "[/", close: "\\]" },
         { type: "trapezoid_alt", open: "[\\", close: "/]" },
-      ]
+      ],
     };
   },
   mounted() {
@@ -72,7 +72,7 @@ export default {
       const { nodes } = this;
       if (Array.isArray(nodes) && nodes.length > 0) {
         const arrayToObject = (arr, keyField) =>
-          Object.assign({}, ...arr.map(item => ({ [item[keyField]]: item })));
+          Object.assign({}, ...arr.map((item) => ({ [item[keyField]]: item })));
         return arrayToObject(nodes, "id");
       } else {
         return {};
@@ -81,43 +81,44 @@ export default {
     customStyle() {
       const { nodes, styles } = this;
       const nodeStyles = nodes
-        .filter(node => node.style)
-        .map(node => `style ${node.id} ${node.style}`);
+        .filter((node) => node.style)
+        .map((node) => `style ${node.id} ${node.style}`);
       const nodeLinkStyles = nodes
-        .filter(node => node.linkStyle)
+        .filter((node) => node.linkStyle)
         .map(
-          node =>
+          (node) =>
             `linkStyle ${node.linkNumber || nodes.indexOf(node)} ${
               node.linkStyle
             }`
-        )
-      return nodeStyles.concat(styles).concat(nodeLinkStyles)
+        );
+      return nodeStyles.concat(styles).concat(nodeLinkStyles);
     },
     parseCode() {
-      const { nodes, order} = this;
+      const { nodes, order } = this;
       if (Array.isArray(nodes) && nodes.length > 0) {
         const parseCode = this.type + "\n";
-        let orderStr = ""
-        if(Array.isArray(order) && order.length > 0){
-          orderStr+="autonumber\n";
-          order.forEach(element => {
+        let orderStr = "";
+        if (Array.isArray(order) && order.length > 0) {
+          orderStr += "autonumber\n";
+          order.forEach((element) => {
             orderStr += `participant ${element}\n`;
-          })
+          });
         }
         const groupNodes = this.getGroupNodes(nodes);
-        const code = parseCode + orderStr + groupNodes + this.customStyle.join(" \n");
+        const code =
+          parseCode + orderStr + groupNodes + this.customStyle.join(" \n");
         this.load(code);
         console.log(code);
         return code;
       } else {
         return "";
       }
-    }
+    },
   },
   methods: {
     getGroupNodes(nodes) {
       const innerMap = new Map();
-      nodes.forEach(element => {
+      nodes.forEach((element) => {
         const group = element.group || "";
         const data = innerMap.get(group) || { nids: new Set(), narr: [] };
         data.nids.add(element.id);
@@ -125,30 +126,30 @@ export default {
         innerMap.set(group, data);
       });
 
-      return [...innerMap.entries()] 
-        .map(item => {
+      return [...innerMap.entries()]
+        .map((item) => {
           const [groupName, entry] = item;
           const { nids, narr } = entry;
           if (groupName !== "") {
             const innerNodes = [];
             const outNodes = [];
-            narr.forEach(node => {
+            narr.forEach((node) => {
               if (node.next) {
                 innerNodes.push({
                   id: node.id,
                   text: node.text,
                   style: node.style,
                   msg: node.msg,
-                  editable: node.editable
+                  editable: node.editable,
                 });
-                node.next.forEach(id => {
+                node.next.forEach((id) => {
                   if (nids.has(id)) {
                     innerNodes.push({
                       id: node.id,
                       text: node.text,
                       link: node.link,
                       msg: node.msg,
-                      next: [id]
+                      next: [id],
                     });
                   } else {
                     outNodes.push({
@@ -156,7 +157,7 @@ export default {
                       text: node.text,
                       link: node.link,
                       msg: node.msg,
-                      next: [id]
+                      next: [id],
                     });
                   }
                 });
@@ -177,16 +178,21 @@ export default {
     buildNodesStr(nodes) {
       return (
         nodes
-          .map(item => {
+          .map((item) => {
             if (item.next && item.next.length > 0) {
               return item.next
                 .map((n, index) => {
                   const next = this.nodeObject[n] || this.nodeObject[n.id];
                   if (next != null && typeof next != "undefined") {
+                    let postfix = "";
+                    if (Boolean(item.msg)) {
+                      postfix = `: ${item.msg}`;
+                    }
+
                     return `${this.buildNode(item)}${this.buildLink(
                       item,
                       index
-                    )}${this.buildNode(next)}${item.msg}`;
+                    )}${this.buildNode(next)}${postfix}`;
                   } else {
                     //TODO error
                     return `${this.buildNode(item)}`;
@@ -200,15 +206,15 @@ export default {
           .join("\n") +
         "\n" +
         nodes
-          .filter(item => item.editable)
-          .map(item => {
+          .filter((item) => item.editable)
+          .map((item) => {
             return `click ${item.id} mermaidClick`;
           })
           .join("\n") +
         "\n" +
         nodes
-          .filter(item => item.url)
-          .map(item => {
+          .filter((item) => item.url)
+          .map((item) => {
             return `click ${item.id} "${item.url}"`;
           })
           .join("\n") +
@@ -217,24 +223,19 @@ export default {
     },
     buildNode(item) {
       let edge = !item.edgeType
-        ? this.edges.find(e => {
+        ? this.edges.find((e) => {
             return e.type === "default";
           })
-        : this.edges.find(e => {
+        : this.edges.find((e) => {
             return e.type === item.edgeType;
           });
-      
+
       let prefix = "";
-      if(Boolean(item.dataClass)){
-        prefix = `class ${item.id}{\n${item.dataClass.join('\n')} \n}\n`;
+      if (Boolean(item.dataClass)) {
+        prefix = `class ${item.id}{\n${item.dataClass.join("\n")} \n}\n`;
       }
 
-      let postfix = "";
-      if(Boolean(item.msg)){
-        postfix = `: ${item.msg}`;
-      }
-
-      if(!Boolean(item.text)) return `${prefix}${item.id}${postfix}`;
+      if (!Boolean(item.text)) return `${prefix}${item.id}`;
       return `${prefix}${item.id}${edge.open}${item.text}${edge.close}`;
     },
     buildLink(item, index) {
@@ -254,7 +255,7 @@ export default {
     },
     init() {
       const _t = this;
-      window.mermaidClick = function(id) {
+      window.mermaidClick = function (id) {
         _t.edit(id);
       };
       mermaid.initialize(Object.assign(this.defaultConfig, this.config));
@@ -280,8 +281,8 @@ export default {
     },
     edit(id) {
       this.$emit("nodeClick", id);
-    }
-  }
+    },
+  },
 };
 </script>
 
