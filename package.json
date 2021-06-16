@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mermaid": "^8.10.2",
+    "vue-mermaid": "^0.0.15"
+  }
+}
