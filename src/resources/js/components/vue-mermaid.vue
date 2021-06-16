@@ -207,8 +207,14 @@ export default {
         : this.edges.find(e => {
             return e.type === item.edgeType;
           });
+      
+      let prefix = "";
+      if(Boolean(item.dataClass)){
+        prefix = `class ${item.id}{\n ${item.dataClass.join('\n')} \n}`;
+      }
+      
       if(!Boolean(item.text)) return `${item.id}`;
-      return `${item.id}${edge.open}${item.text}${edge.close}`;
+      return `${prefix}${item.id}${edge.open}${item.text}${edge.close}`;
     },
     buildLink(item, index) {
       const link = "-->";
@@ -233,7 +239,6 @@ export default {
       mermaid.initialize(Object.assign(this.defaultConfig, this.config));
     },
     load(code) {
-      console.log("EL DATO LOCO");
       if (code) {
         var container = document.getElementById("mermaid");
         if (container) {
