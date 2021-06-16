@@ -184,12 +184,19 @@ export default {
                 .map((n, index) => {
                   const next = this.nodeObject[n] || this.nodeObject[n.id];
                   if (next != null && typeof next != "undefined") {
+                    let prefix = "";
+                    if (Boolean(item.dataClass)) {
+                      prefix = `class ${item.id}{\n${item.dataClass.join(
+                        "\n"
+                      )} \n}`;
+                    }
+
                     let postfix = "";
                     if (Boolean(item.msg)) {
                       postfix = `: ${item.msg}`;
                     }
 
-                    return `${this.buildNode(item)}${this.buildLink(
+                    return `${prefix}\n${this.buildNode(item)}${this.buildLink(
                       item,
                       index
                     )}${this.buildNode(next)}${postfix}`;
@@ -229,14 +236,8 @@ export default {
         : this.edges.find((e) => {
             return e.type === item.edgeType;
           });
-
-      let prefix = "";
-      if (Boolean(item.dataClass)) {
-        prefix = `class ${item.id}{\n${item.dataClass.join("\n")} \n}\n`;
-      }
-
-      if (!Boolean(item.text)) return `${prefix}${item.id}`;
-      return `${prefix}${item.id}${edge.open}${item.text}${edge.close}`;
+      if (!Boolean(item.text)) return `${item.id}`;
+      return `${item.id}${edge.open}${item.text}${edge.close}`;
     },
     buildLink(item, index) {
       const link = "-->";
