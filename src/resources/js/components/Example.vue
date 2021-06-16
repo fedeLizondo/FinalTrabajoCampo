@@ -14,13 +14,14 @@
       type="classDiagram"
       @nodeClick="editNode"
     ></vue-mermaid>
+
   </div>
 </template>
 
 <script>
-import vueMermaid from 'vue-mermaid/src/vue-mermaid.vue';
+import VueMermaid from './vue-mermaid.vue';
 export default {
-  components: { vueMermaid },
+  components: { VueMermaid },
   data() {
     return {
       message: "Hoera!!!!",
