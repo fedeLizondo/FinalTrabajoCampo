@@ -111,7 +111,8 @@ export default {
         data.narr.push(element);
         innerMap.set(group, data);
       });
-      return [...innerMap.entries()]
+
+      return [...innerMap.entries()] 
         .map(item => {
           const [groupName, entry] = item;
           const { nids, narr } = entry;
@@ -206,6 +207,7 @@ export default {
         : this.edges.find(e => {
             return e.type === item.edgeType;
           });
+      if(!!item.text) return `${item.id}`;
       return `${item.id}${edge.open}${item.text}${edge.close}`;
     },
     buildLink(item, index) {
