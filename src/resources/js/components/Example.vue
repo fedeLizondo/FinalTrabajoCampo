@@ -3,11 +3,11 @@
     <h3>This shows that the route is really working!!</h3>
     @{{ message }}
     <router-link to="/vue"><a>Back to the root</a></router-link>
-    <!--vue-mermaid
+    <vue-mermaid
       :nodes="data"
       type="graph LR"
       @nodeClick="editNode"
-    ></vue-mermaid-->
+    ></vue-mermaid>
 
     <!--vue-mermaid
       :nodes="data2"
@@ -15,12 +15,12 @@
       @nodeClick="editNode"
     ></vue-mermaid-->
     
-    <vue-mermaid
+    <!--vue-mermaid
       :nodes="data3"
       type="sequenceDiagram"
       :order="['3','2','1']"
       @nodeClick="editNode"
-    ></vue-mermaid>
+    ></vue-mermaid-->
   </div>
 </template>
 
