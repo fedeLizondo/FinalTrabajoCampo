@@ -3,18 +3,24 @@
     <h3>This shows that the route is really working!!</h3>
     @{{ message }}
     <router-link to="/vue"><a>Back to the root</a></router-link>
-    <vue-mermaid
+    <!--vue-mermaid
       :nodes="data"
       type="graph LR"
       @nodeClick="editNode"
-    ></vue-mermaid>
+    ></vue-mermaid-->
 
-        <vue-mermaid
+    <!--vue-mermaid
       :nodes="data2"
       type="classDiagram"
       @nodeClick="editNode"
+    ></vue-mermaid-->
+    
+    <vue-mermaid
+      :nodes="data3"
+      type="sequenceDiagram"
+      :order="['3','2','1']"
+      @nodeClick="editNode"
     ></vue-mermaid>
-
   </div>
 </template>
 
@@ -41,11 +47,17 @@ export default {
         { id: "6", text: "F" },
       ],
       data2: [
-        { id: "2", editable: true, next: ["3"], dataClass:["-String dato","-String dato2", "+toString():dato"]},
+        { id: "2", next: ["3"], dataClass:["-String dato","-String dato2", "+toString():dato"]},
         { id: "3", next: ["4", "6"],  link: ["<|--","..>"] },
         { id: "4", next: ["5"] },
         { id: "5"},
         { id: "6"},
+      ],
+      data3: [
+        { id: "3", next: ["2"],  link: "-->" },
+        { id: "2", next: ["1"],  link: "-->" },
+        { id: "1", next: ["2"],  link: "-->--" },
+        { id: "2", next: ["3"],  link: "-->--" }
       ],
     };
   },

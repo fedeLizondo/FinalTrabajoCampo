@@ -21,6 +21,12 @@ export default {
         return [];
       }
     },
+    order:{
+      type: Array,
+      default(){
+        return []
+      }
+    },
     config: {
       type: Object,
       default() {
@@ -88,11 +94,17 @@ export default {
       return nodeStyles.concat(styles).concat(nodeLinkStyles)
     },
     parseCode() {
-      const { nodes } = this;
+      const { nodes, order} = this;
       if (Array.isArray(nodes) && nodes.length > 0) {
         const parseCode = this.type + "\n";
+        const orderStr = ""
+        if(Array.isArray(order) && order.length > 0){
+          order.forEach(element => {
+            orderStr += `participant ${element}`;
+          })
+        }
         const groupNodes = this.getGroupNodes(nodes);
-        const code = parseCode + groupNodes + this.customStyle.join(" \n");
+        const code = parseCode + orderStr + groupNodes + this.customStyle.join(" \n");
         this.load(code);
         console.log(code);
         return code;
