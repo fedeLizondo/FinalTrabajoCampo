@@ -107,7 +107,11 @@ export default {
 
         let getClass = "";
         nodes.forEach((element) => {
-          if (Boolean(element.dataClass)) {
+          if (
+            Boolean(element.dataClass) &&
+            Array.isArray(element.dataClass) &&
+            element.dataClass.length > 0
+          ) {
             getClass += `class ${element.id}{\n${element.dataClass.join(
               "\n"
             )} \n}\n`;
@@ -118,9 +122,9 @@ export default {
           parseCode +
           orderStr +
           groupNodes +
-          getClass+
+          getClass +
           +this.customStyle.join(" \n");
-          
+
         this.load(code);
         console.log(code);
         return code;
