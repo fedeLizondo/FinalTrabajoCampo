@@ -97,10 +97,10 @@ export default {
       const { nodes, order} = this;
       if (Array.isArray(nodes) && nodes.length > 0) {
         const parseCode = this.type + "\n";
-        const orderStr = ""
+        let orderStr = ""
         if(Array.isArray(order) && order.length > 0){
           order.forEach(element => {
-            orderStr += `participant ${element}`;
+            orderStr += `participant ${element}\n`;
           })
         }
         const groupNodes = this.getGroupNodes(nodes);
