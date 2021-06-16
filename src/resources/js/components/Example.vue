@@ -48,13 +48,13 @@ export default {
       ],
       data2: [
         { id: "2", next: ["3"], dataClass:["-String dato","-String dato2", "+toString():dato"]},
-        { id: "3", next: ["4", "6"],  link: ["<|--","..>"] },
+        { id: "3", next: ["4", "6"],  link: ["<|--","..>"], dataClass:["-String dato","-String dato2", "+toString():dato"]},
         { id: "4", next: ["5"] },
         { id: "5"},
         { id: "6"},
       ],
       data3: [
-        { id: "3", next: ["2"],  link: "->>", msg:"a" },
+        { id: "3", next: ["2"],  link: "->>", msg:"a"  },
         { id: "2", next: ["1"],  link: "->>", msg:"b" },
         { id: "1", next: ["2"],  link: "-->>", msg:"c" },
         { id: "2", next: ["3"],  link: "-->>", msg:"d" }
