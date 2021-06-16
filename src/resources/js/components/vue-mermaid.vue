@@ -224,10 +224,10 @@ export default {
       if(Boolean(item.dataClass)){
         prefix = `class ${item.id}{\n${item.dataClass.join('\n')} \n}\n`;
       }
-      
+
       let postfix = "";
-      if(Boolean(item.message)){
-        postfix = `: ${item.message}`;
+      if(Boolean(item.msg)){
+        postfix = `: ${item.msg}`;
       }
 
       if(!Boolean(item.text)) return `${prefix}${item.id}${postfix}`;
