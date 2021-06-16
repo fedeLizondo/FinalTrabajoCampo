@@ -118,8 +118,9 @@ export default {
           parseCode +
           orderStr +
           groupNodes +
-          +this.customStyle.join(" \n") +
-          getClass;
+          getClass+
+          +this.customStyle.join(" \n");
+          
         this.load(code);
         console.log(code);
         return code;
