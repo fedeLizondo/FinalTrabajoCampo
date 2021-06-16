@@ -233,6 +233,7 @@ export default {
       mermaid.initialize(Object.assign(this.defaultConfig, this.config));
     },
     load(code) {
+      console.log("EL DATO LOCO");
       if (code) {
         var container = document.getElementById("mermaid");
         if (container) {
