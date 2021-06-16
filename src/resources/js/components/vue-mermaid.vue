@@ -104,9 +104,22 @@ export default {
             orderStr += `participant ${element}\n`;
           });
         }
+
+        let getClass = "";
+        nodes.forEach((element) => {
+          if (Boolean(element.dataClass)) {
+            getClass += `class ${element.id}{\n${element.dataClass.join(
+              "\n"
+            )} \n}`;
+          }
+        });
         const groupNodes = this.getGroupNodes(nodes);
         const code =
-          parseCode + orderStr + groupNodes + this.customStyle.join(" \n");
+          parseCode +
+          orderStr +
+          groupNodes +
+          +this.customStyle.join(" \n") +
+          getClass;
         this.load(code);
         console.log(code);
         return code;
@@ -184,19 +197,12 @@ export default {
                 .map((n, index) => {
                   const next = this.nodeObject[n] || this.nodeObject[n.id];
                   if (next != null && typeof next != "undefined") {
-                    let prefix = "";
-                    if (Boolean(item.dataClass)) {
-                      prefix = `class ${item.id}{\n${item.dataClass.join(
-                        "\n"
-                      )} \n}`;
-                    }
-
                     let postfix = "";
                     if (Boolean(item.msg)) {
                       postfix = `: ${item.msg}`;
                     }
 
-                    return `${prefix}\n${this.buildNode(item)}${this.buildLink(
+                    return `${this.buildNode(item)}${this.buildLink(
                       item,
                       index
                     )}${this.buildNode(next)}${postfix}`;
