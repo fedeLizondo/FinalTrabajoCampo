@@ -207,8 +207,8 @@ export default {
         : this.edges.find(e => {
             return e.type === item.edgeType;
           });
-      return `${item.id}`;
-      //return `${item.id}${edge.open}${item.text}${edge.close}`;
+      if(!Boolean(item.text)) return `${item.id}`;
+      return `${item.id}${edge.open}${item.text}${edge.close}`;
     },
     buildLink(item, index) {
       const link = "-->";
