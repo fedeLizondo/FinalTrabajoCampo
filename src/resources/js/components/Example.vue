@@ -54,10 +54,10 @@ export default {
         { id: "6"},
       ],
       data3: [
-        { id: "3", next: ["2"],  link: "-->", msg:"a" },
-        { id: "2", next: ["1"],  link: "-->", msg:"b" },
-        { id: "1", next: ["2"],  link: "-->--", msg:"c" },
-        { id: "2", next: ["3"],  link: "-->--", msg:"d" }
+        { id: "3", next: ["2"],  link: "->", msg:"a" },
+        { id: "2", next: ["1"],  link: "->", msg:"b" },
+        { id: "1", next: ["2"],  link: "->>", msg:"c" },
+        { id: "2", next: ["3"],  link: "->>", msg:"d" }
       ],
     };
   },
