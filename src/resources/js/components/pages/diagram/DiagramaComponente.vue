@@ -13,7 +13,7 @@
         Entidades
       </button>
 
-      <vue-mermaid :nodes="diagrama.data" :type="getTypeDiagram">
+      <vue-mermaid :nodes="diagrama.data||[]" :type="getTypeDiagram">
         <!--@nodeClick="editNode"-->
       </vue-mermaid>
     </div>
@@ -79,9 +79,7 @@ export default {
       return "sequenceDiagram";
     },
   },
-  async mounted() {
-    console.log("",this.$route.params)
-    console.log("",await db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.idDiagrama).get())
+  mounted() {
   },
   firestore(){
     return {
