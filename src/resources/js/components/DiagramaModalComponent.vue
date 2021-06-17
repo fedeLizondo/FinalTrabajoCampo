@@ -23,7 +23,7 @@
         />
       </div>
 
-      <div v-show="diagrama.data != null && diagrama.data.length > 0">
+      <div v-show="diagrama.data != null && diagrama.data.length > 0 && !isSecuencia">
         <div class="form-group">
           <label for="relacionInput">Relacion:</label>
           <div class="input-group mb-3" id="relacionInput">
@@ -117,15 +117,22 @@ export default {
     isCU() {
       return this.diagrama.type == "CU";
     },
+    isClase(){
+      return this.diagrama.type == "CLASE";
+    },
+    isSecuencia(){
+      return this.diagrama.type == "SECUENCIA";
+    },
     relationTypes() {
-      switch (his.diagrama.type) {
+      switch (this.diagrama.type) {
         case "CU":
-          return ["--use--","-. include .->","--extend-->"]
-          break;
-      
+          return [{name:"USE",value:"--use--"},{name:"include",value:"-.include.->"},{name:"extend",value:"--extend-->"}];
+        case "CLASE":
+          return [{name:"Herencia",value:"<|--"},{name:"Composición", value:"*--"},{name:"Agregación",value:"o--"},{name:"Asociación",value:"--"},{name:"Dependencia",value:"..>"}]
+        case "SECUENCIA":
+          return [{name:"-->",value:"->>"},{name:"<--",value:"-->>"}];
         default:
           return [];
-          break;
       }
     },
   },
