@@ -83,7 +83,7 @@
             :key="index"
           >
             {{ elemento.link[index] }} {{ value }}
-            <button class="btn btn-danger ml-auto">
+            <button class="btn btn-danger ml-auto" @click="elemento.next.splice(index,1);elemento.link.splice(index,1)">
               <font-awesome-icon :icon="['fas', 'trash']" />
             </button>
           </li>
@@ -207,7 +207,7 @@ export default {
       this.elemento.link.push(this.typeRelation);
       this.to = "";
       this.typeRelation = "";
-    },
+    }
   },
 };
 </script>
