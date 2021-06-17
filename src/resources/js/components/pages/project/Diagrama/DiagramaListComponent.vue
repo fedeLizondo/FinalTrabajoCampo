@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+  <div class="card">
     <div class="card-header">
       Diagrama
       <button class="btn btn-primary" @click="createDiagrama">crear</button>
@@ -13,7 +13,13 @@
       >
         <div class="card-body">
           <div class="cart-title">
-            <a href="/test"> {{  diagrama.type +": "+ diagrama.nombre }}</a>
+            <a
+              :href="
+                '/proyecto/' + this.proyecto_id + '/diagrama/' + this.diagrama.id
+              "
+            >
+              {{ diagrama.type + ": " + diagrama.nombre }}</a
+            >
             <button
               type="button"
               class="close ml-1"
@@ -49,23 +55,23 @@
 
 
 <script>
-import { db } from "../../../../firebase/db.js"
-import DiagramaModalComponent from "./DiagramaComponent.vue"
+import { db } from "../../../../firebase/db.js";
+import DiagramaModalComponent from "./DiagramaComponent.vue";
 
 export default {
-     components: { DiagramaModalComponent },
-     props: ["proyecto_id"],
+  components: { DiagramaModalComponent },
+  props: ["proyecto_id"],
   data() {
     return {
       editMode: false,
       diagrama: {
-        id:"",
+        id: "",
         type: "CU",
         nombre: "",
         descripcion: "",
         data: [],
         entidades: {},
-        relaciones: {}
+        relaciones: {},
       },
       diagramas: [],
     };
@@ -74,18 +80,22 @@ export default {
     createDiagrama: function () {
       this.editMode = false;
       this.diagrama = {
-        id:"",
+        id: "",
         type: "CU",
         nombre: "",
         descripcion: "",
         data: [],
         entidades: {},
-        relaciones: {}
+        relaciones: {},
       };
       this.$refs.modalDiagrama.openModal();
     },
     deleteDiagrama: function (diagrama) {
-      db.collection("especificaciones").doc(""+this.proyecto_id+"").collection("diagramas").doc(diagrama.id).delete();
+      db.collection("especificaciones")
+        .doc("" + this.proyecto_id + "")
+        .collection("diagramas")
+        .doc(diagrama.id)
+        .delete();
     },
     toggleUpdate: function (diagrama) {
       this.editMode = true;
@@ -93,16 +103,17 @@ export default {
       this.$refs.modalDiagrama.openModal();
     },
   },
-  mounted() {
-  },
-  firestore(){
+  mounted() {},
+  firestore() {
     return {
-      diagramas: db.collection("especificaciones").doc(""+this.proyecto_id+"").collection("diagramas")
-    }
-  }
-}
+      diagramas: db
+        .collection("especificaciones")
+        .doc("" + this.proyecto_id + "")
+        .collection("diagramas"),
+    };
+  },
+};
 </script>
 
 <style>
-
 </style>

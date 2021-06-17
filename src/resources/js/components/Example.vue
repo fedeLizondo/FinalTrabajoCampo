@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import VueMermaid from './vue-mermaid.vue';
+import VueMermaid from './pages/diagram/vue-mermaid.vue';
 export default {
   components: { VueMermaid },
   data() {
