@@ -85,7 +85,7 @@ export default {
   },
   firestore(){
     return {
-      diagrama: db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.idDiagrama)
+      diagrama: db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.id_diagrama)
     }
   }
 };
