@@ -9,7 +9,7 @@
     </div>
 
     <div style="border: 1px solid gray" class="col-md-9">
-      <button class="btn btn-primary float-right" v-on:click="crearEntidad">
+      <button class="btn btn-primary" v-on:click="crearEntidad">
         Entidades
       </button>
 
@@ -79,9 +79,9 @@ export default {
       return "sequenceDiagram";
     },
   },
-  mounted() {
+  async mounted() {
     console.log("",this.$route.params)
-    console.log("",db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.idDiagrama).get())
+    console.log("",await db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.idDiagrama).get())
   },
   firestore(){
     return {
