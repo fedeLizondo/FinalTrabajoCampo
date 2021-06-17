@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
-      Entidad
+      <h3> Entidad</h3>
       <button class="btn btn-primary float-right" @click="createEntidad">crear</button>
     </div>
     <ul class="list-group list-group-flush">
