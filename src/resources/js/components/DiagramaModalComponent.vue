@@ -12,14 +12,14 @@
           type="text"
           class="form-control"
           id="nombre"
-          v-model="element.nombre"
+          v-model="elemento.nombre"
         />
         <input
           v-else
           type="text"
           class="form-control"
           id="nombre"
-          v-model="element.text"
+          v-model="elemento.text"
         />
       </div>
 
