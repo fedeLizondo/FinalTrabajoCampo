@@ -142,7 +142,6 @@ export default {
 
         this.diagrama.data.push({...this.elemento});
 
-        this.elemento = Date.now()
       /* db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
