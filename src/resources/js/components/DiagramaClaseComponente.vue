@@ -1,6 +1,6 @@
 <template>
   <div class="row h-100" style="witdh:100%">
-    <div style="border: 1px solid gray" class="col-md-8 h-100 ml-5">
+    <div style="border: 1px solid gray" class="col-md-8 ml-5">
       <button class="btn btn-warning" v-on:click="makeRelations()">
         Actualizar Relacion
       </button>
