@@ -119,7 +119,7 @@ export default {
     },
     onDrag: function (x, y) {
       this.x = x;
-      this.y = y + 200;
+      this.y = y;
     },
     makeRelations: function () {
       this.relaciones.forEach((relacion) => {
