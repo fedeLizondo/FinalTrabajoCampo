@@ -1,9 +1,9 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
         Entidad
-        <button class="btn btn-primary float-right" @click="createEntidad">
+        <button class="btn btn-primary" @click="createEntidad">
           crear
         </button>
       </div>

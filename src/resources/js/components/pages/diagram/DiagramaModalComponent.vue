@@ -83,7 +83,7 @@
             v-for="(value, index) in elemento.next"
             :key="index"
           >
-            {{ elemento.link[index] }} {{ isCU ? diagrama.data.find(x => {x.id == value})[0].text : value}}
+            {{ elemento.link[index] }} {{ isCU ? this.diagrama.data.find(x => {x.id == value})[0].text : value}}
             <button class="btn btn-danger float-right" @click="elemento.next.splice(index,1);elemento.link.splice(index,1)">
               <font-awesome-icon :icon="['fas', 'trash']" />
             </button>
