@@ -64,6 +64,16 @@ export default {
         descripcion: "",
         data: [],
       };
+      this.element ={
+        id: "",
+        text: "",
+        next: [],
+        link: [],
+        msg: "",
+        dataClass: [],
+        atributos: [],
+        metodos: [],
+      },
       this.$refs.modalDiagrama.openModal();
     },
   },

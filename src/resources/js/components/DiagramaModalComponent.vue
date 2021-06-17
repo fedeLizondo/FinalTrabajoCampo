@@ -136,11 +136,13 @@ export default {
       }
     },
     postDiagrama: function () {
-        if(this.isCU){
+        if(this.isCU && this.elemento.id == ""){
           this.elemento.id = Date.now();
         }
 
         this.diagrama.data.push({...this.elemento});
+
+        this.elemento = Date.now()
       /* db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
