@@ -59,13 +59,6 @@ export default {
   methods: {
     crearEntidad: function () {
       this.editMode = false;
-      this.diagrama = {
-        id: "65zW0thM7Ew5iAht7usj",
-        type: "CU",
-        nombre: "",
-        descripcion: "",
-        data: [],
-      };
       this.element ={
         id: "",
         text: "",
