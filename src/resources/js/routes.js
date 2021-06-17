@@ -12,7 +12,7 @@ export const routes = [
     { path: '/example', component: Example, name: 'Example' },
     { path: '/proyecto/:id', component: Proyecto, name: 'Proyecto', params: true,     
     children: [
-        { path: "/diagrama/:diagrama_id", component: Diagrama },
+        { path: "/proyecto/:id/diagrama/:diagrama_id", component: Diagrama },
       ]
     },
     { path: '/search', component: Search, name: 'Search', params: true },
