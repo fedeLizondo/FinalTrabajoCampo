@@ -83,7 +83,7 @@
             :key="index"
           >
             {{ elemento.link[index] }} {{ value }}
-            <button class="btn btn-danger">
+            <button class="btn btn-danger ml-auto">
               <font-awesome-icon :icon="['fas', 'trash']" />
             </button>
           </li>
