@@ -23,47 +23,54 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="relacionInput">Relacion:</label>
-        <div class="input-group mb-3" id="relacionInput">
-          <div class="input-group-prepend">
+      <div v-show="diagrama.data != null && diagrama.data.length > 0">
+        <div class="form-group">
+          <label for="relacionInput">Relacion:</label>
+          <div class="input-group mb-3" id="relacionInput">
+            <div class="input-group-prepend">
+              <select
+                class="custom-select"
+                id="inputGroupSelect03"
+                aria-label="Example select with button addon"
+              >
+                <option
+                  v-for="(item, index) in relationTypes"
+                  :key="index"
+                  :selected="index == 0"
+                >
+                  {{ item.name }}
+                </option>
+              </select>
+            </div>
             <select
               class="custom-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option v-for="(item,index) in relationTypes" :key="index" :selected="index == 0">
-                {{item.name}}
-            </option>
-
+              <option
+                v-for="(item, index) in filteredDiagrams"
+                :key="index"
+                :selected="index == 0"
+              >
+                {{ isCU ? item.text : item.id }}
+              </option>
             </select>
-          </div>
-          <select
-            class="custom-select"
-            id="inputGroupSelect03"
-            aria-label="Example select with button addon"
-          >
-            <option v-for="(item,index) in filteredDiagrams" :key="index" :selected="index == 0">
-                {{  isCU ? item.text : item.id }}
-            </option>
-          </select>
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              id="button-addon2"
-            >
-              Agregar
-            </button>
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                Agregar
+              </button>
+            </div>
           </div>
         </div>
+
+        <ul class="list-group">
+          <li class="list-group-item"></li>
+        </ul>
       </div>
-
-      <ul class="list-group">
-        <li class="list-group-item" >
-
-        </li>
-      </ul>
     </template>
 
     <template v-slot:footer>
@@ -97,22 +104,21 @@ export default {
   data() {
     return {
       isValidDiagrama: true,
-
     };
   },
   computed: {
     enableGuardar() {
       return !this.isValidDiagrama;
     },
-    filteredDiagrams(){
-        return this.diagrama.data.filter((elm)=> elm.id != this.elemento.id)
+    filteredDiagrams() {
+      return this.diagrama.data.filter((elm) => elm.id != this.elemento.id);
     },
-    isCU(){
-       return this.diagrama.type == 'CU'
+    isCU() {
+      return this.diagrama.type == "CU";
     },
-    relationTypes(){
-        return [];
-    }
+    relationTypes() {
+      return [];
+    },
   },
   methods: {
     closeModal() {
