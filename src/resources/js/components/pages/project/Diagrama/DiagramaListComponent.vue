@@ -73,6 +73,7 @@ export default {
     createDiagrama: function () {
       this.editMode = false;
       this.diagrama = {
+        id="",
         type: "CU",
         nombre: "",
         descripcion: "",
