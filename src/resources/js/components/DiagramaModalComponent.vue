@@ -142,11 +142,11 @@ export default {
 
         this.diagrama.data.push({...this.elemento});
 
-      /* db.collection("especificaciones")
+      db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
         .doc(this.diagrama.id)
-        .update(this.diagrama);*/
+        .update(this.diagrama);
     },
     updateDiagrama: function () {
       /* db.collection("especificaciones")
