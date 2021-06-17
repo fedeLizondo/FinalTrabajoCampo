@@ -34,7 +34,7 @@ export default {
   data: () => {
     return {
       proyecto_id: "1",
-      editMode = false,
+      editMode : false,
       diagrama: {
         type: "CU",
         nombre: "Marco Polo",
