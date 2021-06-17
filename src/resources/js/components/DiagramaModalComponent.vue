@@ -36,7 +36,7 @@
                 class="custom-select"
                 id="inputGroupSelect03"
                 aria-label="Example select with button addon"
-                v-model="relationTypes"
+                v-model="typeRelation"
               >
                 <option
                   v-for="(item, index) in relationTypes"
@@ -67,6 +67,7 @@
                 type="button"
                 id="button-addon2"
                 @click="addRelation"
+                :disabled="!Boolean(to) || !Boolean(typeRelation)"
               >
                 Agregar
               </button>
