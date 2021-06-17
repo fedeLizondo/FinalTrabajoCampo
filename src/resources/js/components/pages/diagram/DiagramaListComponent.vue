@@ -1,8 +1,12 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h3> Entidad</h3>
-      <button class="btn btn-primary float-right" @click="createEntidad">crear</button>
+      <div class="d-flex align-items-center">
+        Entidad
+        <button class="btn btn-primary float-right" @click="createEntidad">
+          crear
+        </button>
+      </div>
     </div>
     <ul class="list-group list-group-flush">
       <li
