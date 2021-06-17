@@ -58,6 +58,7 @@
                 v-for="(item, index) in filteredDiagrams"
                 :key="index"
                 :selected="index == 0"
+                :value="item.id"
               >
                 {{ isCU ? item.text : item.id }}
               </option>
@@ -83,7 +84,7 @@
             :key="index"
           >
             {{ elemento.link[index] }} {{ value }}
-            <button class="btn btn-danger ml-auto" @click="elemento.next.splice(index,1);elemento.link.splice(index,1)">
+            <button class="btn btn-danger float-right" @click="elemento.next.splice(index,1);elemento.link.splice(index,1)">
               <font-awesome-icon :icon="['fas', 'trash']" />
             </button>
           </li>
