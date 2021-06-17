@@ -142,9 +142,9 @@ export default {
       switch (this.diagrama.type) {
         case "CU":
           return [
-            { name: "use", value: "--use--" },
-            { name: "include", value: "-.include.->" },
-            { name: "extend", value: "--extend-->" },
+            { name: "use", value: "--use---" },
+            { name: "include", value: "-.include.-->" },
+            { name: "extend", value: "--extend--->" },
           ];
         case "CLASE":
           return [
