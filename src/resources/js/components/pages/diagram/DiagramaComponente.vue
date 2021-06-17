@@ -23,7 +23,7 @@
       :isUpdate="editMode"
       :diagrama="diagrama"
       :elemento="element"
-      :proyecto_id="proyecto_id"
+      :proyecto_id="this.$route.params.id"
       ref="modalDiagrama"
     />
   </div>
@@ -39,7 +39,6 @@ export default {
   components: {VueMermaid, DiagramaModalComponent, DiagramaListComponent },
   data: () => {
     return {
-      proyecto_id: "1",
       editMode : false,
       //Element tiene que quedar
       element: {
@@ -81,6 +80,7 @@ export default {
   },
   mounted() {
     console.log("",this.$route.params)
+    console.log("",db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.idDiagrama))
   },
   firestore(){
     return {
