@@ -61,7 +61,7 @@ export default {
 
       return "sequenceDiagram";
     },
-    createDiagrama: function () {
+    crearEntidad: function () {
       this.editMode = false;
       this.diagrama = {
         type: "CU",
