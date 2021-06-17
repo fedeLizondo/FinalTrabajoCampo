@@ -32,6 +32,7 @@ export default {
   components: { MessageComponent, VueMermaid, DiagramaModalComponent },
   data: () => {
     return {
+      proyecto_id:"1",
       diagrama:{
       type: "CU",
       nombre: "Marco Polo",
