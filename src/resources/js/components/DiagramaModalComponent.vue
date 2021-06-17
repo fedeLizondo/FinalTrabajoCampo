@@ -140,13 +140,14 @@ export default {
           this.elemento.id = Date.now();
         }
 
-        this.diagrama.data.push({...this.elemento});
+      this.diagrama.data.push({...this.elemento});
 
       db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
         .doc(this.diagrama.id)
         .update(this.diagrama);
+      this.closeModal();  
     },
     updateDiagrama: function () {
       /* db.collection("especificaciones")
