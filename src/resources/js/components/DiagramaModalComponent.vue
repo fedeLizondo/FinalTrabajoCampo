@@ -32,6 +32,7 @@
                 class="custom-select"
                 id="inputGroupSelect03"
                 aria-label="Example select with button addon"
+                v-model="relationTypes"
               >
                 <option
                   v-for="(item, index) in relationTypes"
@@ -46,6 +47,7 @@
               class="custom-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
+              v-model="to"
             >
               <option
                 v-for="(item, index) in filteredDiagrams"
@@ -69,7 +71,12 @@
         </div>
 
         <ul class="list-group">
-          <li class="list-group-item"></li>
+          <li class="list-group-item" v-for="(value,index) in diagrama.data.next" :key="index">
+              {{ diagrama.data.link[index]}} {{value}}
+              <button class="btn btn-danger"> 
+                <font-awesome-icon :icon="['fas', 'trash']" />
+              </button>
+          </li>
         </ul>
       </div>
     </template>
@@ -105,6 +112,8 @@ export default {
   data() {
     return {
       isValidDiagrama: true,
+      to:"",
+      typeRelation:"",
     };
   },
   computed: {
@@ -174,7 +183,10 @@ export default {
         .update(this.diagrama);*/
     },
     addRelation: function () {
-      
+      this.elemento.next.push[this.to];
+      this.elemento.link.push[this.relationTypes];
+      this.to="";
+      this.typeRelation="";
     }
   },
 };

@@ -12,7 +12,7 @@
     <div class="col-md-3 h-90">
       <message-component :proyecto_id="4" />
     </div>
-DiagramaModalComponent
+
     <diagrama-modal-component
       :isUpdate="editMode"
       :diagrama="diagrama"
