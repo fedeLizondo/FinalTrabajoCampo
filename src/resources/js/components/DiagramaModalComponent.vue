@@ -136,7 +136,7 @@ export default {
       }
     },
     postDiagrama: function () {
-        if(isCU){
+        if(this.isCU){
           this.elemento.id = Date.now();
         }
 
