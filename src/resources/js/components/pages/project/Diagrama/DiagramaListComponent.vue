@@ -62,6 +62,7 @@ export default {
         type: "CU",
         nombre: "",
         descripcion: "",
+        data: [],
         entidades: {},
         relaciones: {}
       },
@@ -75,6 +76,7 @@ export default {
         type: "CU",
         nombre: "",
         descripcion: "",
+        data: [],
         entidades: {},
         relaciones: {}
       };
