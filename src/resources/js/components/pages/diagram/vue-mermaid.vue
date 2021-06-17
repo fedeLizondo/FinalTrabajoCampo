@@ -122,7 +122,7 @@ export default {
           parseCode +
           orderStr +
           getClass +
-          groupNodes
+          groupNodes;
 
         this.load(code);
         console.log(code);

@@ -1,5 +1,10 @@
 <template>
   <div class="row h-100" style="witdh: 100%">
+
+    <div class="col-md-3">
+      
+    </div>
+
     <div style="border: 1px solid gray" class="col-md-8 ml-5">
       <button class="btn btn-primary" v-on:click="crearEntidad">
         Entidades
@@ -9,9 +14,7 @@
         <!--@nodeClick="editNode"-->
       </vue-mermaid>
     </div>
-    <div class="col-md-3 h-90">
-      
-    </div>
+
 
     <diagrama-modal-component
       :isUpdate="editMode"
@@ -81,8 +84,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$route.params.id);
-    console.log("",this.$route.params);
   },
   firestore(){
     return {
