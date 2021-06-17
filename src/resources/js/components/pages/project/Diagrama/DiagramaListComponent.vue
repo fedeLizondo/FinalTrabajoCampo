@@ -15,7 +15,7 @@
           <div class="cart-title">
             <a
               :href="
-                '/proyecto/' + this.proyecto_id + '/diagrama/' + this.diagrama.id
+                '/proyecto/' + this.proyecto_id + '/diagrama/' + diagrama.id
               "
             >
               {{ diagrama.type + ": " + diagrama.nombre }}</a
