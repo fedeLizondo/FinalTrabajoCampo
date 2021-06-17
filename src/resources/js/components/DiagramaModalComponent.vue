@@ -136,6 +136,7 @@ export default {
       }
     },
     postDiagrama: function () {
+        this.diagrama.data.push({...this.elemento});
       /* db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
