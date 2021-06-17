@@ -1,19 +1,19 @@
 <template>
   <div class="card">
     <div class="card-header">
-      Diagrama
+      Entidad
       <button class="btn btn-primary" @click="createEntidad">crear</button>
     </div>
     <ul class="list-group list-group-flush">
       <li
         id="DiagramaRowComponent"
         class="card mb-1 shadow-sm w-100"
-        v-for="(entidad, index) in diagrama.data"
+        v-for="(entidad, index) in this.diagrama.data"
         :key="index"
       >
         <div class="card-body">
           <div class="cart-title">
-            {{ diagrama.type == "CU" ? entidad.text : entidad.id }}
+            {{ this.diagrama.type == "CU" ? entidad.text : entidad.id }}
             <button
               type="button"
               class="close ml-1"
@@ -58,6 +58,16 @@ export default {
   data() {
     return {
       editMode: false,
+      element: {
+        id: "",
+        text: "",
+        next: [],
+        link: [],
+        msg: "",
+        dataClass: [],
+        atributos: [],
+        metodos: [],
+      },
     };
   },
   methods: {
