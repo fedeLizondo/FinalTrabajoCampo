@@ -203,7 +203,7 @@ export default {
     },
     addRelation: function () {
       this.elemento.next.push(this.to);
-      this.elemento.link.push(this.relationTypes);
+      this.elemento.link.push(this.typeRelation);
       this.to = "";
       this.typeRelation = "";
     },
