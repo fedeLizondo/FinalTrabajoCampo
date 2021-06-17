@@ -111,7 +111,7 @@ export default {
        return this.diagrama.type == 'CU'
     },
     relationTypes(){
-
+        return [];
     }
   },
   methods: {
