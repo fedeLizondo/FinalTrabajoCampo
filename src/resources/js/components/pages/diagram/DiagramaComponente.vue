@@ -40,6 +40,7 @@ export default {
   data: () => {
     return {
       editMode : false,
+      diagrama: {},
       //Element tiene que quedar
       element: {
         id: "",
@@ -80,7 +81,7 @@ export default {
   },
   mounted() {
     console.log("",this.$route.params)
-    console.log("",db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.idDiagrama))
+    console.log("",db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.idDiagrama).get())
   },
   firestore(){
     return {
