@@ -82,7 +82,7 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id);
-    console.log(""+this.$route.params);
+    console.log("",this.$route.params);
   },
   firestore(){
     return {
