@@ -59,6 +59,7 @@ export default {
     return {
       editMode: false,
       diagrama: {
+        id:"",
         type: "CU",
         nombre: "",
         descripcion: "",
@@ -73,7 +74,7 @@ export default {
     createDiagrama: function () {
       this.editMode = false;
       this.diagrama = {
-        id="",
+        id:"",
         type: "CU",
         nombre: "",
         descripcion: "",
