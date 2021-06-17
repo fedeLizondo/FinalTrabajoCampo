@@ -164,6 +164,8 @@ export default {
   },
   methods: {
     closeModal() {
+      this.to = "",
+      this.typeRelation = "",
       this.$refs.modalInternoDiagrama.closeModal();
     },
     openModal() {
@@ -200,8 +202,8 @@ export default {
         .update(this.diagrama);*/
     },
     addRelation: function () {
-      this.elemento.next.push[this.to];
-      this.elemento.link.push[this.relationTypes];
+      this.elemento.next.push(this.to);
+      this.elemento.link.push(this.relationTypes);
       this.to = "";
       this.typeRelation = "";
     },
