@@ -55,13 +55,6 @@ export default {
     };
   },
   methods: {
-    getTypeDiagram: function () {
-      if (this.diagrama.type == "CU") return "graph LR";
-
-      if (this.diagrama.type == "CLASE") return "classDiagram";
-
-      return "sequenceDiagram";
-    },
     crearEntidad: function () {
       this.editMode = false;
       this.diagrama = {
@@ -73,7 +66,15 @@ export default {
       this.$refs.modalDiagrama.openModal();
     },
   },
-  computed: {},
+  computed: {
+    getTypeDiagram: function () {
+      if (this.diagrama.type == "CU") return "graph LR";
+
+      if (this.diagrama.type == "CLASE") return "classDiagram";
+
+      return "sequenceDiagram";
+    },
+  },
   mounted() {},
 };
 </script>
