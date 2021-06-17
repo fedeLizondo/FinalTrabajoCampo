@@ -10,11 +10,8 @@ export const routes = [
     { path: '/', component: Home, name: 'Home' },
     { path: '/test', component: Diagrama, name: 'diagrama' },
     { path: '/example', component: Example, name: 'Example' },
-    { path: '/proyecto/:id', component: Proyecto, name: 'Proyecto', params: true,     
-    children: [
-        { path: "/diagrama", component: Diagrama },
-      ]
-    },
+    { path: '/proyecto/:id/diagrama/:idDiagrama', component: Diagrama, name: 'diagrama2' },
+    { path: '/proyecto/:id', component: Proyecto, name: 'Proyecto', params: true},
     { path: '/search', component: Search, name: 'Search', params: true },
     { path: '/home', component: Main, name: 'Main', params: true },
 ];
