@@ -9,7 +9,7 @@
     </div>
 
     <div style="border: 1px solid gray" class="col-md-9">
-      <button class="btn btn-primary" v-on:click="crearEntidad">
+      <button class="btn btn-primary float-right" v-on:click="crearEntidad">
         Entidades
       </button>
 

@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       Entidad
-      <button class="btn btn-primary" @click="createEntidad">crear</button>
+      <button class="btn btn-primary float-right" @click="createEntidad">crear</button>
     </div>
     <ul class="list-group list-group-flush">
       <li
