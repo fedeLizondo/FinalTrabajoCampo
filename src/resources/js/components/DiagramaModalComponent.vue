@@ -42,6 +42,7 @@
                   v-for="(item, index) in relationTypes"
                   :key="index"
                   :selected="index == 0"
+                  :value="item.value"
                 >
                   {{ item.name }}
                 </option>
