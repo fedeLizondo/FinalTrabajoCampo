@@ -96,7 +96,7 @@
 <script>
 import ModalComponent from "./assets/ModalComponent.vue";
 
-//import { db } from "../../../../firebase/db";
+import { db } from "../firebase/db";
 
 export default {
   components: { ModalComponent },

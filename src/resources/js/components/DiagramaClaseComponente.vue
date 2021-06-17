@@ -89,6 +89,11 @@ export default {
     },
   },
   mounted() {},
+  firestore(){
+    return {
+      diagrama: db.collection("especificaciones").doc(""+this.proyecto_id+"").collection("diagramas").doc("65zW0thM7Ew5iAht7usj")
+    }
+  }
 };
 </script>
 
