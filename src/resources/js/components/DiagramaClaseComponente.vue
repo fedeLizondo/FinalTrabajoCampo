@@ -32,10 +32,13 @@ export default {
   components: { MessageComponent, VueMermaid, DiagramaModalComponent },
   data: () => {
     return {
+      diagrama:{
       type: "CU",
       nombre: "Marco Polo",
       descripcion: "Test",
       data: [],
+      },
+      
       //Element tiene que quedar
       element: {
         id: "",
@@ -51,9 +54,9 @@ export default {
   },
   methods: {
     getTypeDiagram: function () {
-      if (this.type == "CU") return "graph LR";
+      if (this.diagrama.type == "CU") return "graph LR";
 
-      if (this.type == "CLASE") return "classDiagram";
+      if (this.diagrama.type == "CLASE") return "classDiagram";
 
       return "sequenceDiagram";
     },
