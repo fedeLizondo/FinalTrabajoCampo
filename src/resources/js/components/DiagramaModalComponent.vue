@@ -43,7 +43,7 @@
             id="inputGroupSelect03"
             aria-label="Example select with button addon"
           >
-            <option v-for="(item,index) in filteredDiagrams(elemento.id)" :key="index" :selected="index == 0">
+            <option v-for="(item,index) in filteredDiagrams" :key="index" :selected="index == 0">
                 {{  isCU ? item.text : item.id }}
             </option>
           </select>
@@ -104,8 +104,8 @@ export default {
     enableGuardar() {
       return !this.isValidDiagrama;
     },
-    filteredDiagrams( paramId ){
-        return this.diagrama.data.filter((elm)=> elm.id != paramId)
+    filteredDiagrams(){
+        return this.diagrama.data.filter((elm)=> elm.id != this.elemento.id)
     },
     isCU(){
        return this.diagrama.type == 'CU'
