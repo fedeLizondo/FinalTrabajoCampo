@@ -8,12 +8,12 @@
       <li
         id="DiagramaRowComponent"
         class="card mb-1 shadow-sm w-100"
-        v-for="(entidad, index) in this.diagrama.data"
+        v-for="(entidad, index) in diagrama.data"
         :key="index"
       >
         <div class="card-body">
           <div class="cart-title">
-            {{ this.diagrama.type == "CU" ? entidad.text : entidad.id }}
+            {{ diagrama.type == "CU" ? entidad.text : entidad.id }}
             <button
               type="button"
               class="close ml-1"
