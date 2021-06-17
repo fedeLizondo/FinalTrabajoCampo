@@ -60,6 +60,7 @@
                 class="btn btn-outline-secondary"
                 type="button"
                 id="button-addon2"
+                @click="addRelation"
               >
                 Agregar
               </button>
@@ -117,7 +118,15 @@ export default {
       return this.diagrama.type == "CU";
     },
     relationTypes() {
-      return [];
+      switch (his.diagrama.type) {
+        case "CU":
+          return ["--use--","-. include .->","--extend-->"]
+          break;
+      
+        default:
+          return [];
+          break;
+      }
     },
   },
   methods: {
@@ -147,6 +156,7 @@ export default {
         .collection("diagramas")
         .doc(this.diagrama.id)
         .update(this.diagrama);
+
       this.closeModal();  
     },
     updateDiagrama: function () {
@@ -156,6 +166,9 @@ export default {
         .doc(this.diagrama.id)
         .update(this.diagrama);*/
     },
+    addRelation: function () {
+      
+    }
   },
 };
 </script>
