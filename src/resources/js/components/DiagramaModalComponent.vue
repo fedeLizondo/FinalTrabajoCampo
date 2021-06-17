@@ -8,11 +8,11 @@
       <div class="form-group">
         <label for="nombre">Nombre de Entidad:</label>
         <input
-          v-if="diagrama.type == 'CU'"
+          v-if="!isCU"
           type="text"
           class="form-control"
           id="nombre"
-          v-model="elemento.nombre"
+          v-model="elemento.id"
         />
         <input
           v-else
@@ -24,17 +24,18 @@
       </div>
 
       <div class="form-group">
-        <div class="input-group mb-3">
+        <label for="relacionInput">Relacion:</label>
+        <div class="input-group mb-3" id="relacionInput">
           <div class="input-group-prepend">
             <select
               class="custom-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <option v-for="(item,index) in filteredDiagrams" :key="index" :selected="index == 0">
+                {{  isCU ? item.text : item.id }}
+            </option>
+
             </select>
           </div>
           <select
@@ -58,6 +59,12 @@
           </div>
         </div>
       </div>
+
+      <ul class="list-group">
+        <li class="list-group-item" >
+
+        </li>
+      </ul>
     </template>
 
     <template v-slot:footer>
@@ -91,12 +98,19 @@ export default {
   data() {
     return {
       isValidDiagrama: true,
+
     };
   },
   computed: {
     enableGuardar() {
       return !this.isValidDiagrama;
     },
+    filteredDiagrams( paramId ){
+        return this.diagrama.data.filter((elm)=> elm.id != paramId)
+    },
+    isCU(){
+       return diagrama.type == 'CU'
+    }
   },
   methods: {
     closeModal() {
