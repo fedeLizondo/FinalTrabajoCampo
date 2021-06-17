@@ -41,14 +41,6 @@ export default {
     return {
       proyecto_id: "1",
       editMode : false,
-      diagrama: {
-        id: "65zW0thM7Ew5iAht7usj",
-        type: "CU",
-        nombre: "Marco Polo",
-        descripcion: "Test",
-        data: [],
-      },
-
       //Element tiene que quedar
       element: {
         id: "",
