@@ -193,15 +193,20 @@ export default {
         .collection("diagramas")
         .doc(this.diagrama.id)
         .update(this.diagrama);
+      
+      this.to = "",
+      this.typeRelation = "",
 
       this.closeModal();
     },
     updateDiagrama: function () {
-      /* db.collection("especificaciones")
+      db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
         .doc(this.diagrama.id)
-        .update(this.diagrama);*/
+        .update(this.diagrama);
+      this.to = "";
+      this.typeRelation = "";
     },
     addRelation: function () {
       this.elemento.next.push(this.to);

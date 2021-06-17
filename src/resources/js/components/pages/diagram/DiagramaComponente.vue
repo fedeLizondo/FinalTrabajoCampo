@@ -2,7 +2,10 @@
   <div class="row h-100" style="witdh: 100%">
 
     <div class="col-md-3">
-      
+      <diagrama-list-component
+        :proyecto_id="this.$route.params.id"
+        :diagrama="diagrama"
+      />
     </div>
 
     <div style="border: 1px solid gray" class="col-md-8 ml-5">
@@ -30,9 +33,10 @@
 import { db } from "../../../firebase/db";
 import VueMermaid from "./vue-mermaid.vue";
 import DiagramaModalComponent from "./DiagramaModalComponent.vue";
+import DiagramaListComponent from './DiagramaListComponent.vue';
 
 export default {
-  components: {VueMermaid, DiagramaModalComponent },
+  components: {VueMermaid, DiagramaModalComponent, DiagramaListComponent },
   data: () => {
     return {
       proyecto_id: "1",
