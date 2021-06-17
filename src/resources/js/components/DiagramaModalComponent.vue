@@ -8,7 +8,7 @@
       <div class="form-group">
         <label for="nombre">Nombre de Entidad:</label>
         <input
-          v-if="this.diagrama.type == 'CU'"
+          v-if="diagrama.type == 'CU'"
           type="text"
           class="form-control"
           id="nombre"
