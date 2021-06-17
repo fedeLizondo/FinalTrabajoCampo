@@ -99,7 +99,7 @@ export default {
     },
     toggleUpdate: function (entidad) {
       this.editMode = true;
-      this.entidad = entidad;
+      this.element = entidad;
       this.$refs.modalDiagrama.openModal();
     },
   },
