@@ -5,7 +5,8 @@
         Entidades
       </button>
 
-      <vue-mermaid :nodes="data" :type="getTypeDiagram" @nodeClick="editNode">
+      <vue-mermaid :nodes="diagrama.data" :type="getTypeDiagram">
+        <!--@nodeClick="editNode"-->
       </vue-mermaid>
     </div>
     <div class="col-md-3 h-90">
@@ -32,14 +33,14 @@ export default {
   components: { MessageComponent, VueMermaid, DiagramaModalComponent },
   data: () => {
     return {
-      proyecto_id:"1",
-      diagrama:{
-      type: "CU",
-      nombre: "Marco Polo",
-      descripcion: "Test",
-      data: [],
+      proyecto_id: "1",
+      diagrama: {
+        type: "CU",
+        nombre: "Marco Polo",
+        descripcion: "Test",
+        data: [],
       },
-      
+
       //Element tiene que quedar
       element: {
         id: "",
@@ -68,8 +69,6 @@ export default {
         nombre: "",
         descripcion: "",
         data: [],
-        entidades: {},
-        relaciones: {},
       };
       this.$refs.modalDiagrama.openModal();
     },
