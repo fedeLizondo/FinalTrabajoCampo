@@ -136,6 +136,10 @@ export default {
       }
     },
     postDiagrama: function () {
+        if(isCU){
+          this.elemento.id = Date.now();
+        }
+
         this.diagrama.data.push({...this.elemento});
       /* db.collection("especificaciones")
         .doc(this.proyecto_id)
