@@ -109,7 +109,7 @@ export default {
         return this.diagrama.data.filter((elm)=> elm.id != paramId)
     },
     isCU(){
-       return diagrama.type == 'CU'
+       return this.diagrama.type == 'CU'
     }
   },
   methods: {
