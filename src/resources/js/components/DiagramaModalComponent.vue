@@ -78,7 +78,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <button
           class="btn btn-danger"
-          @click="this.$refs.modalInternoDiagrama.closeModal()"
+          @click="closeModal"
         >
           Salir
         </button>
@@ -126,7 +126,7 @@ export default {
     relationTypes() {
       switch (this.diagrama.type) {
         case "CU":
-          return [{name:"USE",value:"--use--"},{name:"include",value:"-.include.->"},{name:"extend",value:"--extend-->"}];
+          return [{name:"use",value:"--use--"},{name:"include",value:"-.include.->"},{name:"extend",value:"--extend-->"}];
         case "CLASE":
           return [{name:"Herencia",value:"<|--"},{name:"Composición", value:"*--"},{name:"Agregación",value:"o--"},{name:"Asociación",value:"--"},{name:"Dependencia",value:"..>"}]
         case "SECUENCIA":
