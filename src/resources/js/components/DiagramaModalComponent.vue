@@ -32,8 +32,8 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-            <option v-for="(item,index) in filteredDiagrams" :key="index" :selected="index == 0">
-                {{  isCU ? item.text : item.id }}
+              <option v-for="(item,index) in relationTypes" :key="index" :selected="index == 0">
+                {{item.name}}
             </option>
 
             </select>
@@ -43,10 +43,9 @@
             id="inputGroupSelect03"
             aria-label="Example select with button addon"
           >
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option v-for="(item,index) in filteredDiagrams(elemento.id)" :key="index" :selected="index == 0">
+                {{  isCU ? item.text : item.id }}
+            </option>
           </select>
           <div class="input-group-append">
             <button
@@ -110,6 +109,9 @@ export default {
     },
     isCU(){
        return this.diagrama.type == 'CU'
+    },
+    relationTypes(){
+
     }
   },
   methods: {
