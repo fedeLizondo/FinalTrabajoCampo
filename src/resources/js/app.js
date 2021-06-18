@@ -2,8 +2,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import VueDraggableResizable from 'vue-draggable-resizable';
-import 'vue-draggable-resizable/dist/VueDraggableResizable.css';
+//import VueDraggableResizable from 'vue-draggable-resizable';
+//import 'vue-draggable-resizable/dist/VueDraggableResizable.css';
 import Vuex from 'vuex';
 import firebase from 'firebase';
 import VueRouter from 'vue-router';
@@ -14,7 +14,7 @@ import Vue from 'vue';
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-Vue.component('vue-draggable-resizable', VueDraggableResizable);
+//Vue.component('vue-draggable-resizable', VueDraggableResizable);
 Vue.use(Vuex);
 library.add(fas);
 library.add(far);

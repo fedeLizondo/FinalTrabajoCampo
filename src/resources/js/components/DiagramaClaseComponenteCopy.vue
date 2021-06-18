@@ -11,7 +11,7 @@
         Relaciones
       </button>
 
-      <vue-draggable-resizable
+      <!--vue-draggable-resizable
         v-for="entidad in entidades"
         :key="entidad.id"
         :w="entidad.box.width"
@@ -49,7 +49,7 @@
             </ul>
           </div>
         </div>
-      </vue-draggable-resizable>
+      </vue-draggable-resizable-->
     </div>
     <div class="col-md-3 h-90">
       <message-component :proyecto_id="4" />
@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import LeaderLine from "leader-line-vue";
-import MessageComponent from "./MessageComponent.vue";
+//import LeaderLine from "leader-line-vue";
+//import MessageComponent from "./MessageComponent.vue";
 import {db} from "../firebase/db";
 
 export default {
@@ -144,9 +144,9 @@ export default {
         const start = this.$refs["entidad" + relacion.from][0].$el;
         const end = this.$refs["entidad" + relacion.to][0].$el;
 
-        return LeaderLine.setLine(start, end, {
+        /*return LeaderLine.setLine(start, end, {
           dash: { animation: true },
-        });
+        });*/
       } else return null;
     },
     onDrag: function (x, y) {
