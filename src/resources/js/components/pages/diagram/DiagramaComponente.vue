@@ -10,7 +10,7 @@
 
     <div style="border: 1px solid gray" class="col-md-9">
       <button class="btn btn-primary" v-on:click="crearEntidad">
-        Entidades
+        Relaciones
       </button>
 
       <vue-mermaid :nodes="diagrama.data||[]" :type="getTypeDiagram">
