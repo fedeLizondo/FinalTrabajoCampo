@@ -71,6 +71,8 @@ export default {
         dataClass: [],
         atributos: [],
         metodos: [],
+        edgeType: "",
+        group: ""
       },
     };
   },
@@ -86,6 +88,8 @@ export default {
         dataClass: [],
         atributos: [],
         metodos: [],
+        edgeType: "",
+        group: ""
       };
       this.$refs.modalDiagrama.openModal();
     },
