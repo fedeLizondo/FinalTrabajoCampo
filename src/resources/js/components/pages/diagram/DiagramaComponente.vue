@@ -49,8 +49,8 @@ export default {
         link: [],
         msg: "",
         dataClass: [],
-        atributos: [],
-        metodos: [],
+        edgeType: "",
+        group:""
       },
     };
   },
@@ -64,8 +64,8 @@ export default {
         link: [],
         msg: "",
         dataClass: [],
-        atributos: [],
-        metodos: [],
+        edgeType: "",
+        group: ""
       },
       this.$refs.modalDiagrama.openModal();
     },
