@@ -124,7 +124,7 @@ export default {
   },
   computed: {
     enableGuardar() {
-      return !this.isValidDiagrama;
+      return (Boolean(elemento.id) || Boolean(elemento.text)) &&  !this.isValidDiagrama;
     },
     filteredDiagrams() {
       return this.diagrama.data.filter((elm) => elm.id != this.elemento.id);
