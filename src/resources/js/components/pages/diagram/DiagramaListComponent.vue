@@ -94,7 +94,9 @@ export default {
       this.$refs.modalDiagrama.openModal();
     },
     deleteEntidad: function (index) {
+      
       this.diagrama.data.splice(index, 1);
+
       db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
