@@ -13,7 +13,7 @@
         Relaciones
       </button>
 
-      <vue-mermaid :nodes="diagrama.data" :type="getTypeDiagram" v-if="Boolean(diagrama.data) && diagrama.data.lenght > 0">
+      <vue-mermaid :nodes="diagrama.data" :type="getTypeDiagram" v-if="Boolean(diagrama.data) && diagrama.data.length > 0">
         <!--@nodeClick="editNode"-->
       </vue-mermaid>
     </div>
