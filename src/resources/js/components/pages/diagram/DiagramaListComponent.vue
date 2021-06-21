@@ -54,7 +54,7 @@
 
 <script>
 import { db } from "../../../firebase/db.js";
-import DiagramaModalComponent from "./DiagramaModalComponent.vue";
+import DiagramaModalComponent from "./EntidadModalComponent.vue";
 
 export default {
   components: { DiagramaModalComponent },

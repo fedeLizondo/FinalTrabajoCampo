@@ -1,6 +1,5 @@
 <template>
   <div class="row h-100" style="witdh: 100%">
-
     <div class="col-md-3">
       <diagrama-list-component
         :proyecto_id="this.$route.params.id"
@@ -9,15 +8,18 @@
     </div>
 
     <div style="border: 1px solid gray" class="col-md-9">
-      <button class="btn btn-primary" v-on:click="crearEntidad">
+      <button class="btn btn-warning" v-on:click="crearRelacion">
         Relaciones
       </button>
 
-      <vue-mermaid :nodes="diagrama.data" :type="getTypeDiagram" v-show="Boolean(diagrama.data) && diagrama.data.length > 0">
+      <vue-mermaid
+        :nodes="diagrama.data"
+        :type="getTypeDiagram"
+        v-show="Boolean(diagrama.data) && diagrama.data.length > 0"
+      >
         <!--@nodeClick="editNode"-->
       </vue-mermaid>
     </div>
-
 
     <diagrama-modal-component
       :isUpdate="editMode"
@@ -32,14 +34,14 @@
 <script>
 import { db } from "../../../firebase/db";
 import VueMermaid from "./vue-mermaid.vue";
-import DiagramaModalComponent from "./DiagramaModalComponent.vue";
-import DiagramaListComponent from './DiagramaListComponent.vue';
+import DiagramaModalComponent from "./EntidadModalComponent.vue";
+import DiagramaListComponent from "./DiagramaListComponent.vue";
 
 export default {
-  components: {VueMermaid, DiagramaModalComponent, DiagramaListComponent },
+  components: { VueMermaid, DiagramaModalComponent, DiagramaListComponent },
   data: () => {
     return {
-      editMode : false,
+      editMode: false,
       diagrama: {},
       //Element tiene que quedar
       element: {
@@ -50,14 +52,14 @@ export default {
         msg: "",
         dataClass: [],
         edgeType: "",
-        group:""
+        group: "",
       },
     };
   },
   methods: {
-    crearEntidad: function () {
+    crearRelacion: function () {
       this.editMode = false;
-      this.element ={
+      this.element = {
         id: "",
         text: "",
         next: [],
@@ -65,8 +67,8 @@ export default {
         msg: "",
         dataClass: [],
         edgeType: "",
-        group: ""
-      },
+        group: "",
+      };
       this.$refs.modalDiagrama.openModal();
     },
   },
@@ -79,13 +81,16 @@ export default {
       return "sequenceDiagram";
     },
   },
-  mounted() {
-  },
-  firestore(){
+  mounted() {},
+  firestore() {
     return {
-      diagrama: db.collection("especificaciones").doc(""+this.$route.params.id+"").collection("diagramas").doc(""+this.$route.params.id_diagrama)
-    }
-  }
+      diagrama: db
+        .collection("especificaciones")
+        .doc("" + this.$route.params.id + "")
+        .collection("diagramas")
+        .doc("" + this.$route.params.id_diagrama),
+    };
+  },
 };
 </script>
 
