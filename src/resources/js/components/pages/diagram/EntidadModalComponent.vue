@@ -309,7 +309,7 @@ export default {
     guardarDiagrama() {
       if (this.isValidDiagrama) {
         this.isValidDiagrama = false;
-        this.isUpdate ? this.updateDiagrama() : this.postDiagrama();
+        this.postDiagrama();
         this.$refs.modalInternoDiagrama.closeModal();
       }
     },
@@ -330,7 +330,8 @@ export default {
           this.elemento.dataClass.push( metodo.scope + " " + metodo.name + "("+metodo.params+")");
       });
 
-      this.diagrama.data.push({ ...this.elemento });
+      if(!this.isUpdate)
+        this.diagrama.data.push({ ...this.elemento });
 
       db.collection("especificaciones")
         .doc(this.proyecto_id)
@@ -338,15 +339,6 @@ export default {
         .doc(this.diagrama.id)
         .update(this.diagrama);
       this.closeModal();
-    },
-    updateDiagrama: function () {
-      db.collection("especificaciones")
-        .doc(this.proyecto_id)
-        .collection("diagramas")
-        .doc(this.diagrama.id)
-        .update(this.diagrama);
-      this.to = "";
-      this.typeRelation = "";
     },
     addRelation: function () {
       this.elemento.next.push(this.to);
