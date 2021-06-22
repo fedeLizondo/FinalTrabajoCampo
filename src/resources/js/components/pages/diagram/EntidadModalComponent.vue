@@ -359,9 +359,9 @@ export default {
       }
 
       this.elemento.atributos.forEach(atributo => {
-          this.elemento.dataClass.push( atributo.scope + " " + atributo.type + " " + atributo.name);
+          this.elemento.dataClass.push( atributo.scope + "" + atributo.type + " " + atributo.name);
       });
-      
+
       this.elemento.metodos.forEach(metodo => {
           this.elemento.dataClass.push( metodo.scope + " " + metodo.name + "("+metodo.params+")");
       });
