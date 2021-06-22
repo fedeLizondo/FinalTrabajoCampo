@@ -13,7 +13,7 @@
       </button>
 
       <vue-mermaid
-        :nodes="diagrama.data"
+        :nodes="diagrama.data||[]"
         :type="getTypeDiagram"
         v-show="Boolean(diagrama.data) && diagrama.data.length > 0"
       >
