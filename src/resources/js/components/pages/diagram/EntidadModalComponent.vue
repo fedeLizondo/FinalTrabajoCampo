@@ -89,12 +89,11 @@
               pattern="[^\s]+"
               v-model="atributo.name"
             />
-          </div>
-          <div class="form-group  col-auto">
-            <label> </label>
-            <button type="submit" class="btn btn-primary mb-2">
-              <font-awesome-icon :icon="['fas', 'plus']" />
-            </button>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                <font-awesome-icon :icon="['fas', 'plus']" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
