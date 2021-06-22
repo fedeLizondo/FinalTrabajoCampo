@@ -57,7 +57,7 @@
       <div v-if="isClase">
         <label>Atributo:</label>
         <div class="form-row">
-          <div class="form-group col-2">
+          <div class="form-group col-4 col-md-2">
             <label for="inputState">Entorno</label>
             <select
               id="inputState"
@@ -70,13 +70,20 @@
               <option value="#">protected</option>
             </select>
           </div>
-          <div class="form-group col-3">
-            <label for="inputCity">tipo</label>
-            <input type="text" class="form-control" v-model="atributo.type"/>
+
+          <div class="form-group col-4 col-md-2">
+            <label for="inputCity">Tipo</label>
+            <select type="text" class="form-control" v-model="atributo.type">
+              <option selected value=""></option>
+              <option value="object">Object</option>
+              <option value="string">String</option>
+              <option value="number">Number</option>
+              <option value="list">List</option>
+            </select>
           </div>
-          <div class="form-group col-4">
-            <label for="inputCity">Nombre</label>
-            <input type="text" class="form-control" v-model="atributo.name"/>
+          <div class="form-group col-4 col-md-4"> 
+            <label>Nombre</label>
+            <input type="text" class="form-control" pattern="[^\s]+" v-model="atributo.name"/>
           </div>
         </div>
       </div>
@@ -200,8 +207,7 @@ export default {
         scope: "",
         type: "",
         name: "",
-        abstract: false,
-        static: false,
+        postfix: "",
       },
       metodo: {
         scope: "",
