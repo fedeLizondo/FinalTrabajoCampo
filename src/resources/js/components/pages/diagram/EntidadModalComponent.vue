@@ -15,7 +15,9 @@
             value=""
             v-model="elemento.group"
           />
-          <label class="form-check-label" for="inlineRadio1">Actor / Sistema Externo</label>
+          <label class="form-check-label" for="inlineRadio1"
+            >Actor / Sistema Externo</label
+          >
         </div>
         <div class="form-check form-check-inline">
           <input
@@ -145,18 +147,29 @@ import { db } from "../../../firebase/db";
 
 export default {
   components: { ModalComponent },
-  props: ["diagrama", "isUpdate", "elemento", "proyecto_id"],
+  props: ["diagrama", "isUpdate", "proyecto_id"],
   data() {
     return {
       isValidDiagrama: true,
       to: "",
-      typeRelation: ""
+      typeRelation: "",
+      elemento: {
+        id: "",
+        text: "",
+        next: [],
+        link: [],
+        msg: "",
+        dataClass: [],
+        atributos: [],
+        metodos: [],
+        edgeType: "",
+        group: ""
+      },
     };
   },
   computed: {
     enableGuardar() {
-      console.log("",this.elemento);
-      
+      console.log("", this.elemento);
       return (
         (Boolean(this.elemento.id) || Boolean(this.elemento.text)) &&
         this.isValidDiagrama
@@ -210,10 +223,34 @@ export default {
     closeModal() {
       this.to = "";
       this.typeRelation = "";
+      this.elemento = {
+        id: "",
+        text: "",
+        next: [],
+        link: [],
+        msg: "",
+        dataClass: [],
+        atributos: [],
+        metodos: [],
+        edgeType: "",
+        group: ""
+      };
       this.$refs.modalInternoDiagrama.closeModal();
     },
     openModal() {
       this.isValidDiagrama = true;
+      this.elemento = {
+        id: "",
+        text: "",
+        next: [],
+        link: [],
+        msg: "",
+        dataClass: [],
+        atributos: [],
+        metodos: [],
+        edgeType: "",
+        group: ""
+      };
       this.$refs.modalInternoDiagrama.openModal();
     },
     guardarDiagrama() {
@@ -225,13 +262,11 @@ export default {
     },
     postDiagrama: function () {
       if (this.isCU) {
-        if( !Boolean(this.elemento.id))
-          this.elemento.id = Date.now();
-        
-        if(Boolean(this.elemento.group)){
+        if (!Boolean(this.elemento.id)) this.elemento.id = Date.now();
+
+        if (Boolean(this.elemento.group)) {
           this.elemento.edgeType = "stadium";
         }
-
       }
 
       this.diagrama.data.push({ ...this.elemento });
@@ -241,9 +276,6 @@ export default {
         .collection("diagramas")
         .doc(this.diagrama.id)
         .update(this.diagrama);
-
-      this.to = "";
-      this.typeRelation = "";
       this.closeModal();
     },
     updateDiagrama: function () {

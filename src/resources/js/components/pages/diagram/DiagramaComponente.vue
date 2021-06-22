@@ -43,32 +43,11 @@ export default {
     return {
       editMode: false,
       diagrama: {},
-      //Element tiene que quedar
-      element: {
-        id: "",
-        text: "",
-        next: [],
-        link: [],
-        msg: "",
-        dataClass: [],
-        edgeType: "",
-        group: "",
-      },
     };
   },
   methods: {
     crearRelacion: function () {
       this.editMode = false;
-      this.element = {
-        id: "",
-        text: "",
-        next: [],
-        link: [],
-        msg: "",
-        dataClass: [],
-        edgeType: "",
-        group: "",
-      };
       this.$refs.modalDiagrama.openModal();
     },
   },
