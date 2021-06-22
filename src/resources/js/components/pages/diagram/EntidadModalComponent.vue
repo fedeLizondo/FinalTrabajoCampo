@@ -5,6 +5,29 @@
     </template>
 
     <template v-slot:body>
+      <div class="form-group" v-if="isCU">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="option1"
+          />
+          <label class="form-check-label" for="inlineRadio1">Actor / Sistema Externo</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="option2"
+          />
+          <label class="form-check-label" for="inlineRadio2">CU</label>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="nombre">Nombre de Entidad:</label>
         <input
@@ -83,8 +106,14 @@
             v-for="(value, index) in elemento.next"
             :key="index"
           >
-            {{ elemento.link[index] }} {{ getName(value)}}
-            <button class="btn btn-danger float-right" @click="elemento.next.splice(index,1);elemento.link.splice(index,1)">
+            {{ elemento.link[index] }} {{ getName(value) }}
+            <button
+              class="btn btn-danger float-right"
+              @click="
+                elemento.next.splice(index, 1);
+                elemento.link.splice(index, 1);
+              "
+            >
               <font-awesome-icon :icon="['fas', 'trash']" />
             </button>
           </li>
@@ -108,12 +137,12 @@
 </template>
 
 <script>
-import ModalComponent from '../../assets/ModalComponent.vue';
+import ModalComponent from "../../assets/ModalComponent.vue";
 
-import { db } from  "../../../firebase/db";
+import { db } from "../../../firebase/db";
 
 export default {
-  components: {ModalComponent  },
+  components: { ModalComponent },
   props: ["diagrama", "isUpdate", "elemento", "proyecto_id"],
   data() {
     return {
@@ -124,7 +153,10 @@ export default {
   },
   computed: {
     enableGuardar() {
-      return (Boolean(this.elemento.id) || Boolean(this.elemento.text)) &&  !this.isValidDiagrama;
+      return (
+        (Boolean(this.elemento.id) || Boolean(this.elemento.text)) &&
+        !this.isValidDiagrama
+      );
     },
     filteredDiagrams() {
       return this.diagrama.data.filter((elm) => elm.id != this.elemento.id);
@@ -165,16 +197,15 @@ export default {
     },
   },
   methods: {
-    getName(id){
-      if(this.isCU){
-        return this.filteredDiagrams.filter( x => x.id == id )[0].text;
+    getName(id) {
+      if (this.isCU) {
+        return this.filteredDiagrams.filter((x) => x.id == id)[0].text;
       }
       return id;
-    }
-    ,
+    },
     closeModal() {
-      this.to = "",
-      this.typeRelation = "",
+      this.to = "";
+      this.typeRelation = "";
       this.$refs.modalInternoDiagrama.closeModal();
     },
     openModal() {
@@ -200,10 +231,9 @@ export default {
         .collection("diagramas")
         .doc(this.diagrama.id)
         .update(this.diagrama);
-      
-      this.to = "",
-      this.typeRelation = "",
 
+      this.to = "";
+      this.typeRelation = "";
       this.closeModal();
     },
     updateDiagrama: function () {
@@ -220,7 +250,7 @@ export default {
       this.elemento.link.push(this.typeRelation);
       this.to = "";
       this.typeRelation = "";
-    }
+    },
   },
 };
 </script>
