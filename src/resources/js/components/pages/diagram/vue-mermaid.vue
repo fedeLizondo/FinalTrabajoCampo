@@ -108,6 +108,7 @@ export default {
         let getClass = "";
         nodes.forEach((element) => {
           if (
+            type == "classDiagram" &&
             Boolean(element.dataClass) &&
             Array.isArray(element.dataClass) &&
             element.dataClass.length > 0
