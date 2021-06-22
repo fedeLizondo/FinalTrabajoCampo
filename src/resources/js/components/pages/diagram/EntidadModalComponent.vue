@@ -94,7 +94,7 @@
             <label>Agregar</label>
             <div class="input-group-append">
               <button
-                class="btn btn-outline-secondary"
+                class="btn btn-primary"
                 type="button"
                 @click="addAtribute"
                 :disabled="!Boolean(atributo.name)"
@@ -392,8 +392,8 @@ export default {
       };
     },
     camelCase: function (str) {
-      str = replaceAccents(str);
-      str = removeNonWord(str)
+      str = str
+        .replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, "")
         .replace(/\-/g, " ") //convert all hyphens to spaces
         .replace(/\s[a-z]/g, upperCase) //convert first char of each word to UPPERCASE
         .replace(/\s+/g, "") //remove spaces
