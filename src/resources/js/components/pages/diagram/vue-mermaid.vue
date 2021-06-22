@@ -110,8 +110,7 @@ export default {
           if (
             type == "classDiagram" &&
             Boolean(element.dataClass) &&
-            Array.isArray(element.dataClass) &&
-            element.dataClass.length > 0
+            Array.isArray(element.dataClass)
           ) {
             getClass += `\tclass ${element.id}{\n${element.dataClass.join(
               "\n"
