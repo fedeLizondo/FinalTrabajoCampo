@@ -180,6 +180,8 @@ export default {
       );
     },
     filteredDiagrams() {
+      if(!Boolean(this.diagrama.data))
+        return [];
       return this.diagrama.data.filter((elm) => elm.id != this.elemento.id);
     },
     isCU() {
