@@ -81,7 +81,7 @@
               <option value="list">List</option>
             </select>
           </div>
-          <div class="form-group col-4 col-md-4">
+          <div class="form-group col-4 col-md-6">
             <label>Nombre</label>
             <input
               type="text"
@@ -93,7 +93,12 @@
           <div class="form-group col-4 col-md-2">
             <label>Agregar</label>
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" @click="addAtribute">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                @click="addAtribute"
+                :disabled="!Boolean(atributo.name)"
+              >
                 <font-awesome-icon :icon="['fas', 'plus']" />
               </button>
             </div>
@@ -106,7 +111,7 @@
             v-for="(atributo, index) in elemento.atributos"
             :key="index"
           >
-           {{ atributo.scope + " " + atributo.type + " " + atributo.name }}
+            {{ atributo.scope + " " + atributo.type + " " + atributo.name }}
             <button
               class="btn btn-danger float-right"
               @click="
@@ -118,7 +123,6 @@
             </button>
           </li>
         </ul>
-
       </div>
 
       <div
@@ -379,13 +383,23 @@ export default {
       this.typeRelation = "";
     },
     addAtribute: function () {
-      this.elemento.atributos.push({...this.atributo});
+      this.atributo.name = camelCase(this.atributo.name);
+      this.elemento.atributos.push({ ...this.atributo });
       this.atributo = {
         scope: "",
         type: "",
-        name: ""
-      }
-    }
+        name: "",
+      };
+    },
+    camelCase: function (str) {
+      str = replaceAccents(str);
+      str = removeNonWord(str)
+        .replace(/\-/g, " ") //convert all hyphens to spaces
+        .replace(/\s[a-z]/g, upperCase) //convert first char of each word to UPPERCASE
+        .replace(/\s+/g, "") //remove spaces
+        .replace(/^[A-Z]/g, lowerCase); //convert first char to lowercase
+      return str;
+    },
   },
 };
 </script>
