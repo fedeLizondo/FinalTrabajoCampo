@@ -90,7 +90,8 @@
               v-model="atributo.name"
             />
           </div>
-          <div class="col-auto">
+          <div class="form-group  col-auto">
+            <label> </label>
             <button type="submit" class="btn btn-primary mb-2">
               <font-awesome-icon :icon="['fas', 'plus']" />
             </button>
