@@ -54,6 +54,33 @@
         />
       </div>
 
+      <div v-if="isClase">
+        <label>Atributo:</label>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="inputState">Entorno</label>
+            <select
+              id="inputState"
+              class="form-control"
+              v-model="atributo.scope"
+            >
+              <option selected value=""></option>
+              <option value="+">public</option>
+              <option value="-">private</option>
+              <option value="#">protected</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputCity">tipo</label>
+            <input type="text" class="form-control" v-model="atributo.type"/>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputCity">Nombre</label>
+            <input type="text" class="form-control" v-model="atributo.name"/>
+          </div>
+        </div>
+      </div>
+
       <div
         v-show="
           diagrama.data != null && diagrama.data.length > 0 && !isSecuencia
@@ -169,6 +196,21 @@ export default {
         edgeType: "",
         group: "",
       },
+      atributo: {
+        scope: "",
+        type: "",
+        name: "",
+        abstract: false,
+        static: false,
+      },
+      metodo: {
+        scope: "",
+        name: "",
+        params: "",
+        type: "",
+        abstract: false,
+        static: false,
+      },
     };
   },
   computed: {
@@ -180,8 +222,7 @@ export default {
       );
     },
     filteredDiagrams() {
-      if(!Boolean(this.diagrama.data))
-        return [];
+      if (!Boolean(this.diagrama.data)) return [];
       return this.diagrama.data.filter((elm) => elm.id != this.elemento.id);
     },
     isCU() {
