@@ -13,7 +13,7 @@
             name="inlineRadioOptions"
             id="inlineRadio1"
             value=""
-            v-model="element.group"
+            v-model="elemento.group"
           />
           <label class="form-check-label" for="inlineRadio1">Actor / Sistema Externo</label>
         </div>
@@ -24,7 +24,7 @@
             name="inlineRadioOptions"
             id="inlineRadio2"
             value="CU"
-            v-model="element.group"
+            v-model="elemento.group"
           />
           <label class="form-check-label" for="inlineRadio2">CU</label>
         </div>
