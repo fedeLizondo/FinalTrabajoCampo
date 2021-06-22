@@ -92,12 +92,32 @@
           </div>
           <div class="form-group col-4 col-md-2">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">
+              <button class="btn btn-outline-secondary" type="button" @click="addAtribute">
                 <font-awesome-icon :icon="['fas', 'plus']" />
               </button>
             </div>
           </div>
         </div>
+
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            v-for="(atributo, index) in elemento.atributos"
+            :key="index"
+          >
+           {{atributo.scope}}{{atributo.type}}{{atributo.name}}
+            <button
+              class="btn btn-danger float-right"
+              @click="
+                elemento.next.splice(index, 1);
+                elemento.link.splice(index, 1);
+              "
+            >
+              <font-awesome-icon :icon="['fas', 'trash']" />
+            </button>
+          </li>
+        </ul>
+
       </div>
 
       <div
@@ -218,8 +238,7 @@ export default {
       atributo: {
         scope: "",
         type: "",
-        name: "",
-        postfix: "",
+        name: ""
       },
       metodo: {
         scope: "",
@@ -358,6 +377,14 @@ export default {
       this.to = "";
       this.typeRelation = "";
     },
+    addAtribute: function () {
+      this.elemento.atributos.push({...this.atributo});
+      this.atributo = {
+        scope: "",
+        type: "",
+        name: ""
+      }
+    }
   },
 };
 </script>
