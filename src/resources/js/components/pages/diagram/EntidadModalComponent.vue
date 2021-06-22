@@ -58,7 +58,7 @@
         <label>Atributo:</label>
         <div class="form-row">
           <div class="form-group col-4 col-md-2">
-            <label for="inputState">Entorno</label>
+            <label for="inputState">Visible</label>
             <select
               id="inputState"
               class="form-control"
@@ -357,6 +357,13 @@ export default {
           this.elemento.edgeType = "stadium";
         }
       }
+
+      this.elemento.atributos.forEach(atributo => {
+          this.elemento.dataClass.push( atributo.scope + " " + atributo.type + " " + atributo.name);
+      });
+      this.elemento.metodos.forEach(metodo => {
+          this.elemento.dataClass.push( metodo.scope + " " + metodo.name + "("+metodo.params+")");
+      });
 
       this.diagrama.data.push({ ...this.elemento });
 
