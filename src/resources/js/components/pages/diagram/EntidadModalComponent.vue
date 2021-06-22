@@ -300,34 +300,10 @@ export default {
     closeModal() {
       this.to = "";
       this.typeRelation = "";
-      this.elemento = {
-        id: "",
-        text: "",
-        next: [],
-        link: [],
-        msg: "",
-        dataClass: [],
-        atributos: [],
-        metodos: [],
-        edgeType: "",
-        group: "",
-      };
       this.$refs.modalInternoDiagrama.closeModal();
     },
     openModal() {
       this.isValidDiagrama = true;
-      this.elemento = {
-        id: "",
-        text: "",
-        next: [],
-        link: [],
-        msg: "",
-        dataClass: [],
-        atributos: [],
-        metodos: [],
-        edgeType: "",
-        group: "",
-      };
       this.$refs.modalInternoDiagrama.openModal();
     },
     guardarDiagrama() {
