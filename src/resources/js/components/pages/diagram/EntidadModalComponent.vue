@@ -115,8 +115,7 @@
             <button
               class="btn btn-danger float-right"
               @click="
-                elemento.next.splice(index, 1);
-                elemento.link.splice(index, 1);
+                elemento.atributos.splice(index, 1);
               "
             >
               <font-awesome-icon :icon="['fas', 'trash']" />
