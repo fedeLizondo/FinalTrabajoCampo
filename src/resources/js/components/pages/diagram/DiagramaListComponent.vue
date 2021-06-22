@@ -44,6 +44,7 @@
     <diagrama-modal-component
       :isUpdate="editMode"
       :diagrama="diagrama"
+      :elemento="element"
       :proyecto_id="proyecto_id"
       ref="modalDiagrama"
     />
@@ -61,11 +62,35 @@ export default {
   data() {
     return {
       editMode: false,
+      element: {
+        id: "",
+        text: "",
+        next: [],
+        link: [],
+        msg: "",
+        dataClass: [],
+        atributos: [],
+        metodos: [],
+        edgeType: "",
+        group: ""
+      },
     };
   },
   methods: {
     createEntidad: function () {
       this.editMode = false;
+      this.element = {
+        id: "",
+        text: "",
+        next: [],
+        link: [],
+        msg: "",
+        dataClass: [],
+        atributos: [],
+        metodos: [],
+        edgeType: "",
+        group: ""
+      };
       this.$refs.modalDiagrama.openModal();
     },
     deleteEntidad: function (index) {

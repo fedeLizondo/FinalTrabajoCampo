@@ -222,24 +222,12 @@ import { db } from "../../../firebase/db";
 
 export default {
   components: { ModalComponent },
-  props: ["diagrama", "isUpdate", "proyecto_id"],
+  props: ["diagrama", "isUpdate", "proyecto_id", "elemento"],
   data() {
     return {
       isValidDiagrama: true,
       to: "",
       typeRelation: "",
-      elemento: {
-        id: "",
-        text: "",
-        next: [],
-        link: [],
-        msg: "",
-        dataClass: [],
-        atributos: [],
-        metodos: [],
-        edgeType: "",
-        group: "",
-      },
       atributo: {
         scope: "",
         type: "",
