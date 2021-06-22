@@ -24,7 +24,6 @@
     <diagrama-modal-component
       :isUpdate="editMode"
       :diagrama="diagrama"
-      :elemento="element"
       :proyecto_id="this.$route.params.id"
       ref="modalDiagrama"
     />

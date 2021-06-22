@@ -6,44 +6,42 @@
 
     <template v-slot:body>
       <div v-if="isCu">
-
-      <div class="form-group">
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
-            value=""
-            v-model="elemento.group"
-          />
-          <label class="form-check-label" for="inlineRadio1"
-            >Actor / Sistema Externo</label
-          >
+        <div class="form-group">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              value=""
+              v-model="elemento.group"
+            />
+            <label class="form-check-label" for="inlineRadio1"
+              >Actor / Sistema Externo</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              value="CU"
+              v-model="elemento.group"
+            />
+            <label class="form-check-label" for="inlineRadio2">CU</label>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
+
+        <div class="form-group">
+          <label for="nombre">Nombre de Entidad:</label>
           <input
-            class="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
-            value="CU"
-            v-model="elemento.group"
+            type="text"
+            class="form-control"
+            id="nombre"
+            v-model="this.elemento.text"
           />
-          <label class="form-check-label" for="inlineRadio2">CU</label>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="nombre">Nombre de Entidad:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="nombre"
-          v-model="this.elemento.text"
-        />
-      </div>
-
       </div>
 
       <div class="form-group" v-if="!isCU">
@@ -55,7 +53,6 @@
           v-model="elemento.id"
         />
       </div>
-
 
       <div
         v-show="
@@ -170,7 +167,7 @@ export default {
         atributos: [],
         metodos: [],
         edgeType: "",
-        group: ""
+        group: "",
       },
     };
   },
@@ -240,7 +237,7 @@ export default {
         atributos: [],
         metodos: [],
         edgeType: "",
-        group: ""
+        group: "",
       };
       this.$refs.modalInternoDiagrama.closeModal();
     },
@@ -256,7 +253,7 @@ export default {
         atributos: [],
         metodos: [],
         edgeType: "",
-        group: ""
+        group: "",
       };
       this.$refs.modalInternoDiagrama.openModal();
     },
