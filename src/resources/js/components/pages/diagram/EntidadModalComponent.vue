@@ -105,7 +105,7 @@
             v-for="(atributo, index) in elemento.atributos"
             :key="index"
           >
-           {{atributo.scope}}{{atributo.type}}{{atributo.name}}
+           {{ atributo.scope + " " + atributo.type + " " + atributo.name }}
             <button
               class="btn btn-danger float-right"
               @click="
@@ -238,7 +238,7 @@ export default {
       atributo: {
         scope: "",
         type: "",
-        name: ""
+        name: "",
       },
       metodo: {
         scope: "",
@@ -275,9 +275,9 @@ export default {
       switch (this.diagrama.type) {
         case "CU":
           return [
-            { name: "use", value: "--use---" },
-            { name: "include", value: "-.include.-->" },
-            { name: "extend", value: "--extend--->" },
+            { name: "use", value: " --use--- " },
+            { name: "include", value: " -.include.--> " },
+            { name: "extend", value: " --extend---> " },
           ];
         case "CLASE":
           return [
@@ -289,8 +289,8 @@ export default {
           ];
         case "SECUENCIA":
           return [
-            { name: "-->", value: "->>" },
-            { name: "<--", value: "-->>" },
+            { name: "-->", value: " ->> " },
+            { name: "<--", value: " -->> " },
           ];
         default:
           return [];
