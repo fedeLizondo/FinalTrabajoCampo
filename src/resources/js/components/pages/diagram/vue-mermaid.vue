@@ -113,7 +113,7 @@ export default {
             Array.isArray(element.dataClass) &&
             element.dataClass.length > 0
           ) {
-            getClass += `class ${element.id}{\n${element.dataClass.join(
+            getClass += `\tclass ${element.id}{\n${element.dataClass.join(
               "\n"
             )} \n}\n`;
           }
