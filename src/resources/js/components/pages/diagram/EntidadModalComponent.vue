@@ -81,9 +81,19 @@
               <option value="list">List</option>
             </select>
           </div>
-          <div class="form-group col-4 col-md-4"> 
+          <div class="form-group col-4 col-md-4">
             <label>Nombre</label>
-            <input type="text" class="form-control" pattern="[^\s]+" v-model="atributo.name"/>
+            <input
+              type="text"
+              class="form-control"
+              pattern="[^\s]+"
+              v-model="atributo.name"
+            />
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </button>
           </div>
         </div>
       </div>
