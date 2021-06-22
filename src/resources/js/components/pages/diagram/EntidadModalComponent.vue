@@ -222,8 +222,14 @@ export default {
       }
     },
     postDiagrama: function () {
-      if (this.isCU && this.elemento.id == "") {
-        this.elemento.id = Date.now();
+      if (this.isCU) {
+        if( !Boolean(this.elemento.id))
+          this.elemento.id = Date.now();
+        
+        if(Boolean(this.elemento.group)){
+          this.elemento.edgeType = "stadium";
+        }
+
       }
 
       this.diagrama.data.push({ ...this.elemento });
