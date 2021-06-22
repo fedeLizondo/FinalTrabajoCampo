@@ -395,10 +395,16 @@ export default {
       str = str
         .replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, "")
         .replace(/\-/g, " ") //convert all hyphens to spaces
-        .replace(/\s[a-z]/g, upperCase) //convert first char of each word to UPPERCASE
+        .replace(/\s[a-z]/g, this.upperCase) //convert first char of each word to UPPERCASE
         .replace(/\s+/g, "") //remove spaces
         .replace(/^[A-Z]/g, lowerCase); //convert first char to lowercase
       return str;
+    },
+    upperCase: function (str) {
+      return str.toUpperCase();
+    },
+    lowerCase: function (str) {
+      return str.toLowerCase();
     },
   },
 };
