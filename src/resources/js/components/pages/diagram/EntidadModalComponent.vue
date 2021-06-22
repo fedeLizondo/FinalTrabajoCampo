@@ -5,7 +5,9 @@
     </template>
 
     <template v-slot:body>
-      <div class="form-group" v-if="isCU">
+      <div v-if="isCu">
+
+      <div class="form-group">
         <div class="form-check form-check-inline">
           <input
             class="form-check-input"
@@ -35,20 +37,34 @@
       <div class="form-group">
         <label for="nombre">Nombre de Entidad:</label>
         <input
-          v-if="!isCU"
+          type="text"
+          class="form-control"
+          id="nombre"
+          v-model="this.elemento.text"
+        />
+      </div>
+
+      </div>
+
+
+
+      <div class="form-group" v-if="!isCU">
+        <label for="nombre">Nombre de Entidad:</label>
+        <input
+        
           type="text"
           class="form-control"
           id="nombre"
           v-model="elemento.id"
         />
         <input
-          v-else
           type="text"
           class="form-control"
           id="nombre"
           v-model="elemento.text"
         />
       </div>
+
 
       <div
         v-show="
