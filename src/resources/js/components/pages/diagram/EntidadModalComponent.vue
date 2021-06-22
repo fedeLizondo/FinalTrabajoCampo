@@ -129,7 +129,7 @@
         <button
           class="btn btn-secondary"
           @click="guardarDiagrama"
-          :disabled="enableGuardar"
+          :disabled="!enableGuardar"
         >
           Guardar
         </button>
