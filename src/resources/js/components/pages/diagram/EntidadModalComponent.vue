@@ -383,7 +383,7 @@ export default {
       this.typeRelation = "";
     },
     addAtribute: function () {
-      this.atributo.name = camelCase(this.atributo.name);
+      this.atributo.name = this.camelCase(this.atributo.name);
       this.elemento.atributos.push({ ...this.atributo });
       this.atributo = {
         scope: "",
