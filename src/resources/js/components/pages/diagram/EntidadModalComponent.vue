@@ -57,7 +57,7 @@
       <div v-if="isClase">
         <label>Atributo:</label>
         <div class="form-row">
-          <div class="form-group col-md-3">
+          <div class="form-group col-2">
             <label for="inputState">Entorno</label>
             <select
               id="inputState"
@@ -70,11 +70,11 @@
               <option value="#">protected</option>
             </select>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-3">
             <label for="inputCity">tipo</label>
             <input type="text" class="form-control" v-model="atributo.type"/>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-4">
             <label for="inputCity">Nombre</label>
             <input type="text" class="form-control" v-model="atributo.name"/>
           </div>
