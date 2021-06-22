@@ -13,7 +13,7 @@
             name="inlineRadioOptions"
             id="inlineRadio1"
             value=""
-            v-model="typeCU"
+            v-model="element.group"
           />
           <label class="form-check-label" for="inlineRadio1">Actor / Sistema Externo</label>
         </div>
@@ -24,7 +24,7 @@
             name="inlineRadioOptions"
             id="inlineRadio2"
             value="CU"
-            v-model="typeCU"
+            v-model="element.group"
           />
           <label class="form-check-label" for="inlineRadio2">CU</label>
         </div>
@@ -150,8 +150,7 @@ export default {
     return {
       isValidDiagrama: true,
       to: "",
-      typeRelation: "",
-      typeCU:""
+      typeRelation: ""
     };
   },
   computed: {
