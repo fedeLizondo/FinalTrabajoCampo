@@ -72,7 +72,7 @@
           </div>
 
           <div class="form-group col-4 col-md-2">
-            <label for="inputCity">Tipo</label>
+            <label>Tipo</label>
             <select type="text" class="form-control" v-model="atributo.type">
               <option selected value=""></option>
               <option value="object">Object</option>
@@ -91,6 +91,7 @@
             />
           </div>
           <div class="form-group col-4 col-md-2">
+            <label>Agregar</label>
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" @click="addAtribute">
                 <font-awesome-icon :icon="['fas', 'plus']" />
