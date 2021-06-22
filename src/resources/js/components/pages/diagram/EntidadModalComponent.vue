@@ -39,7 +39,7 @@
             type="text"
             class="form-control"
             id="nombre"
-            v-model="this.elemento.text"
+            v-model="elemento.text"
           />
         </div>
       </div>
