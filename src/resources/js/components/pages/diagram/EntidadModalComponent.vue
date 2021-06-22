@@ -46,22 +46,13 @@
 
       </div>
 
-
-
       <div class="form-group" v-if="!isCU">
         <label for="nombre">Nombre de Entidad:</label>
         <input
-        
           type="text"
           class="form-control"
           id="nombre"
           v-model="elemento.id"
-        />
-        <input
-          type="text"
-          class="form-control"
-          id="nombre"
-          v-model="elemento.text"
         />
       </div>
 
