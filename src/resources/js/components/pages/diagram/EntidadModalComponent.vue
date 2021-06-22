@@ -5,7 +5,7 @@
     </template>
 
     <template v-slot:body>
-      <div>
+      <div v-if="isCU">
         <div class="form-group">
           <div class="form-check form-check-inline">
             <input
