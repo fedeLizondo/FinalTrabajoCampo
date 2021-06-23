@@ -53,7 +53,10 @@
         >
           <div class="card-body">
             <div class="cart-title">
-              <font-awesome-icon :icon="['fas', 'grip-vertical']" /> {{ elemento }}
+              <div style="color: darkgrey;">
+                  <font-awesome-icon :icon="['fas', 'grip-vertical']" />
+              </div>
+               {{ " " + elemento }}
               <button
                 type="button"
                 class="close ml-1"
