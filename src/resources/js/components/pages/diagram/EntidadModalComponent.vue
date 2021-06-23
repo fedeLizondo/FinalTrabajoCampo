@@ -61,6 +61,7 @@
           class="form-control"
           id="nombre"
           v-model="ordenElemento"
+          value="orderElement"
         />
       </div>
 
@@ -242,7 +243,7 @@ export default {
       isValidDiagrama: true,
       to: "",
       typeRelation: "",
-      ordenElemento: this.orderElement + "",
+      ordenElemento: "",
       atributo: {
         scope: "",
         type: "",
