@@ -50,12 +50,11 @@
         >
           <div class="card-body">
             <div class="cart-title">
-              <div class="d-flex align-items-center">
-                <div style="color: darkgrey">
-                  <font-awesome-icon :icon="['fas', 'grip-vertical']" />
-                </div>
-                {{ " " + elemento }}
-              </div>
+              <font-awesome-icon
+                :icon="['fas', 'grip-vertical']"
+                style="color: darkgrey"
+              />
+              {{ " " + elemento }}
               <button
                 type="button"
                 class="close ml-1"
