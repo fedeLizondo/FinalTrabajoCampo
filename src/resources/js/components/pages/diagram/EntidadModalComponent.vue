@@ -323,6 +323,7 @@ export default {
       this.isValidDiagrama = true;
       console.log("dentro de open modal");
       this.ordenElemento = "" + this.orderElement;
+      console.log("a",this.ordenElemento);
       this.$refs.modalInternoDiagrama.openModal();
     },
     guardarDiagrama() {
