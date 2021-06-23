@@ -156,12 +156,17 @@ export default {
     toggleUpdate: function (entidad) {
       this.editMode = true;
       this.element = entidad;
+      this.selectedOrderIndex = "";
+      this.orderElement = "";
       this.$refs.modalDiagrama.openModal();
     },
     toggleUpdateOrden: function (elemento, index) {
       this.editMode = true;
       this.selectedOrderIndex = index;
       this.orderElement = elemento;
+
+      console.log("Call to update",this.orderElement, this.selectedOrderIndex);
+
       this.$refs.modalDiagrama.openModal();
     },
   },
