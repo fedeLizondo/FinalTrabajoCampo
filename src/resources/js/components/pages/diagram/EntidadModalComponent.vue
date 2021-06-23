@@ -231,13 +231,12 @@ import { db } from "../../../firebase/db";
 
 export default {
   components: { ModalComponent },
-  props: ["diagrama", "isUpdate", "proyecto_id", "elemento"],
+  props: ["diagrama", "isUpdate", "proyecto_id", "elemento", "selectedOrderIndex", "orderElement"],
   data() {
     return {
       isValidDiagrama: true,
       to: "",
       typeRelation: "",
-      orderElement: "",
       atributo: {
         scope: "",
         type: "",

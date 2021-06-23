@@ -59,7 +59,7 @@
               style="color: #e74c3c"
               v-on:click="deleteOrder(index)"
             >
-              <font-awesome-icon :icon="['fas', 'times']" />
+            <font-awesome-icon :icon="['fas', 'times']" />
             </button>
             <button
               id="editDiagrama"
@@ -67,7 +67,7 @@
               class="close"
               aria-label="Update"
               style="color: #e67e22"
-              v-on:click="toggleUpdate(entidad)"
+              v-on:click="toggleUpdateOrden(elemento, index)"
             >
               <font-awesome-icon :icon="['fas', 'edit']" />
             </button>
@@ -81,6 +81,8 @@
       :diagrama="diagrama"
       :elemento="element"
       :proyecto_id="proyecto_id"
+      :selectedOrderIndex="selectedOrderIndex"
+      :orderElement="orderElement"
       ref="modalDiagrama"
     />
   </div>
@@ -97,6 +99,8 @@ export default {
   data() {
     return {
       editMode: false,
+      selectedOrderIndex :"",
+      orderElement: "",
       element: {
         id: "",
         text: "",
@@ -126,6 +130,8 @@ export default {
         edgeType: "",
         group: ""
       };
+      this.selectedOrderIndex = "";
+      this.orderElement = "";
       this.$refs.modalDiagrama.openModal();
     },
     deleteEntidad: function (index) {
@@ -150,6 +156,12 @@ export default {
     toggleUpdate: function (entidad) {
       this.editMode = true;
       this.element = entidad;
+      this.$refs.modalDiagrama.openModal();
+    },
+    toggleUpdateOrden: function (elemento, index) {
+      this.editMode = true;
+      this.selectedOrderIndex = index;
+      this.orderElement = elemento;
       this.$refs.modalDiagrama.openModal();
     },
   },
