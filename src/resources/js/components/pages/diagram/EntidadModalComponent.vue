@@ -335,7 +335,7 @@ export default {
       }
 
       if(this.isSecuencia){
-        this.diagrama.orden.push(orderElement);
+        this.diagrama.orden.push(this.orderElement);
       }
 
       if(this.isClase){
