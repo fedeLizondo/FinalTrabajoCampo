@@ -242,7 +242,7 @@ export default {
       isValidDiagrama: true,
       to: "",
       typeRelation: "",
-      ordenElemento: this.orderElement,
+      ordenElemento: "",
       atributo: {
         scope: "",
         type: "",
@@ -321,6 +321,8 @@ export default {
     },
     openModal() {
       this.isValidDiagrama = true;
+      console.log("dentro de open modal");
+      this.ordenElemento = "" + this.orderElement;
       this.$refs.modalInternoDiagrama.openModal();
     },
     guardarDiagrama() {
