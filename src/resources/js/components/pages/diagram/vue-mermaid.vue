@@ -118,16 +118,30 @@ export default {
           }
         });
         const groupNodes = this.getGroupNodes(nodes);
-        const code =
-          parseCode +
-          orderStr +
-          getClass +
-          groupNodes;
+        const code = parseCode + orderStr + getClass + groupNodes;
 
         this.load(code);
         console.log(code);
         return code;
       } else {
+        if (
+          this.type == "sequenceDiagram" &&
+          Array.isArray(order) &&
+          order.length > 0
+        ) {
+          const parseCode = this.type + "\n";
+
+          let orderStr = "autonumber\n";
+          order.forEach((element) => {
+            orderStr += `participant ${element}\n`;
+          });
+
+          const code = parseCode + orderStr; 
+          this.load(code);
+          console.log(code);
+          return code;
+        }
+
         return "";
       }
     },
