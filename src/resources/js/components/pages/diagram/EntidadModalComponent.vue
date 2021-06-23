@@ -60,7 +60,7 @@
           type="text"
           class="form-control"
           id="nombre"
-          v-model="orderElement"
+          v-model="ordenElemento"
         />
       </div>
 
@@ -124,9 +124,7 @@
             {{ atributo.scope + " " + atributo.type + " " + atributo.name }}
             <button
               class="btn btn-danger float-right"
-              @click="
-                elemento.atributos.splice(index, 1);
-              "
+              @click="elemento.atributos.splice(index, 1)"
             >
               <font-awesome-icon :icon="['fas', 'trash']" />
             </button>
@@ -231,12 +229,20 @@ import { db } from "../../../firebase/db";
 
 export default {
   components: { ModalComponent },
-  props: ["diagrama", "isUpdate", "proyecto_id", "elemento", "selectedOrderIndex", "orderElement"],
+  props: [
+    "diagrama",
+    "isUpdate",
+    "proyecto_id",
+    "elemento",
+    "selectedOrderIndex",
+    "orderElement",
+  ],
   data() {
     return {
       isValidDiagrama: true,
       to: "",
       typeRelation: "",
+      ordenElemento: this.orderElement + "",
       atributo: {
         scope: "",
         type: "",
@@ -255,9 +261,9 @@ export default {
   computed: {
     enableGuardar() {
       return (
-        ((this.isClase && Boolean(this.elemento.id)) || 
-        (this.isCU && Boolean( this.elemento.text )) || 
-        (this.isSecuencia && Boolean(this.orderElement))) &&
+        ((this.isClase && Boolean(this.elemento.id)) ||
+          (this.isCU && Boolean(this.elemento.text)) ||
+          (this.isSecuencia && Boolean(this.ordenElemento))) &&
         this.isValidDiagrama
       );
     },
@@ -292,7 +298,7 @@ export default {
           ];
         case "SECUENCIA":
           return [
-            { name: "->", value: " ->> "},
+            { name: "->", value: " ->> " },
             { name: "-->", value: " -->> " },
           ];
         default:
@@ -310,7 +316,7 @@ export default {
     closeModal() {
       this.to = "";
       this.typeRelation = "";
-      this.orderElement = "";
+      this.ordenElemento = "";
       this.$refs.modalInternoDiagrama.closeModal();
     },
     openModal() {
@@ -333,22 +339,30 @@ export default {
         }
       }
 
-      if(this.isSecuencia){
-        this.diagrama.orden.push(this.orderElement);
+      if (this.isSecuencia) {
+        if (!this.isUpdate) {
+          this.diagrama.orden.push(this.ordenElemento);
+        } else {
+          this.diagrama[this.selectedOrderIndex] = this.ordenElemento;
+        }
       }
 
-      if(this.isClase){
+      if (this.isClase) {
         this.elemento.dataClass = [];
-        this.elemento.atributos.forEach(atributo => {
-            this.elemento.dataClass.push( atributo.scope + "" + atributo.type + " " + atributo.name);
+        this.elemento.atributos.forEach((atributo) => {
+          this.elemento.dataClass.push(
+            atributo.scope + "" + atributo.type + " " + atributo.name
+          );
         });
-  
-        this.elemento.metodos.forEach(metodo => {
-            this.elemento.dataClass.push( metodo.scope + " " + metodo.name + "("+metodo.params+")");
+
+        this.elemento.metodos.forEach((metodo) => {
+          this.elemento.dataClass.push(
+            metodo.scope + " " + metodo.name + "(" + metodo.params + ")"
+          );
         });
       }
 
-      if(!this.isUpdate && !this.isSecuencia)
+      if (!this.isUpdate && !this.isSecuencia)
         this.diagrama.data.push({ ...this.elemento });
 
       db.collection("especificaciones")
