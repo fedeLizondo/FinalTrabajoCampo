@@ -82,7 +82,6 @@
       :elemento="element"
       :proyecto_id="proyecto_id"
       :selectedOrderIndex="selectedOrderIndex"
-      :orderElement="orderElement"
       ref="modalDiagrama"
     />
   </div>
@@ -99,8 +98,6 @@ export default {
   data() {
     return {
       editMode: false,
-      selectedOrderIndex :"",
-      orderElement: "",
       element: {
         id: "",
         text: "",
@@ -157,15 +154,12 @@ export default {
       this.editMode = true;
       this.element = entidad;
       this.selectedOrderIndex = "";
-      this.orderElement = "";
+
       this.$refs.modalDiagrama.openModal();
     },
     toggleUpdateOrden: function (elemento, index) {
       this.editMode = true;
       this.selectedOrderIndex = index;
-      this.orderElement = elemento;
-
-      console.log("Call to update",this.orderElement, this.selectedOrderIndex);
 
       this.$refs.modalDiagrama.openModal();
     },

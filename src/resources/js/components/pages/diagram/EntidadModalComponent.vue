@@ -234,8 +234,7 @@ export default {
     "isUpdate",
     "proyecto_id",
     "elemento",
-    "selectedOrderIndex",
-    "orderElement",
+    "selectedOrderIndex"
   ],
   data() {
     return {
@@ -321,10 +320,6 @@ export default {
     },
     openModal() {
       this.isValidDiagrama = true;
-      console.log("dentro de open modal");
-      this.ordenElemento = this.orderElement;
-      console.log("a",this.ordenElemento);
-      console.log("b",this.orderElement);
       this.$refs.modalInternoDiagrama.openModal();
     },
     guardarDiagrama() {
