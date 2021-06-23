@@ -61,7 +61,6 @@
           class="form-control"
           id="nombre"
           v-model="ordenElemento"
-          value="orderElement"
         />
       </div>
 
@@ -322,6 +321,7 @@ export default {
     },
     openModal() {
       this.isValidDiagrama = true;
+      this.ordenElemento = this.orderElement + "";
       this.$refs.modalInternoDiagrama.openModal();
     },
     guardarDiagrama() {
