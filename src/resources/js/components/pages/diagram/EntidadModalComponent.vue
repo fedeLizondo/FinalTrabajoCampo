@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div class="form-group" v-if="!isClase">
+      <div class="form-group" v-if="isClase">
         <label for="nombre">Nombre de Entidad:</label>
         <input
           type="text"
@@ -54,13 +54,13 @@
         />
       </div>
 
-      <div class="form-group" v-if="!isSecuencia">
+      <div class="form-group" v-if="isSecuencia">
         <label for="nombre">Nombre de Entidad:</label>
         <input
           type="text"
           class="form-control"
           id="nombre"
-          v-model="elemento.id"
+          v-model="orderElement"
         />
       </div>
 
@@ -237,6 +237,7 @@ export default {
       isValidDiagrama: true,
       to: "",
       typeRelation: "",
+      orderElement: "",
       atributo: {
         scope: "",
         type: "",
@@ -291,10 +292,8 @@ export default {
           ];
         case "SECUENCIA":
           return [
-            { name: "->", value: " ->> +"},
-            { name: "<-", value: " ->> -"},
-            { name: "-->", value: " -->> +" },
-            { name: "<--", value: " -->> -" },
+            { name: "->", value: " ->> "},
+            { name: "-->", value: " -->> " },
           ];
         default:
           return [];
@@ -311,6 +310,7 @@ export default {
     closeModal() {
       this.to = "";
       this.typeRelation = "";
+      this.orderElement = "";
       this.$refs.modalInternoDiagrama.closeModal();
     },
     openModal() {
@@ -331,6 +331,10 @@ export default {
         if (Boolean(this.elemento.group)) {
           this.elemento.edgeType = "stadium";
         }
+      }
+
+      if(this.isSecuencia){
+        this.diagrama.order.push(orderElement);
       }
 
       if(this.isClase){
