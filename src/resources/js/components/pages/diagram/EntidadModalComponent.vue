@@ -347,7 +347,7 @@ export default {
         });
       }
 
-      if(!this.isUpdate)
+      if(!this.isUpdate && !this.isSecuencia)
         this.diagrama.data.push({ ...this.elemento });
 
       db.collection("especificaciones")
