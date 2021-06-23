@@ -60,10 +60,9 @@ export default {
       return "sequenceDiagram";
     },
     showMermaid: function(){
-      console.log("es ", (Boolean(diagrama.orden) && diagrama.orden.length > 0))
-      console.log("es ", (Boolean(diagrama.orden) && diagrama.orden.length > 0))
+      console.log("es ", (Boolean(this.diagrama.orden) && this.diagrama.orden.length > 0))
       
-      return (Boolean(diagrama.data) && diagrama.data.length > 0) || (Boolean(diagrama.orden) && diagrama.orden.length > 0);
+      return (Boolean(this.diagrama.data) && this.diagrama.data.length > 0) || (Boolean(this.diagrama.orden) && this.diagrama.orden.length > 0);
     }
   },
   mounted() {},
