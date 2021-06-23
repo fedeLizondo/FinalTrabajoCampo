@@ -284,9 +284,9 @@ export default {
           ];
         case "CLASE":
           return [
-            { name: "Herencia", value: " <|-- " },
-            { name: "Composición", value: " *-- " },
-            { name: "Agregación", value: " o-- " },
+            { name: "Herencia", value: " --|> " },
+            { name: "Composición", value: " --* " },
+            { name: "Agregación", value: " --o " },
             { name: "Asociación", value: " -- " },
             { name: "Dependencia", value: " ..> " },
           ];
