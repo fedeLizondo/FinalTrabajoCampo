@@ -41,6 +41,41 @@
         </div>
       </li>
     </ul>
+
+    <ul class="list-group list-group-flush">
+      <li
+        id="DiagramaRowComponent"
+        class="card mb-1 shadow-sm w-100"
+        v-for="(elemento, index) in diagrama.orden"
+        :key="index"
+      >
+        <div class="card-body">
+          <div class="cart-title">
+            {{elemento}}
+            <button
+              type="button"
+              class="close ml-1"
+              aria-label="Close"
+              style="color: #e74c3c"
+              v-on:click="deleteOrder(index)"
+            >
+              <font-awesome-icon :icon="['fas', 'times']" />
+            </button>
+            <button
+              id="editDiagrama"
+              type="button"
+              class="close"
+              aria-label="Update"
+              style="color: #e67e22"
+              v-on:click="toggleUpdate(entidad)"
+            >
+              <font-awesome-icon :icon="['fas', 'edit']" />
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+
     <diagrama-modal-component
       :isUpdate="editMode"
       :diagrama="diagrama"
@@ -96,6 +131,15 @@ export default {
     deleteEntidad: function (index) {
       
       this.diagrama.data.splice(index, 1);
+
+      db.collection("especificaciones")
+        .doc(this.proyecto_id)
+        .collection("diagramas")
+        .doc(this.diagrama.id)
+        .update(this.diagrama);
+    },
+    deleteOrder:function (index) {
+      this.diagrama.orden.splice(index, 1);
 
       db.collection("especificaciones")
         .doc(this.proyecto_id)
