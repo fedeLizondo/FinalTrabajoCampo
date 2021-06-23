@@ -47,6 +47,7 @@
           class="card mb-1 shadow-sm w-100"
           v-for="(elemento, index) in diagrama.orden"
           :key="index"
+          style="cursor: pointer;"
         >
           <div class="card-body">
             <div class="cart-title">
