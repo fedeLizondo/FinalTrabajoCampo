@@ -41,10 +41,7 @@
     </ul>
 
     <ul class="list-group list-group-flush">
-      <draggable
-        v-model="diagrama.orden"
-        @end="updateOrder"
-      >
+      <draggable v-model="diagrama.orden" @end="updateOrder">
         <li
           id="DiagramaRowComponent"
           class="card mb-1 shadow-sm w-100"
@@ -53,10 +50,12 @@
         >
           <div class="card-body">
             <div class="cart-title">
-              <div style="color: darkgrey;">
+              <div class="d-flex align-items-center">
+                <div style="color: darkgrey">
                   <font-awesome-icon :icon="['fas', 'grip-vertical']" />
+                </div>
+                {{ " " + elemento }}
               </div>
-               {{ " " + elemento }}
               <button
                 type="button"
                 class="close ml-1"
@@ -156,7 +155,7 @@ export default {
         .doc(this.diagrama.id)
         .update(this.diagrama);
     },
-    updateOrder(){
+    updateOrder() {
       db.collection("especificaciones")
         .doc(this.proyecto_id)
         .collection("diagramas")
