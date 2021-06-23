@@ -98,6 +98,7 @@ export default {
   data() {
     return {
       editMode: false,
+      selectedOrderIndex: "",
       element: {
         id: "",
         text: "",
@@ -128,7 +129,6 @@ export default {
         group: ""
       };
       this.selectedOrderIndex = "";
-      this.orderElement = "";
       this.$refs.modalDiagrama.openModal();
     },
     deleteEntidad: function (index) {
@@ -160,7 +160,6 @@ export default {
     toggleUpdateOrden: function (elemento, index) {
       this.editMode = true;
       this.selectedOrderIndex = index;
-
       this.$refs.modalDiagrama.openModal();
     },
   },
