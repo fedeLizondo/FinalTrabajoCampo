@@ -185,13 +185,13 @@
 <ul class="list-group">
           <li
             class="list-group-item"
-            v-for="(atributo, index) in elemento.atributos"
+            v-for="(metodo, index) in elemento.metodos"
             :key="index"
           >
-            {{ atributo.scope + " " + atributo.type + " " + atributo.name }}
+            {{ metodo.scope + " " + metodo.name + "(" + metodo.params + ")" }}
             <button
               class="btn btn-danger float-right"
-              @click="elemento.atributos.splice(index, 1)"
+              @click="elemento.metodos.splice(index, 1)"
             >
               <font-awesome-icon :icon="['fas', 'trash']" />
             </button>
