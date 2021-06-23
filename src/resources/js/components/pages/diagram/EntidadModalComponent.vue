@@ -57,7 +57,7 @@
       <div v-if="isClase">
         <label>Atributo:</label>
         <div class="form-row">
-          <div class="form-group col-4 col-md-2">
+          <div class="form-group col-3 col-md-2">
             <label for="inputState">Visible</label>
             <select
               id="inputState"
@@ -71,7 +71,7 @@
             </select>
           </div>
 
-          <div class="form-group col-4 col-md-2">
+          <div class="form-group col-3 col-md-2">
             <label>Tipo</label>
             <select type="text" class="form-control" v-model="atributo.type">
               <option selected value=""></option>
@@ -90,7 +90,7 @@
               v-model="atributo.name"
             />
           </div>
-          <div class="form-group col-4 col-md-2">
+          <div class="form-group col-2 col-md-2">
             <label>Agregar</label>
             <div class="input-group-append">
               <button
