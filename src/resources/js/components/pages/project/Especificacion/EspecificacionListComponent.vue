@@ -1,8 +1,12 @@
 <template>
   <div class="card">
     <div class="card-header">
-      Especificaciones
-      <button class="btn btn-primary" @click="createEspecificacion">crear</button>
+      <div class="d-flex align-items-center justify-content-between">
+        Especificaciones
+        <button class="btn btn-primary" @click="createEspecificacion">
+          crear
+        </button>
+      </div>
     </div>
     <ul class="list-group list-group-flush">
       <li
@@ -13,7 +17,7 @@
       >
         <div class="card-body">
           <div class="cart-title">
-            {{  especificacion.type +": "+ especificacion.nombre }}
+            {{ especificacion.type + ": " + especificacion.nombre }}
             <button
               type="button"
               class="close ml-1"
@@ -66,7 +70,7 @@
 
 <script>
 import EspecificacionModalComponent from "./EspecificacionComponent";
-import { db } from "../../../../firebase/db.js"
+import { db } from "../../../../firebase/db.js";
 
 export default {
   components: { EspecificacionModalComponent },
@@ -78,11 +82,11 @@ export default {
         type: "ERS",
         nombre: "",
         descripcion: "",
-        actor:"",
+        actor: "",
         precondicion: "",
         caminoPrincipal: "",
         caminoAlternativo: "",
-        postcondicion: ""
+        postcondicion: "",
       },
       especificaciones: [],
     };
@@ -94,16 +98,20 @@ export default {
         type: "ERS",
         nombre: "",
         descripcion: "",
-        actor:"",
+        actor: "",
         precondicion: "",
         caminoPrincipal: "",
         caminoAlternativo: "",
-        postcondicion: ""
+        postcondicion: "",
       };
       this.$refs.modalEspecificacion.openModal();
     },
     deleteEspecificacion: function (especificacion) {
-      db.collection("especificaciones").doc(""+this.proyecto_id+"").collection("especificaciones").doc(especificacion.id).delete();
+      db.collection("especificaciones")
+        .doc("" + this.proyecto_id + "")
+        .collection("especificaciones")
+        .doc(especificacion.id)
+        .delete();
     },
     toggleUpdate: function (especificacion) {
       this.editMode = true;
@@ -111,13 +119,15 @@ export default {
       this.$refs.modalEspecificacion.openModal();
     },
   },
-  mounted() {
-  },
-  firestore(){
+  mounted() {},
+  firestore() {
     return {
-      especificaciones: db.collection("especificaciones").doc(""+this.proyecto_id+"").collection("especificaciones")
-    }
-  }
+      especificaciones: db
+        .collection("especificaciones")
+        .doc("" + this.proyecto_id + "")
+        .collection("especificaciones"),
+    };
+  },
 };
 </script>
 

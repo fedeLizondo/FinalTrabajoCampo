@@ -1,8 +1,10 @@
 <template>
   <div class="card">
     <div class="card-header">
-      Diagrama
-      <button class="btn btn-primary" @click="createDiagrama">crear</button>
+      <div class="d-flex align-items-center justify-content-between">
+        Diagrama
+        <button class="btn btn-primary" @click="createDiagrama">crear</button>
+      </div>
     </div>
     <ul class="list-group list-group-flush">
       <li
@@ -13,11 +15,7 @@
       >
         <div class="card-body">
           <div class="cart-title">
-            <a
-              :href="
-                '/proyecto/' + proyecto_id + '/diagrama/' + diagrama.id
-              "
-            >
+            <a :href="'/proyecto/' + proyecto_id + '/diagrama/' + diagrama.id">
               {{ diagrama.type + ": " + diagrama.nombre }}</a
             >
             <button
@@ -72,7 +70,7 @@ export default {
         data: [],
         entidades: {},
         relaciones: {},
-        orden: []
+        orden: [],
       },
       diagramas: [],
     };
@@ -88,7 +86,7 @@ export default {
         data: [],
         entidades: {},
         relaciones: {},
-        orden: []
+        orden: [],
       };
       this.$refs.modalDiagrama.openModal();
     },

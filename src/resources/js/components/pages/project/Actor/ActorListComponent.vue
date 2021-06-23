@@ -1,8 +1,10 @@
 <template>
   <div class="card">
     <div class="card-header">
-      Actores
-      <button class="btn btn-primary" @click="createActor">crear</button>
+      <div class="d-flex align-items-center justify-content-between">
+        Actores
+        <button class="btn btn-primary" @click="createActor">crear</button>
+      </div>
     </div>
     <ul class="list-group list-group-flush">
       <li
