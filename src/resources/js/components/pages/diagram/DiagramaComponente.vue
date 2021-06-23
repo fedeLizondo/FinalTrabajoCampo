@@ -8,7 +8,7 @@
     </div>
 
     <div style="border: 1px solid gray" class="col-md-9">
-      <button class="btn btn-warning" v-on:click="crearRelacion">
+      <button class="btn btn-warning" v-on:click="crearRelacion" v-show="this.diagrama.type == 'SECUENCIA'">
         Relaciones
       </button>
 
