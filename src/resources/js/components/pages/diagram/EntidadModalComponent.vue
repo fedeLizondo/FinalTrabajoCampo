@@ -44,7 +44,17 @@
         </div>
       </div>
 
-      <div class="form-group" v-if="!isCU">
+      <div class="form-group" v-if="!isClase">
+        <label for="nombre">Nombre de Entidad:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          v-model="elemento.id"
+        />
+      </div>
+
+      <div class="form-group" v-if="!isSecuencia">
         <label for="nombre">Nombre de Entidad:</label>
         <input
           type="text"
@@ -281,8 +291,10 @@ export default {
           ];
         case "SECUENCIA":
           return [
-            { name: "-->", value: " ->> " },
-            { name: "<--", value: " -->> " },
+            { name: "->", value: " ->> +"},
+            { name: "<-", value: " ->> -"},
+            { name: "-->", value: " -->> +" },
+            { name: "<--", value: " -->> -" },
           ];
         default:
           return [];

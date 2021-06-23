@@ -72,6 +72,7 @@ export default {
         data: [],
         entidades: {},
         relaciones: {},
+        orden: []
       },
       diagramas: [],
     };
@@ -87,6 +88,7 @@ export default {
         data: [],
         entidades: {},
         relaciones: {},
+        orden: []
       };
       this.$refs.modalDiagrama.openModal();
     },

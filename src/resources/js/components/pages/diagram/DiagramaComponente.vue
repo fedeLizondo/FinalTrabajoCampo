@@ -15,6 +15,7 @@
       <vue-mermaid
         :nodes="diagrama.data||[]"
         :type="getTypeDiagram"
+        :order="diagrama.order"
         v-show="Boolean(diagrama.data) && diagrama.data.length > 0"
       >
         <!--@nodeClick="editNode"-->
