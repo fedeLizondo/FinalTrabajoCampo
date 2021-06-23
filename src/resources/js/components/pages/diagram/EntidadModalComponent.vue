@@ -130,6 +130,58 @@
             </button>
           </li>
         </ul>
+        
+        <label>Metodos:</label>
+        <div class="form-row">
+          <div class="form-group col-3 col-md-2">
+            <label for="inputState">Visible</label>
+            <select
+              id="inputState"
+              class="form-control"
+              v-model="metodo.scope"
+            >
+              <option selected value=""></option>
+              <option value="+">public</option>
+              <option value="-">private</option>
+              <option value="#">protected</option>
+            </select>
+          </div>
+
+          <div class="form-group col-4 col-md-6">
+            <label>Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              pattern="[^\s]+"
+              v-model="metodo.name"
+            />
+          </div>
+
+          <div class="form-group col-4 col-md-6">
+            <label>Parámetros</label>
+            <input
+              type="text"
+              class="form-control"
+              pattern="[^\s]+"
+              v-model="metodo.params"
+            />
+          </div>
+
+          <div class="form-group col-2 col-md-2">
+            <label>Agregar</label>
+            <div class="input-group-append">
+              <button
+                class="btn btn-primary"
+                type="button"
+                @click="addMethod"
+                :disabled="!Boolean(metodo.name)"
+              >
+                <font-awesome-icon :icon="['fas', 'plus']" />
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div
@@ -384,6 +436,18 @@ export default {
         scope: "",
         type: "",
         name: "",
+      };
+    },
+    addMethod: function () {
+      this.metodo.name = this.camelCase(this.metodo.name);
+      this.elemento.metodos.push({...this.metodo});
+      this.metodo = {
+        scope: "",
+        name: "",
+        params: "",
+        type: "",
+        abstract: false,
+        static: false,
       };
     },
     camelCase: function (str) {
