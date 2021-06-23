@@ -147,7 +147,7 @@
             </select>
           </div>
 
-          <div class="form-group col-4 col-md-6">
+          <div class="form-group col-3 col-md-4">
             <label>Nombre</label>
             <input
               type="text"
@@ -157,7 +157,7 @@
             />
           </div>
 
-          <div class="form-group col-4 col-md-6">
+          <div class="form-group col-4 col-md-4">
             <label>Parámetros</label>
             <input
               type="text"
@@ -181,6 +181,22 @@
             </div>
           </div>
         </div>
+
+<ul class="list-group">
+          <li
+            class="list-group-item"
+            v-for="(atributo, index) in elemento.atributos"
+            :key="index"
+          >
+            {{ atributo.scope + " " + atributo.type + " " + atributo.name }}
+            <button
+              class="btn btn-danger float-right"
+              @click="elemento.atributos.splice(index, 1)"
+            >
+              <font-awesome-icon :icon="['fas', 'trash']" />
+            </button>
+          </li>
+        </ul>
 
       </div>
 
