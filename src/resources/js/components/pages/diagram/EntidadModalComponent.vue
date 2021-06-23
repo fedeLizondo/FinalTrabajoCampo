@@ -256,7 +256,9 @@ export default {
   computed: {
     enableGuardar() {
       return (
-        (Boolean(this.elemento.id) || Boolean(this.elemento.text)) &&
+        ((this.isClase && Boolean(this.elemento.id)) || 
+        (this.isCU && Boolean( this.elemento.text )) || 
+        (this.isSecuencia && Boolean(this.orderElement))) &&
         this.isValidDiagrama
       );
     },
