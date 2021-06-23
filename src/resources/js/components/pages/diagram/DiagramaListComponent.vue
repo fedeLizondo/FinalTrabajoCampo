@@ -3,9 +3,7 @@
     <div class="card-header">
       <div class="d-flex align-items-center justify-content-between">
         Entidad
-        <button class="btn btn-primary" @click="createEntidad">
-          crear
-        </button>
+        <button class="btn btn-primary" @click="createEntidad">crear</button>
       </div>
     </div>
     <ul class="list-group list-group-flush">
@@ -43,6 +41,46 @@
     </ul>
 
     <ul class="list-group list-group-flush">
+      <draggable
+        v-model="diagrama.orden"
+        @start="drag = true"
+        @end="drag = false"
+      >
+        <li
+          id="DiagramaRowComponent"
+          class="card mb-1 shadow-sm w-100"
+          v-for="(elemento, index) in diagrama.orden"
+          :key="index"
+        >
+          <div class="card-body">
+            <div class="cart-title">
+              {{ elemento }}
+              <button
+                type="button"
+                class="close ml-1"
+                aria-label="Close"
+                style="color: #e74c3c"
+                v-on:click="deleteOrder(index)"
+              >
+                <font-awesome-icon :icon="['fas', 'times']" />
+              </button>
+              <button
+                id="editDiagrama"
+                type="button"
+                class="close"
+                aria-label="Update"
+                style="color: #e67e22"
+                v-on:click="toggleUpdateOrden(elemento, index)"
+              >
+                <font-awesome-icon :icon="['fas', 'edit']" />
+              </button>
+            </div>
+          </div>
+        </li>
+      </draggable>
+    </ul>
+
+    <ul class="list-group list-group-flush">
       <li
         id="DiagramaRowComponent"
         class="card mb-1 shadow-sm w-100"
@@ -51,7 +89,7 @@
       >
         <div class="card-body">
           <div class="cart-title">
-            {{elemento}}
+            {{ elemento }}
             <button
               type="button"
               class="close ml-1"
@@ -59,7 +97,7 @@
               style="color: #e74c3c"
               v-on:click="deleteOrder(index)"
             >
-            <font-awesome-icon :icon="['fas', 'times']" />
+              <font-awesome-icon :icon="['fas', 'times']" />
             </button>
             <button
               id="editDiagrama"
@@ -91,9 +129,10 @@
 <script>
 import { db } from "../../../firebase/db.js";
 import DiagramaModalComponent from "./EntidadModalComponent.vue";
+import draggable from "vuedraggable";
 
 export default {
-  components: { DiagramaModalComponent },
+  components: { DiagramaModalComponent, draggable },
   props: ["proyecto_id", "diagrama"],
   data() {
     return {
@@ -109,7 +148,7 @@ export default {
         atributos: [],
         metodos: [],
         edgeType: "",
-        group: ""
+        group: "",
       },
     };
   },
@@ -126,13 +165,12 @@ export default {
         atributos: [],
         metodos: [],
         edgeType: "",
-        group: ""
+        group: "",
       };
       this.selectedOrderIndex = "";
       this.$refs.modalDiagrama.openModal();
     },
     deleteEntidad: function (index) {
-      
       this.diagrama.data.splice(index, 1);
 
       db.collection("especificaciones")
@@ -141,7 +179,7 @@ export default {
         .doc(this.diagrama.id)
         .update(this.diagrama);
     },
-    deleteOrder:function (index) {
+    deleteOrder: function (index) {
       this.diagrama.orden.splice(index, 1);
 
       db.collection("especificaciones")
