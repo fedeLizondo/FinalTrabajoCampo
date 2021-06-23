@@ -255,7 +255,6 @@ export default {
   },
   computed: {
     enableGuardar() {
-      console.log("", this.elemento);
       return (
         (Boolean(this.elemento.id) || Boolean(this.elemento.text)) &&
         this.isValidDiagrama

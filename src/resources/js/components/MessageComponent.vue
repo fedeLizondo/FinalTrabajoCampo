@@ -63,7 +63,6 @@ export default {
   },
   computed: {
     enabledMessage() {
-      console.log(this.user_id);
       return !this.user_id;
     },
   },
