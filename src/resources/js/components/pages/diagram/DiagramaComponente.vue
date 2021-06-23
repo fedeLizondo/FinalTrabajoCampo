@@ -15,8 +15,8 @@
       <vue-mermaid
         :nodes="diagrama.data||[]"
         :type="getTypeDiagram"
-        :order="diagrama.order"
-        v-show="(Boolean(diagrama.data) && diagrama.data.length > 0) || (Boolean(diagrama.orden) && diagrama.orden.length > 0)"
+        :order="diagrama.orden"
+        v-show="showMermaid"
       >
         <!--@nodeClick="editNode"-->
       </vue-mermaid>
@@ -59,6 +59,12 @@ export default {
 
       return "sequenceDiagram";
     },
+    showMermaid: function(){
+      console.log("es ", (Boolean(diagrama.orden) && diagrama.orden.length > 0))
+      console.log("es ", (Boolean(diagrama.orden) && diagrama.orden.length > 0))
+      
+      return (Boolean(diagrama.data) && diagrama.data.length > 0) || (Boolean(diagrama.orden) && diagrama.orden.length > 0);
+    }
   },
   mounted() {},
   firestore() {
