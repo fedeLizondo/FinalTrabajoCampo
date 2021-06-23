@@ -343,7 +343,7 @@ export default {
         if (!this.isUpdate) {
           this.diagrama.orden.push(this.ordenElemento);
         } else {
-          this.diagrama[this.selectedOrderIndex] = this.ordenElemento;
+          this.diagrama.orden[this.selectedOrderIndex] = this.ordenElemento;
         }
       }
 
