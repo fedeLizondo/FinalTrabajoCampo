@@ -131,6 +131,7 @@
       :proyecto="this.proyecto"
       :proyectos="this.proyectos"
       :isUpdate="this.editMode"
+      :beforeName="this.beforeName"
     />
   </div>
 </template>
@@ -146,6 +147,7 @@ export default {
       proyectos: [],
       favoritos: [],
       editMode: false,
+      beforeText: "",
       proyecto: {
         nombre: "",
         user_id: "",
@@ -185,6 +187,7 @@ export default {
       //TODO UPDATE PROYECTO
       this.editMode = true;
       this.proyecto = proyecto;
+      this.beforeText = proyecto.nombre;
       this.$refs.proyectoModal.openModal();
     },
     deleteFav: function (favorito, index) {
