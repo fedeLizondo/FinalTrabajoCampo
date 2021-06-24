@@ -42,6 +42,16 @@
                 </div>
 
                 <button
+                  id="editActor"
+                  type="button"
+                  class="close ml-1"
+                  aria-label="Update"
+                  style="color: #e67e22"
+                  v-on:click="toggleUpdate(proyecto)"
+                >
+                  <font-awesome-icon :icon="['fas', 'edit']" />
+                </button>
+                <button
                   type="button"
                   class="close"
                   aria-label="Close"
@@ -49,16 +59,6 @@
                   v-on:click="deleteProyecto(proyecto)"
                 >
                   <font-awesome-icon :icon="['fas', 'times']" />
-                </button>
-                <button
-                  id="editActor"
-                  type="button"
-                  class="close"
-                  aria-label="Update"
-                  style="color: #e67e22"
-                  v-on:click="toggleUpdate(proyecto)"
-                >
-                  <font-awesome-icon :icon="['fas', 'edit']" />
                 </button>
               </div>
             </div>
