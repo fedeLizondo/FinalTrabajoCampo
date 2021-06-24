@@ -130,16 +130,12 @@
             </button>
           </li>
         </ul>
-        
+
         <label>Metodos:</label>
         <div class="form-row">
           <div class="form-group col-3 col-md-2">
             <label for="inputState">Visible</label>
-            <select
-              id="inputState"
-              class="form-control"
-              v-model="metodo.scope"
-            >
+            <select id="inputState" class="form-control" v-model="metodo.scope">
               <option selected value=""></option>
               <option value="+">public</option>
               <option value="-">private</option>
@@ -182,7 +178,7 @@
           </div>
         </div>
 
-<ul class="list-group">
+        <ul class="list-group">
           <li
             class="list-group-item"
             v-for="(metodo, index) in elemento.metodos"
@@ -197,7 +193,6 @@
             </button>
           </li>
         </ul>
-
       </div>
 
       <div
@@ -302,7 +297,7 @@ export default {
     "isUpdate",
     "proyecto_id",
     "elemento",
-    "selectedOrderIndex"
+    "selectedOrderIndex",
   ],
   data() {
     return {
@@ -456,7 +451,7 @@ export default {
     },
     addMethod: function () {
       this.metodo.name = this.camelCase(this.metodo.name);
-      this.elemento.metodos.push({...this.metodo});
+      this.elemento.metodos.push({ ...this.metodo });
       this.metodo = {
         scope: "",
         name: "",

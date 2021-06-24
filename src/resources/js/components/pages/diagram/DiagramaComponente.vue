@@ -28,6 +28,11 @@
       :proyecto_id="this.$route.params.id"
       ref="modalDiagrama"
     />
+    <relation-modal-component 
+      :diagrama="diagrama"
+      :proyecto_id="this.$route.params.id"
+      ref="relacionDiagrama"
+    />
   </div>
 </template>
 
@@ -36,9 +41,10 @@ import { db } from "../../../firebase/db";
 import VueMermaid from "./vue-mermaid.vue";
 import DiagramaModalComponent from "./EntidadModalComponent.vue";
 import DiagramaListComponent from "./DiagramaListComponent.vue";
+import RelationModalComponent from './RelationModalComponent.vue';
 
 export default {
-  components: { VueMermaid, DiagramaModalComponent, DiagramaListComponent },
+  components: { VueMermaid, DiagramaModalComponent, DiagramaListComponent, RelationModalComponent },
   data: () => {
     return {
       editMode: false,
@@ -47,8 +53,7 @@ export default {
   },
   methods: {
     crearRelacion: function () {
-      this.editMode = false;
-      this.$refs.modalDiagrama.openModal();
+      this.$refs.relacionDiagrama.openModal();
     },
   },
   computed: {
