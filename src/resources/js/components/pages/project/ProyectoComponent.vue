@@ -49,6 +49,12 @@ export default {
       favoritos: []
     };
   },
+  computed: {
+    canUpdate(){
+      if(!Boolean(this.user_id)) return false;
+      return this.grupo.some((x) => x.user_id == this.user_id);
+    }
+  },
   methods: {
     getDiagrama: async function () {
       const response = axios.get(
