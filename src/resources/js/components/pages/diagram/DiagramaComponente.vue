@@ -1,6 +1,8 @@
 <template>
   <div class="row h-100" style="witdh: 100%">
-    <h2> {{diagrama.nombre + " (" + diagrama.type + ")" }} </h2>
+    <div class="col-12">
+      <h2> {{diagrama.nombre + " (" + diagrama.type + ")" }} </h2>
+    </div>
     <div class="col-md-3">
       <diagrama-list-component
         :proyecto_id="this.$route.params.id"
