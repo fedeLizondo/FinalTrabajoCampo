@@ -29,7 +29,7 @@
         >
           <div class="card-body d-flex flex-wrap justify-content-center">
             <div
-              class="card p-1"
+              class="card m-1"
               style="width: 18rem"
               v-for="(proyecto, index) in proyectos"
               :key="index"
@@ -44,7 +44,7 @@
                 <button
                   id="editActor"
                   type="button"
-                  class="close ml-1"
+                  class="close mx-1"
                   aria-label="Update"
                   style="color: #e67e22"
                   v-on:click="toggleUpdate(proyecto)"
@@ -93,7 +93,7 @@
         >
           <div class="card-body d-flex flex-wrap justify-content-center">
             <div
-              class="card"
+              class="card m-1"
               style="width: 18rem"
               v-for="(favorito, index) in favoritos"
               :key="index"
