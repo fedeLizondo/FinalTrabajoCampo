@@ -49,7 +49,7 @@
                   type="button"
                   class="close mx-1"
                   aria-label="Update"
-                  style="color: #e67e22"
+                  style="color: #757575"
                   v-on:click="createGroup(proyecto)"
                   v-show="proyecto.is_admin"
                 >
