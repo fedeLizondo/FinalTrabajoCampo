@@ -79,7 +79,7 @@ export default {
        const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.$route.params.id +"/grupo"
       );
-      response.then((res) => (this.proyecto = res.data.data));
+      response.then((res) => (this.grupo = res.data.data));
     }
   },
   mounted() {
