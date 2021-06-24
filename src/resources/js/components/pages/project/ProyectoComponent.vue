@@ -87,6 +87,7 @@ export default {
     this.getDiagrama();
     this.getProyecto();
     this.getFavoritos();
+    this.getGrupo();
   },
 };
 </script>
