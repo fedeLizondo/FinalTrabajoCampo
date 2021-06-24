@@ -110,7 +110,7 @@
                   class="close"
                   aria-label="Close"
                   style="color: #e74c3c"
-                  v-on:click="deleteFav(favorito)"
+                  v-on:click="deleteFav(favorito, index)"
                 >
                   <font-awesome-icon :icon="['fas', 'times']" />
                 </button>
@@ -167,8 +167,14 @@ export default {
     toggleUpdate: function (proyecto) {
       //TODO UPDATE PROYECTO
     },
-    deleteFav: function (favorito) {
-      //Delete favorito
+    deleteFav: function (favorito, index) {
+
+      this.favoritos.splice(index,1);
+
+      axios.delete(
+        BASE_URL + "/api/user/" + this.user_id + "/favorito/" + favorito.id
+      );
+      
     },
   },
   mounted() {
