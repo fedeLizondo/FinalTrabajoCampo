@@ -96,15 +96,13 @@
             :key="index"
           >
             <div class="card" style="width: 18rem">
-              <div class="card-body">
-                <h5 class="card-title">
-
-                  <div class="mr-auto">
+              <div class="card-body d-flex">
+                <div class="mr-auto">
                   <router-link :to="'/proyecto/' + favorito.proyecto_id">
                     {{ favorito.nombre }}
                   </router-link>
-                  </div>
-                
+                </div>
+
                 <button
                   type="button"
                   class="close"
@@ -114,7 +112,6 @@
                 >
                   <font-awesome-icon :icon="['fas', 'times']" />
                 </button>
-                </h5>
               </div>
             </div>
           </div>
