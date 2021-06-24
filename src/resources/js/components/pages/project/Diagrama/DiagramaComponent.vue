@@ -51,6 +51,7 @@
           class="btn btn-secondary"
           @click="guardarDiagrama"
           :disabled="enableGuardar"
+          v-show="canUpdate"
         >
           Guardar
         </button>
@@ -65,7 +66,7 @@ import { db } from "../../../../firebase/db";
 
 export default {
   components: { ModalComponent },
-  props: ["diagrama", "isUpdate", "diagramas", "proyecto_id"],
+  props: ["diagrama", "isUpdate", "diagramas", "proyecto_id","canUpdate"],
   data() {
     return {
       isValidDiagrama: true,

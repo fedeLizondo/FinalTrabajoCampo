@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="d-flex align-items-center justify-content-between">
         Especificaciones
-        <button class="btn btn-primary" @click="createEspecificacion">
+        <button class="btn btn-primary" @click="createEspecificacion" :disabled="canUpdate">
           crear
         </button>
       </div>
@@ -24,6 +24,7 @@
               aria-label="Close"
               style="color: #e74c3c"
               v-on:click="deleteEspecificacion(especificacion)"
+              v-show="canUpdate"
             >
               <font-awesome-icon :icon="['fas', 'times']" />
             </button>
@@ -63,6 +64,7 @@
       :especificacion="especificacion"
       :especificaciones="especificaciones"
       :proyecto_id="proyecto_id"
+      :canUpdate="canUpdate"
       ref="modalEspecificacion"
     />
   </div>

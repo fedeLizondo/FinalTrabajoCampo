@@ -37,6 +37,7 @@
           class="btn btn-secondary"
           @click="guardarEspecificacion"
           :disabled="enableGuardar"
+          v-show="canUpdate"
         >
           Guardar
         </button>
@@ -53,7 +54,7 @@ import { db } from "../../../../firebase/db";
 
 export default {
   components: { ModalComponent, FormCUComponent, FormERSComponent },
-  props: ["especificacion", "isUpdate", "especificaciones", "proyecto_id"],
+  props: ["especificacion", "isUpdate", "especificaciones", "proyecto_id","canUpdate"],
   data() {
     return {
       isValidEspecificacion: true,

@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="d-flex align-items-center justify-content-between">
         Diagrama
-        <button class="btn btn-primary" @click="createDiagrama">crear</button>
+        <button class="btn btn-primary" @click="createDiagrama" :disabled="!canUpdate">crear</button>
       </div>
     </div>
     <ul class="list-group list-group-flush">
@@ -24,6 +24,7 @@
               aria-label="Close"
               style="color: #e74c3c"
               v-on:click="deleteDiagrama(diagrama)"
+              v-show="canUpdate"
             >
               <font-awesome-icon :icon="['fas', 'times']" />
             </button>
@@ -46,6 +47,7 @@
       :diagrama="diagrama"
       :diagramas="diagramas"
       :proyecto_id="proyecto_id"
+      :canUpdate="canUpdate"
       ref="modalDiagrama"
     />
   </div>
