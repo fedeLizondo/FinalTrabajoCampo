@@ -109,7 +109,7 @@ export default {
       if (index > -1) {
         this.grupo.splice(index, 1);
 
-        const response = axios.post(
+        const response = axios.delete(
           BASE_URL + "/api/proyecto/" + this.proyecto_id + "/grupo/" + people.id
         );
       }
