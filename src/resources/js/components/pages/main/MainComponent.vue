@@ -15,7 +15,7 @@
             >
               {{ mostrarProyectos ? "Ocultar" : "Mostrar" }}
             </button>
-            <button class="btn btn-primary" @click="createProyecto" disabled>
+            <button class="btn btn-primary" @click="createProyecto">
               crear
             </button>
           </h2>
