@@ -41,6 +41,7 @@ export default {
       actores: [],
       especificaciones: [],
       diagramas: [],
+      grupo:[],
       proyecto: {
         id: 0,
         nombre: "Ocurrio un error",
@@ -71,6 +72,12 @@ export default {
     getFavoritos: function () {
         const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.$route.params.id
+      );
+      response.then((res) => (this.proyecto = res.data.data));
+    },
+    getGrupo: function () {
+       const response = axios.get(
+        BASE_URL + "/api/proyecto/" + this.$route.params.id +"/grupo"
       );
       response.then((res) => (this.proyecto = res.data.data));
     }
