@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="d-flex align-items-center justify-content-between">
         Especificaciones
-        <button class="btn btn-primary" @click="createEspecificacion" :disabled="canUpdate">
+        <button class="btn btn-primary" @click="createEspecificacion" :disabled="!canUpdate">
           crear
         </button>
       </div>

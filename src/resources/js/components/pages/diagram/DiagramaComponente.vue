@@ -53,12 +53,19 @@ export default {
     return {
       editMode: false,
       diagrama: {},
+      grupo:[]
     };
   },
   methods: {
     crearRelacion: function () {
       this.$refs.relacionDiagrama.openModal();
     },
+    getGrupo: function () {
+       const response = axios.get(
+        BASE_URL + "/api/proyecto/" + this.$route.params.id + "/grupo"
+      );
+      response.then((res) => (this.grupo = res.data.data));
+    }
   },
   computed: {
     getTypeDiagram: function () {
@@ -80,7 +87,9 @@ export default {
       return this.diagrama.nombre + " (" + tipo + ")" 
     }
   },
-  mounted() {},
+  mounted() {
+    this.getGrupo()
+  },
   firestore() {
     return {
       diagrama: db
