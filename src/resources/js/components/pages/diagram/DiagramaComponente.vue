@@ -1,6 +1,6 @@
 <template>
   <div class="row h-100" style="witdh: 100%">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <h2> {{diagrama.nombre + " (" + diagrama.type + ")" }} </h2>
     </div>
     <div class="col-md-3">
