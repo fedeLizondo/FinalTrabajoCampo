@@ -55,7 +55,7 @@
                 >
                   <font-awesome-icon :icon="['fas', 'user-friends']" />
                 </button>
-                
+
                 <button
                   id="editActor"
                   type="button"
@@ -145,6 +145,11 @@
       :isUpdate="this.editMode"
       :beforeName="this.beforeText"
     />
+    <group-modal-component
+      ref="groupModal"
+      :proyecto_id="this.selectedProyectId"
+      :user_id="this.user_id"
+    />
   </div>
 </template>
 
@@ -160,6 +165,7 @@ export default {
       favoritos: [],
       editMode: false,
       beforeText: "",
+      selectedProyectId: "",
       proyecto: {
         nombre: "",
         user_id: "",
@@ -191,8 +197,9 @@ export default {
       };
       this.$refs.proyectoModal.openModal();
     },
-    createGroup: function(proyecto) {
-      
+    createGroup: function (proyecto) {
+      this.selectedProyectId = proyecto.proyecto_id;
+      this.$refs.groupModal.openModal();
     },
     deleteProyecto: function (proyecto, index) {
       this.proyectos.splice(index, 1);
@@ -201,7 +208,7 @@ export default {
     toggleUpdate: function (proyecto) {
       this.editMode = true;
       this.proyecto = proyecto;
-      this.beforeText =  "" + proyecto.nombre;
+      this.beforeText = "" + proyecto.nombre;
       this.$refs.proyectoModal.openModal();
     },
     deleteFav: function (favorito, index) {
