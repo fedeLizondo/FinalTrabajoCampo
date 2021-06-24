@@ -95,25 +95,28 @@
             v-for="(favorito, index) in favoritos"
             :key="index"
           >
-            <div class="mr-auto">
-              <router-link :to="'/proyecto/' + favorito.proyecto_id">
-                <div class="card" style="width: 18rem">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ favorito.nombre }}</h5>
-                  </div>
-                </div>
-              </router-link>
-            </div>
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">
 
-            <button
-              type="button"
-              class="close"
-              aria-label="Close"
-              style="color: #e74c3c"
-              v-on:click="deleteFav(favorito)"
-            >
-              <font-awesome-icon :icon="['fas', 'times']" />
-            </button>
+                  <div class="mr-auto">
+                  <router-link :to="'/proyecto/' + favorito.proyecto_id">
+                    {{ favorito.nombre }}
+                  </router-link>
+                  </div>
+                
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  style="color: #e74c3c"
+                  v-on:click="deleteFav(favorito)"
+                >
+                  <font-awesome-icon :icon="['fas', 'times']" />
+                </button>
+                </h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
