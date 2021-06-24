@@ -39,7 +39,8 @@
         <button
           class="btn btn-secondary"
           @click="guardarActor"
-          :disabled="!canUpdate && enableGuardar"
+          :disabled="enableGuardar"
+          v-show="canUpdate"
         >
           Guardar
         </button>
