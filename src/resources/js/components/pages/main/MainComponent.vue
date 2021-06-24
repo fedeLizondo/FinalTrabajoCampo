@@ -30,7 +30,7 @@
               :key="index"
               class="p-2"
             >
-            <router-link :to="'/proyecto/'+ proyecto.id"> 
+            <router-link :to="'/proyecto/'+ proyecto.proyecto_id"> 
               <div class="card" style="width: 18rem">
                 <div class="card-body">
                   <h5 class="card-title">{{ proyecto.nombre }}</h5>

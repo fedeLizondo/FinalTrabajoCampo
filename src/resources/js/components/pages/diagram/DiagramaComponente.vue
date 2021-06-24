@@ -48,6 +48,7 @@ import RelationModalComponent from './RelationModalComponent.vue';
 
 export default {
   components: { VueMermaid, DiagramaModalComponent, DiagramaListComponent, RelationModalComponent },
+  props:["user_id"],
   data: () => {
     return {
       editMode: false,
