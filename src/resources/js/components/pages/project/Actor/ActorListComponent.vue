@@ -22,6 +22,7 @@
               aria-label="Close"
               style="color: #e74c3c"
               v-on:click="deleteActor(actor)"
+              v-show="canUpdate"
             >
               <font-awesome-icon :icon="['fas', 'times']" />
             </button>
@@ -61,6 +62,7 @@
       :actor="actor"
       :actores="actores"
       :proyecto_id="proyecto_id"
+      :canUpdate="canUpdate"
       ref="modalActor"
     />
   </div>
@@ -71,7 +73,7 @@ import ActorModalComponent from "./ActorModalComponent.vue";
 import { BASE_URL } from "../../../../constants/constants.js";
 export default {
   components: { ActorModalComponent },
-  props: ["proyecto_id"],
+  props: ["proyecto_id","canUpdate"],
   data() {
     return {
       editMode: false,

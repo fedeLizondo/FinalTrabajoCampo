@@ -74,7 +74,7 @@ import { db } from "../../../../firebase/db.js";
 
 export default {
   components: { EspecificacionModalComponent },
-  props: ["proyecto_id"],
+  props: ["proyecto_id","canUpdate"],
   data() {
     return {
       editMode: false,

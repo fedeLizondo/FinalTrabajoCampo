@@ -3,15 +3,15 @@
     
     <h1 class="col-12 text-center">{{ proyecto.nombre }}</h1>
     <div class="col-md-6 col-lg-3 mt-2">
-      <actor-list-component :proyecto_id="$route.params.id" />
+      <actor-list-component :proyecto_id="$route.params.id" :canUpdate="canUpdate"/>
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
-      <diagrama-list-component :proyecto_id="$route.params.id"/>
+      <diagrama-list-component :proyecto_id="$route.params.id" :canUpdate="canUpdate"/>
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
-      <especificacion-list-component :proyecto_id="$route.params.id"/>
+      <especificacion-list-component :proyecto_id="$route.params.id" :canUpdate="canUpdate"/>
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">

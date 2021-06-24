@@ -53,7 +53,7 @@ import ModalComponent from "../../../assets/ModalComponent.vue";
 import { BASE_URL } from "../../../../constants/constants.js";
 export default {
   components: { ModalComponent },
-  props: ["actor", "isUpdate", "actores", "proyecto_id"],
+  props: ["actor", "isUpdate", "actores", "proyecto_id","canUpdate"],
   data() {
     return {
       isValidActor: true,
@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     enableGuardar() {
-      return !this.isValidActor;
+      return !this.isValidActor && this.canUpdate;
     },
   },
   methods: {
