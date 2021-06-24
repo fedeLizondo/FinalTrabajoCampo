@@ -1,5 +1,6 @@
 <template>
   <div class="row h-100">
+    
     <h1 class="col-12 text-center">{{ proyecto.nombre }}</h1>
     <div class="col-md-6 col-lg-3 mt-2">
       <actor-list-component :proyecto_id="$route.params.id" />

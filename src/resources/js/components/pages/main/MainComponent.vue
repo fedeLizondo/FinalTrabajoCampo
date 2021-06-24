@@ -3,8 +3,8 @@
     <div id="accordion-proyectos">
       <div class="card">
         <div class="card-header" id="headingOne">
-          <h2 class="mb-0">
-            Proyectos
+          <h2 class="mb-0 d-flex">
+            <div class="mr-auto">Proyectos</div>
             <button
               class="btn btn-link"
               data-toggle="collapse"
@@ -14,7 +14,9 @@
             >
               Ocultar
             </button>
-            <button class="btn btn-primary" @click="createProyecto" disabled>crear</button>
+            <button class="btn btn-primary" @click="createProyecto" disabled>
+              crear
+            </button>
           </h2>
         </div>
 
@@ -30,13 +32,13 @@
               :key="index"
               class="p-2"
             >
-            <router-link :to="'/proyecto/'+ proyecto.proyecto_id"> 
-              <div class="card" style="width: 18rem">
-                <div class="card-body">
-                  <h5 class="card-title">{{ proyecto.nombre }}</h5>
+              <router-link :to="'/proyecto/' + proyecto.proyecto_id">
+                <div class="card" style="width: 18rem">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ proyecto.nombre }}</h5>
+                  </div>
                 </div>
-              </div>
-            </router-link>
+              </router-link>
             </div>
           </div>
         </div>
@@ -72,13 +74,13 @@
               :key="index"
               class="p-2"
             >
-            <router-link :to="'/proyecto/'+ favorito.proyecto_id"> 
-              <div class="card" style="width: 18rem">
-                <div class="card-body">
-                  <h5 class="card-title">{{ favorito.nombre }}</h5>
+              <router-link :to="'/proyecto/' + favorito.proyecto_id">
+                <div class="card" style="width: 18rem">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ favorito.nombre }}</h5>
+                  </div>
                 </div>
-              </div>
-            </router-link>
+              </router-link>
             </div>
           </div>
         </div>
@@ -100,7 +102,7 @@ export default {
   methods: {
     getProyectos: async function () {
       const response = axios.get(
-        BASE_URL + "/api/user/"+this.user_id +"/proyecto"
+        BASE_URL + "/api/user/" + this.user_id + "/proyecto"
       );
       response.then((res) => (this.proyectos = res.data.data));
     },
@@ -111,7 +113,7 @@ export default {
       response.then((res) => (this.favoritos = res.data.data));
     },
     createProyecto: function () {
-     /* 
+      /* 
         this.editMode = false;
         this.diagrama = {
           type: "CU",

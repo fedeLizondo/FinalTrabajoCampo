@@ -47,6 +47,7 @@
 import ProyectoRowComponent from "./ProyectoRowComponent.vue";
 import { BASE_URL } from "../../../constants/constants.js";
 export default {
+  props:["user_id"],
   components: { ProyectoRowComponent },
   data() {
     return {
