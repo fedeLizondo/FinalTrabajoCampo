@@ -35,11 +35,11 @@
               :key="index"
             >
               <div class="card-body d-flex">
-                <div class="mr-auto">
-                  <router-link :to="'/proyecto/' + proyecto.proyecto_id">
+                <router-link :to="'/proyecto/' + proyecto.proyecto_id" class="mr-auto">
+                  <div>
                     <h5>{{ proyecto.nombre }}</h5>
-                  </router-link>
-                </div>
+                  </div>
+                </router-link>
 
                 <button
                   id="editActor"
