@@ -23,6 +23,11 @@
       >
         <!--@nodeClick="editNode"-->
       </vue-mermaid>
+
+      <div v-if="!Boolean(diagrama.data)">
+          <h3>No hay entidades cargadas</h3>
+      </div>
+
     </div>
 
     <diagrama-modal-component
