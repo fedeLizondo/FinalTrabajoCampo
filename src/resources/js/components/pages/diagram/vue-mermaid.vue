@@ -202,7 +202,6 @@ export default {
             const outNodeStr = this.buildNodesStr(outNodes);
             return `subgraph ${groupName} \n ${innerNodesStr} end \n ${outNodeStr}`;
           } else {
-            console.log("Llamo al build node str", narr);
             const nodesStr = this.buildNodesStr(narr);
             return nodesStr;
           }
@@ -229,6 +228,7 @@ export default {
                     )}${this.buildNode(next)}${postfix}`;
                   } else {
                     //TODO error
+                    console.log("Entre por el error", item);
                     return `${this.buildNode(item)}`;
                   }
                 })
