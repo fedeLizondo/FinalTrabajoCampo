@@ -7,11 +7,12 @@
       <diagrama-list-component
         :proyecto_id="this.$route.params.id"
         :diagrama="diagrama"
+        v-show="canUpdate"
       />
     </div>
 
     <div style="border: 1px solid gray" class="col-md-9">
-      <button class="btn btn-warning" v-on:click="crearRelacion" v-show="diagrama.type == 'SECUENCIA'">
+      <button class="btn btn-warning" v-on:click="crearRelacion" v-show="canUpdate && diagrama.type == 'SECUENCIA'">
         Relaciones
       </button>
 
@@ -86,7 +87,12 @@ export default {
       let tipo = (this.diagrama.type == "CU") ? "Casos de Uso" : (this.diagrama.type == "CLASE")? "Clase" : "Secuencia";
 
       return this.diagrama.nombre + " (" + tipo + ")" 
+    },
+    canUpdate(){
+      if(!Boolean(this.user_id)) return false;
+      return this.grupo.some((x) => x.user_id == this.user_id);
     }
+    
   },
   mounted() {
     this.getGrupo()
