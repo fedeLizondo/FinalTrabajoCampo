@@ -11,7 +11,7 @@
     </div>
 
     <div style="border: 1px solid gray" class="col-md-9">
-      <button class="btn btn-warning" v-on:click="crearRelacion" v-show="this.diagrama.type == 'SECUENCIA'">
+      <button class="btn btn-warning" v-on:click="crearRelacion" v-show="diagrama.type == 'SECUENCIA'">
         Relaciones
       </button>
 
@@ -45,6 +45,7 @@ import VueMermaid from "./vue-mermaid.vue";
 import DiagramaModalComponent from "./EntidadModalComponent.vue";
 import DiagramaListComponent from "./DiagramaListComponent.vue";
 import RelationModalComponent from './RelationModalComponent.vue';
+import { BASE_URL } from "../../../constants/constants.js";
 
 export default {
   components: { VueMermaid, DiagramaModalComponent, DiagramaListComponent, RelationModalComponent },
