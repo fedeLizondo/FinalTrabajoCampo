@@ -51,6 +51,7 @@
                   aria-label="Update"
                   style="color: #e67e22"
                   v-on:click="toggleUpdate(proyecto)"
+                  v-show="proyecto.is_admin"
                 >
                   <font-awesome-icon :icon="['fas', 'edit']" />
                 </button>
@@ -60,6 +61,7 @@
                   aria-label="Close"
                   style="color: #e74c3c"
                   v-on:click="deleteProyecto(proyecto)"
+                  v-show="proyecto.is_admin"
                 >
                   <font-awesome-icon :icon="['fas', 'times']" />
                 </button>
