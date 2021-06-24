@@ -42,24 +42,24 @@
               </router-link>
 
               <button
-              type="button"
-              class="close ml-1"
-              aria-label="Close"
-              style="color: #e74c3c"
-              v-on:click="deleteProyecto(proyecto)"
-            >
-              <font-awesome-icon :icon="['fas', 'times']" />
-            </button>
-            <button
-              id="editActor"
-              type="button"
-              class="close"
-              aria-label="Update"
-              style="color: #e67e22"
-              v-on:click="toggleUpdate(proyecto)"
-            >
-              <font-awesome-icon :icon="['fas', 'edit']" />
-            </button>
+                type="button"
+                class="close ml-1"
+                aria-label="Close"
+                style="color: #e74c3c"
+                v-on:click="deleteProyecto(proyecto)"
+              >
+                <font-awesome-icon :icon="['fas', 'times']" />
+              </button>
+              <button
+                id="editActor"
+                type="button"
+                class="close"
+                aria-label="Update"
+                style="color: #e67e22"
+                v-on:click="toggleUpdate(proyecto)"
+              >
+                <font-awesome-icon :icon="['fas', 'edit']" />
+              </button>
             </div>
           </div>
         </div>
@@ -90,12 +90,12 @@
           aria-labelledby="headingOne"
           data-parent="#accordion-favoritos"
         >
-          <div class="card-body d-flex flex-wrap justify-content-center">
-            <div
-              v-for="(favorito, index) in favoritos"
-              :key="index"
-              class="p-2"
-            >
+          <div
+            class="card-body d-flex flex-wrap justify-content-center"
+            v-for="(favorito, index) in favoritos"
+            :key="index"
+          >
+            <div class="mr-auto">
               <router-link :to="'/proyecto/' + favorito.proyecto_id">
                 <div class="card" style="width: 18rem">
                   <div class="card-body">
@@ -103,17 +103,17 @@
                   </div>
                 </div>
               </router-link>
-
-              <button
-                type="button"
-                class="close ml-1"
-                aria-label="Close"
-                style="color: #e74c3c"
-                v-on:click="deleteFav(favorito)"
-              >
-                <font-awesome-icon :icon="['fas', 'times']" />
-              </button>
             </div>
+
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              style="color: #e74c3c"
+              v-on:click="deleteFav(favorito)"
+            >
+              <font-awesome-icon :icon="['fas', 'times']" />
+            </button>
           </div>
         </div>
       </div>
@@ -159,15 +159,15 @@ export default {
         this.$refs.modalDiagrama.openModal();
       */
     },
-    deleteProyecto: function(proyecto) {
+    deleteProyecto: function (proyecto) {
       //TODO ELIMINAR PROYECTO
     },
-    toggleUpdate: function(proyecto) {
+    toggleUpdate: function (proyecto) {
       //TODO UPDATE PROYECTO
     },
     deleteFav: function (favorito) {
       //Delete favorito
-    }
+    },
   },
   mounted() {
     this.getProyectos();
