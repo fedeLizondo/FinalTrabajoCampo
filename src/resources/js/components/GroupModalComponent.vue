@@ -82,7 +82,6 @@ export default {
     },
     openModal() {
       this.$refs.modalInternoGroup.openModal();
-      this.getGrupo();
     },
     getGrupo: function () {
       const response = axios.get(
@@ -149,6 +148,12 @@ export default {
   mounted() {
 
   },
+  watch:{
+      proyecto_id: function (val, oldVal) {
+            this.getGrupo();
+            console.log("Cambio el valor");
+      }
+  }
 };
 </script>
 
