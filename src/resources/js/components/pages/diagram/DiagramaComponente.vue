@@ -64,9 +64,7 @@ export default {
 
       return "sequenceDiagram";
     },
-    showMermaid: function(){
-      console.log("es ", (Boolean(this.diagrama.orden) && this.diagrama.orden.length > 0))
-      
+    showMermaid: function(){      
       return (Boolean(this.diagrama.data) && this.diagrama.data.length > 0) || (Boolean(this.diagrama.orden) && this.diagrama.orden.length > 0);
     }
   },

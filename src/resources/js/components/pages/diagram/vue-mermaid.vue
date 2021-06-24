@@ -202,6 +202,7 @@ export default {
             const outNodeStr = this.buildNodesStr(outNodes);
             return `subgraph ${groupName} \n ${innerNodesStr} end \n ${outNodeStr}`;
           } else {
+            console.log("Llamo al build node str", narr);
             const nodesStr = this.buildNodesStr(narr);
             return nodesStr;
           }
