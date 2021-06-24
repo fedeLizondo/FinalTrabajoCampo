@@ -128,7 +128,7 @@ export default {
       if (!Boolean(this.grupo)) return true;
 
       const emailToFind = this.email.trim().toLowerCase();
-      return this.grupo.some((x) => x.email.toLowerCase() == emailToFind);
+      return !this.grupo.some((x) => x.email.toLowerCase() == emailToFind);
     },
     errorMessage() {
       let msg = "";
