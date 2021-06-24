@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="d-flex align-items-center justify-content-between">
         Actores
-        <button class="btn btn-primary" @click="createActor">crear</button>
+        <button class="btn btn-primary" @click="createActor" :disabled="!canUpdate">crear</button>
       </div>
     </div>
     <ul class="list-group list-group-flush">
