@@ -35,7 +35,10 @@
               :key="index"
             >
               <div class="card-body d-flex">
-                <router-link :to="'/proyecto/' + proyecto.proyecto_id" class="mr-auto">
+                <router-link
+                  :to="'/proyecto/' + proyecto.proyecto_id"
+                  class="mr-auto"
+                >
                   <div>
                     <h5>{{ proyecto.nombre }}</h5>
                   </div>
@@ -120,6 +123,13 @@
         </div>
       </div>
     </div>
+    <proyecto-modal-component
+      ref="proyectoModal"
+      :user_id="this.user_id"
+      :proyecto="this.proyecto"
+      :proyectos="this.proyectos"
+      :isUpdate="this.editMode"
+    />
   </div>
 </template>
 
@@ -133,6 +143,12 @@ export default {
       mostrarFavoritos: true,
       proyectos: [],
       favoritos: [],
+      editMode: false,
+      proyecto: {
+        id: "",
+        nombre: "",
+        user_id: "",
+      },
     };
   },
   methods: {
@@ -149,17 +165,13 @@ export default {
       response.then((res) => (this.favoritos = res.data.data));
     },
     createProyecto: function () {
-      /* 
-        this.editMode = false;
-        this.diagrama = {
-          type: "CU",
-          nombre: "",
-          descripcion: "",
-          entidades: {},
-          relaciones: {}
-        };
-        this.$refs.modalDiagrama.openModal();
-      */
+      this.editMode = false;
+      this.proyecto = {
+        id: "",
+        nombre: "",
+        user_id: "",
+      };
+      this.$refs.proyectoModal.openModal();
     },
     deleteProyecto: function (proyecto) {
       //TODO ELIMINAR PROYECTO
@@ -168,13 +180,11 @@ export default {
       //TODO UPDATE PROYECTO
     },
     deleteFav: function (favorito, index) {
-
-      this.favoritos.splice(index,1);
+      this.favoritos.splice(index, 1);
 
       axios.delete(
         BASE_URL + "/api/user/" + this.user_id + "/favorito/" + favorito.id
       );
-      
     },
   },
   mounted() {
