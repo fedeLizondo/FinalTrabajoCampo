@@ -82,6 +82,7 @@ export default {
     },
     openModal() {
       this.$refs.modalInternoGroup.openModal();
+      this.getGrupo();
     },
     getGrupo: async function () {
       const response = axios.get(
@@ -146,7 +147,7 @@ export default {
     },
   },
   mounted() {
-    this.getGrupo();
+
   },
 };
 </script>
