@@ -37,24 +37,22 @@
         </div>
       </div>
 
-<ul class="list-group">
-          <li
-            class="list-group-item"
-            v-for="(value, index) in elemento.next"
-            :key="index"
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          v-for="(people, index) in filterGroup"
+          :key="index"
+        >
+          {{ people.email }}
+
+          <button
+            class="btn btn-danger float-right"
+            @click="removePeople(people)"
           >
-            {{ elemento.link[index] }} {{ getName(value) }}
-            <button
-              class="btn btn-danger float-right"
-              @click="
-                elemento.next.splice(index, 1);
-                elemento.link.splice(index, 1);
-              "
-            >
-              <font-awesome-icon :icon="['fas', 'trash']" />
-            </button>
-          </li>
-        </ul>
+            <font-awesome-icon :icon="['fas', 'trash']" />
+          </button>
+        </li>
+      </ul>
     </template>
 
     <template v-slot:footer>
@@ -100,6 +98,16 @@ export default {
           : console.log("error", res.data)
       );
     },
+    removePeople: function (people) {
+      const index = this.grupo.indexOf(people);
+      if (index > -1) {
+        this.grupo.splice(index, 1);
+
+        const response = axios.post(
+          BASE_URL + "/api/proyecto/" + this.proyecto_id + "/grupo/" + people.id
+        );
+      }
+    },
   },
   computed: {
     enableGuardar() {
@@ -124,10 +132,10 @@ export default {
       }
       return msg;
     },
-    filterGroup(){
-        if (!Boolean(this.grupo)) return [];
-        return this.grupo.filter( x => x.user_id == this.user_id);
-    }
+    filterGroup() {
+      if (!Boolean(this.grupo)) return [];
+      return this.grupo.filter((x) => x.user_id != this.user_id);
+    },
   },
   mounted() {
     this.getGrupo();
