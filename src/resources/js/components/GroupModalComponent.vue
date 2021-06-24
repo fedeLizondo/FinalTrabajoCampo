@@ -122,10 +122,10 @@ export default {
     validEmail() {
       const re =
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
+      return re.test(this.email);
     },
     uniqueEmail() {
-      const emailToFind = email.trim().toLowerCase();
+      const emailToFind = this.email.trim().toLowerCase();
       return grupo.some((x) => x.email.toLowerCase() == emailToFind);
     },
     errorMessage() {
