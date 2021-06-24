@@ -100,7 +100,7 @@ export default {
 
       response.then((res) =>
         Boolean(res.data.data)
-          ? this.grupo.append(res.data.data)
+          ? this.grupo.push(res.data.data)
           : console.log("error", res.data)
       );
     },
