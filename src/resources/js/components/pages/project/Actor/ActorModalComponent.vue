@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     enableGuardar() {
-      return !this.isValidActor && this.canUpdate;
+      return !this.isValidActor && !this.canUpdate;
     },
   },
   methods: {

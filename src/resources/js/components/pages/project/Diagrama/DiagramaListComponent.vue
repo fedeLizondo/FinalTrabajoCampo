@@ -58,7 +58,7 @@ import DiagramaModalComponent from "./DiagramaComponent.vue";
 
 export default {
   components: { DiagramaModalComponent },
-  props: ["proyecto_id"],
+  props: ["proyecto_id","canUpdate"],
   data() {
     return {
       editMode: false,
