@@ -39,7 +39,7 @@
         <button
           class="btn btn-secondary"
           @click="guardarActor"
-          :disabled="enableGuardar"
+          :disabled="!canUpdate && enableGuardar"
         >
           Guardar
         </button>
@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     enableGuardar() {
-      return !this.isValidActor && !this.canUpdate;
+      return !this.isValidActor;
     },
   },
   methods: {
