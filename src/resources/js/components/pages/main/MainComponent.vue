@@ -50,6 +50,18 @@
                   class="close mx-1"
                   aria-label="Update"
                   style="color: #e67e22"
+                  v-on:click="createGroup(proyecto)"
+                  v-show="proyecto.is_admin"
+                >
+                  <font-awesome-icon :icon="['fas', 'user-friends']" />
+                </button>
+                
+                <button
+                  id="editActor"
+                  type="button"
+                  class="close mx-1"
+                  aria-label="Update"
+                  style="color: #e67e22"
                   v-on:click="toggleUpdate(proyecto)"
                   v-show="proyecto.is_admin"
                 >
@@ -178,6 +190,9 @@ export default {
         is_admin: true,
       };
       this.$refs.proyectoModal.openModal();
+    },
+    createGroup: function(proyecto) {
+      
     },
     deleteProyecto: function (proyecto, index) {
       this.proyectos.splice(index, 1);
