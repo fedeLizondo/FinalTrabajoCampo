@@ -84,7 +84,7 @@ export default {
       this.$refs.modalInternoGroup.openModal();
       this.getGrupo();
     },
-    getGrupo: async function () {
+    getGrupo: function () {
       const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.proyecto_id + "/grupo"
       );
