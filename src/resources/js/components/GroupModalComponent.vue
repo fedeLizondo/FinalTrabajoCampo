@@ -1,7 +1,7 @@
 <template>
   <modal-component ref="modalInternoGroup">
     <template v-slot:header>
-      <h3>Proyecto: {{ proyecto.nombre }}</h3>
+      <h3>Integrantes</h3>
     </template>
 
     <template v-slot:body>
