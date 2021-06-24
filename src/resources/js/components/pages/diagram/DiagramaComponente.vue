@@ -3,11 +3,10 @@
     <div class="col-12 text-center">
       <h2> {{getTitle}} </h2>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" v-show="canUpdate">
       <diagrama-list-component
         :proyecto_id="this.$route.params.id"
         :diagrama="diagrama"
-        v-show="canUpdate"
       />
     </div>
 
