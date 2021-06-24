@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div id="accordion-favoritos">
+    <div id="accordion-favoritos" class="mt-3">
       <div class="card">
         <div class="card-header" id="headingOne">
           <h2 class="mb-0 d-flex">
