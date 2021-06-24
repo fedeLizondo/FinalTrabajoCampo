@@ -228,11 +228,9 @@ export default {
                   } else {
                     //TODO error
                     console.log("Entre por el error", item);
+                    let postfix = "";
                     if (Boolean(item.msg)) {
-                      postfix = `${this.buildNode(item)}${this.buildLink(
-                        item,
-                        0
-                      )}${this.buildNode(next)} : ${item.msg}`;
+                      return `${item.id}${item.link[0]}${item.next[0]} : ${item.msg}`;
                     }
 
                     return `${this.buildNode(item)}`;
