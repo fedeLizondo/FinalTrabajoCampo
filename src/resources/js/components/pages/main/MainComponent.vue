@@ -40,6 +40,26 @@
                   </div>
                 </div>
               </router-link>
+
+              <button
+              type="button"
+              class="close ml-1"
+              aria-label="Close"
+              style="color: #e74c3c"
+              v-on:click="deleteProyecto(proyecto)"
+            >
+              <font-awesome-icon :icon="['fas', 'times']" />
+            </button>
+            <button
+              id="editActor"
+              type="button"
+              class="close"
+              aria-label="Update"
+              style="color: #e67e22"
+              v-on:click="toggleUpdate(proyecto)"
+            >
+              <font-awesome-icon :icon="['fas', 'edit']" />
+            </button>
             </div>
           </div>
         </div>
@@ -50,9 +70,7 @@
       <div class="card">
         <div class="card-header" id="headingOne">
           <h2 class="mb-0 d-flex">
-            <div class="mr-auto">
-              Favoritos
-            </div>
+            <div class="mr-auto">Favoritos</div>
             <button
               class="btn btn-link"
               data-toggle="collapse"
@@ -61,7 +79,7 @@
               aria-controls="accordion-body2"
               @click="mostrarFavoritos = !mostrarFavoritos"
             >
-              {{ mostrarFavoritos ? "Ocultar" : "Mostrar"}}
+              {{ mostrarFavoritos ? "Ocultar" : "Mostrar" }}
             </button>
           </h2>
         </div>
@@ -85,6 +103,16 @@
                   </div>
                 </div>
               </router-link>
+
+              <button
+                type="button"
+                class="close ml-1"
+                aria-label="Close"
+                style="color: #e74c3c"
+                v-on:click="deleteFav(favorito)"
+              >
+                <font-awesome-icon :icon="['fas', 'times']" />
+              </button>
             </div>
           </div>
         </div>
@@ -100,7 +128,7 @@ export default {
   data() {
     return {
       mostrarProyectos: true,
-      mostrarFavoritos: true, 
+      mostrarFavoritos: true,
       proyectos: [],
       favoritos: [],
     };
@@ -131,6 +159,15 @@ export default {
         this.$refs.modalDiagrama.openModal();
       */
     },
+    deleteProyecto: function(proyecto) {
+      //TODO ELIMINAR PROYECTO
+    },
+    toggleUpdate: function(proyecto) {
+      //TODO UPDATE PROYECTO
+    },
+    deleteFav: function (favorito) {
+      //Delete favorito
+    }
   },
   mounted() {
     this.getProyectos();
