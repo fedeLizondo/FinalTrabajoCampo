@@ -11,7 +11,7 @@
           :class="[
             'input-group',
             'mb-3',
-            Boolean(email) && (!validEmail || !uniqueEmail) ? 'is-invalid' : '',
+            (!validEmail || !uniqueEmail) ? 'is-invalid' : '',
           ]"
           id="relacionInput"
         >
@@ -25,7 +25,7 @@
 
           <div class="input-group-append">
             <button
-              class="btn btn-outline-secondary"
+              class="btn btn-primary"
               type="button"
               id="button-addon2"
               @click="addGroup"
@@ -126,7 +126,7 @@ export default {
     },
     uniqueEmail() {
       if (!Boolean(this.grupo)) return true;
-      
+
       const emailToFind = this.email.trim().toLowerCase();
       return this.grupo.some((x) => x.email.toLowerCase() == emailToFind);
     },
@@ -145,15 +145,13 @@ export default {
       return this.grupo.filter((x) => x.user_id != this.user_id);
     },
   },
-  mounted() {
-
+  mounted() {},
+  watch: {
+    proyecto_id: function (val, oldVal) {
+      this.getGrupo();
+      console.log("Cambio el valor");
+    },
   },
-  watch:{
-      proyecto_id: function (val, oldVal) {
-            this.getGrupo();
-            console.log("Cambio el valor");
-      }
-  }
 };
 </script>
 
