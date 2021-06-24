@@ -1,7 +1,7 @@
 <template>
   <div class="row h-100" style="witdh: 100%">
     <div class="col-12 text-center">
-      <h2> {{diagrama.nombre + " (" + diagrama.type + ")" }} </h2>
+      <h2> {{getTitle}} </h2>
     </div>
     <div class="col-md-3">
       <diagrama-list-component
@@ -69,6 +69,14 @@ export default {
     },
     showMermaid: function(){      
       return (Boolean(this.diagrama.data) && this.diagrama.data.length > 0) || (Boolean(this.diagrama.orden) && this.diagrama.orden.length > 0);
+    },
+    getTitle: function () {
+      if (!Boolean(this.diagrama.nombre)){
+        return "";
+      }
+      let tipo = (this.diagrama.type == "CU") ? "Casos de Uso" : (this.diagrama.type == "CLASE")? "Clase" : "Secuencia";
+
+      return this.diagrama.nombre + " (" + tipo + ")" 
     }
   },
   mounted() {},
