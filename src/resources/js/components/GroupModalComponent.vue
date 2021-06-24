@@ -126,7 +126,7 @@ export default {
     },
     uniqueEmail() {
       const emailToFind = this.email.trim().toLowerCase();
-      return grupo.some((x) => x.email.toLowerCase() == emailToFind);
+      return this.grupo.some((x) => x.email.toLowerCase() == emailToFind);
     },
     errorMessage() {
       let msg = "";
