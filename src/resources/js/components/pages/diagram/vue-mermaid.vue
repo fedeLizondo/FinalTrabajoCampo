@@ -117,7 +117,7 @@ export default {
             )} \n}\n`;
           }
         });
-        console.log("Entre por el primer if ")
+        console.log("Entre por el primer if ");
         const groupNodes = this.getGroupNodes(nodes);
         const code = parseCode + orderStr + getClass + groupNodes;
 
@@ -130,7 +130,6 @@ export default {
           Array.isArray(order) &&
           order.length > 0
         ) {
-
           const parseCode = this.type + "\n";
 
           let orderStr = "autonumber\n";
@@ -138,7 +137,7 @@ export default {
             orderStr += `participant ${element}\n`;
           });
 
-          const code = parseCode + orderStr; 
+          const code = parseCode + orderStr;
           this.load(code);
           console.log(code);
           return code;
@@ -229,6 +228,13 @@ export default {
                   } else {
                     //TODO error
                     console.log("Entre por el error", item);
+                    if (Boolean(item.msg)) {
+                      postfix = `${this.buildNode(item)}${this.buildLink(
+                        item,
+                        0
+                      )}${this.buildNode(next)} : ${item.msg}`;
+                    }
+
                     return `${this.buildNode(item)}`;
                   }
                 })
@@ -263,7 +269,7 @@ export default {
         : this.edges.find((e) => {
             return e.type === item.edgeType;
           });
-      
+
       if (!Boolean(item.text)) return `${item.id}`;
 
       return `${item.id}${edge.open}${item.text}${edge.close}`;
