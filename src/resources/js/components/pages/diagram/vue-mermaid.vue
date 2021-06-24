@@ -117,7 +117,6 @@ export default {
             )} \n}\n`;
           }
         });
-        console.log("Entre por el primer if ");
         const groupNodes = this.getGroupNodes(nodes);
         const code = parseCode + orderStr + getClass + groupNodes;
 

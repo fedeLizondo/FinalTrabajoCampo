@@ -6,7 +6,7 @@
         <button class="btn btn-primary" @click="createEntidad">crear</button>
       </div>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush" v-if="diagrama.type != 'SECUENCIA'">
       <li
         id="DiagramaRowComponent"
         class="card mb-1 shadow-sm w-100"
