@@ -117,6 +117,7 @@ export default {
             )} \n}\n`;
           }
         });
+        console.log("Entre por el primer if ")
         const groupNodes = this.getGroupNodes(nodes);
         const code = parseCode + orderStr + getClass + groupNodes;
 
@@ -129,8 +130,6 @@ export default {
           Array.isArray(order) &&
           order.length > 0
         ) {
-          
-          console.log("entre por el else")
 
           const parseCode = this.type + "\n";
 
