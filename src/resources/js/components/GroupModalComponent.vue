@@ -78,10 +78,10 @@ export default {
   },
   methods: {
     closeModal() {
-      this.$refs.modalInternoProyecto.closeModal();
+      this.$refs.modalInternoGroup.closeModal();
     },
     openModal() {
-      this.$refs.modalInternoProyecto.openModal();
+      this.$refs.modalInternoGroup.openModal();
     },
     getGrupo: async function () {
       const response = axios.get(
