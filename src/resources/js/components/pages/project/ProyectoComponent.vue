@@ -71,13 +71,13 @@ export default {
     },
     getFavoritos: function () {
         const response = axios.get(
-        BASE_URL + "/api/proyecto/" + this.$route.params.id
+        BASE_URL + "/api/proyecto/" + this.$route.params.id+ "/favorito"
       );
-      response.then((res) => (this.proyecto = res.data.data));
+      response.then((res) => (this.favoritos = res.data.data));
     },
     getGrupo: function () {
        const response = axios.get(
-        BASE_URL + "/api/proyecto/" + this.$route.params.id +"/grupo"
+        BASE_URL + "/api/proyecto/" + this.$route.params.id + "/grupo"
       );
       response.then((res) => (this.grupo = res.data.data));
     }
