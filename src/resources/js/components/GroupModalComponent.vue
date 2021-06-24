@@ -77,6 +77,12 @@ export default {
     };
   },
   methods: {
+    closeModal() {
+      this.$refs.modalInternoProyecto.closeModal();
+    },
+    openModal() {
+      this.$refs.modalInternoProyecto.openModal();
+    },
     getGrupo: async function () {
       const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.proyecto_id + "/grupo"
