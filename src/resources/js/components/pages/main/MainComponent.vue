@@ -29,7 +29,7 @@
         >
           <div class="card-body d-flex flex-wrap justify-content-center">
             <div
-              class="card"
+              class="card p-1"
               style="width: 18rem"
               v-for="(proyecto, index) in proyectos"
               :key="index"
