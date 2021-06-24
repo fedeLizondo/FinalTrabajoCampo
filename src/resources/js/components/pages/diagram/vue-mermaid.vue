@@ -129,6 +129,9 @@ export default {
           Array.isArray(order) &&
           order.length > 0
         ) {
+          
+          console.log("entre por el else")
+
           const parseCode = this.type + "\n";
 
           let orderStr = "autonumber\n";
