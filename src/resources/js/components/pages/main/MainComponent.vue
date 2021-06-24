@@ -60,7 +60,7 @@
                   class="close"
                   aria-label="Close"
                   style="color: #e74c3c"
-                  v-on:click="deleteProyecto(proyecto)"
+                  v-on:click="deleteProyecto(proyecto, index)"
                   v-show="proyecto.is_admin"
                 >
                   <font-awesome-icon :icon="['fas', 'times']" />
@@ -150,7 +150,7 @@ export default {
         nombre: "",
         user_id: "",
         proyecto_id: "",
-        is_admin: true
+        is_admin: true,
       },
     };
   },
@@ -173,15 +173,19 @@ export default {
         nombre: "",
         user_id: "",
         proyecto_id: "",
-        is_admin: true
+        is_admin: true,
       };
       this.$refs.proyectoModal.openModal();
     },
-    deleteProyecto: function (proyecto) {
-      //TODO ELIMINAR PROYECTO
+    deleteProyecto: function (proyecto, index) {
+      this.proyectos.splice(index, 1);
+      axios.delete(BASE_URL + "/api/proyecto/" + proyecto.proyecto_id);
     },
     toggleUpdate: function (proyecto) {
       //TODO UPDATE PROYECTO
+      this.editMode = true;
+      this.proyecto = proyecto;
+      this.$refs.proyectoModal.openModal();
     },
     deleteFav: function (favorito, index) {
       this.favoritos.splice(index, 1);
