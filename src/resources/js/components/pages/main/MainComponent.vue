@@ -147,9 +147,10 @@ export default {
       favoritos: [],
       editMode: false,
       proyecto: {
-        id: "",
         nombre: "",
         user_id: "",
+        proyecto_id: "",
+        is_admin: true
       },
     };
   },
@@ -169,9 +170,10 @@ export default {
     createProyecto: function () {
       this.editMode = false;
       this.proyecto = {
-        id: "",
         nombre: "",
         user_id: "",
+        proyecto_id: "",
+        is_admin: true
       };
       this.$refs.proyectoModal.openModal();
     },
