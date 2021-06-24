@@ -117,7 +117,7 @@ export default {
   },
   computed: {
     enableGuardar() {
-      return Boolean(this.email) && this.validEmail() && this.uniqueEmail;
+      return Boolean(this.email) && this.validEmail && this.uniqueEmail;
     },
     validEmail() {
       const re =
