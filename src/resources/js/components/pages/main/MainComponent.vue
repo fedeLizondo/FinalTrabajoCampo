@@ -11,8 +11,9 @@
               data-target="#accordion-body"
               aria-expanded="true"
               aria-controls="accordion-body"
+              @click="mostrarProyectos = !mostrarProyectos"
             >
-              Ocultar
+              {{ mostrarProyectos ? "Ocultar" : "Mostrar" }}
             </button>
             <button class="btn btn-primary" @click="createProyecto" disabled>
               crear
@@ -48,16 +49,19 @@
     <div id="accordion-favoritos">
       <div class="card">
         <div class="card-header" id="headingOne">
-          <h2 class="mb-0">
-            Favoritos
+          <h2 class="mb-0 d-flex">
+            <div class="mr-auto">
+              Favoritos
+            </div>
             <button
               class="btn btn-link"
               data-toggle="collapse"
               data-target="#accordion-body2"
               aria-expanded="true"
               aria-controls="accordion-body2"
+              @click="mostrarFavoritos = !mostrarFavoritos"
             >
-              Ocultar
+              {{ mostrarFavoritos ? "Ocultar" : "Mostrar"}}
             </button>
           </h2>
         </div>
@@ -95,6 +99,8 @@ export default {
   props: ["user_id"],
   data() {
     return {
+      mostrarProyectos: true,
+      mostrarFavoritos: true, 
       proyectos: [],
       favoritos: [],
     };
