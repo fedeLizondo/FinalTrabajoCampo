@@ -131,7 +131,7 @@
       :proyecto="this.proyecto"
       :proyectos="this.proyectos"
       :isUpdate="this.editMode"
-      :beforeName="this.beforeName"
+      :beforeName="this.beforeText"
     />
   </div>
 </template>
@@ -184,10 +184,9 @@ export default {
       axios.delete(BASE_URL + "/api/proyecto/" + proyecto.proyecto_id);
     },
     toggleUpdate: function (proyecto) {
-      //TODO UPDATE PROYECTO
       this.editMode = true;
       this.proyecto = proyecto;
-      this.beforeText = proyecto.nombre;
+      this.beforeText =  "" + proyecto.nombre;
       this.$refs.proyectoModal.openModal();
     },
     deleteFav: function (favorito, index) {
