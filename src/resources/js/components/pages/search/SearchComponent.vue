@@ -38,7 +38,7 @@
           :key="index"
           :item="item"
           :user_id="user_id"
-          :userFavs="favs"
+          :favs="favs"
         />
       </div>
     </div>
@@ -49,12 +49,12 @@
 import ProyectoRowComponent from "./ProyectoRowComponent.vue";
 import { BASE_URL } from "../../../constants/constants.js";
 export default {
-  props:["user_id"],
+  props: ["user_id"],
   components: { ProyectoRowComponent },
   data() {
     return {
       seleccionados: [],
-      favs:[],
+      favs: [],
       //showOptionsList: false,
       selectedItem: null,
       inputText: this.$route.query.search || "",
@@ -68,19 +68,25 @@ export default {
       );
       response.then((res) => (this.seleccionados = res.data.data));
     },
-
     getProyectos: async function () {
-      if(!this.inputText){
+      if (!this.inputText) {
         const response = axios.get(BASE_URL + "/api/proyecto");
         response.then((res) => (this.seleccionados = res.data.data));
-      }else{
+      } else {
         this.update();
       }
-      
+    },
+    getUserFavs: function () {
+      if (!Boolean(this.user_id)) return;
+      const response = axios.get(
+        BASE_URL + "/api/user/" + this.user_id + "/favorito"
+      );
+      response.then((res) => (this.userFavs = res.data.data));
     },
   },
   mounted() {
     this.getProyectos();
+    this.getUserFavs();
   },
 };
 </script>
