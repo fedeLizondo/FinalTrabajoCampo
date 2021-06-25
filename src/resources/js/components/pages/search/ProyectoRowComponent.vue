@@ -3,10 +3,10 @@
     <div
       id="row"
       class="shadow-sm row rounded p-2"
-      @click="moveToProject(item.id)"
     >
         <div
           class="col-10 col-lg-11 d-flex justify-content-start align-items-center"
+           @click="moveToProject(item.id)"
         >
           <div id="nombre" class="d-inline-block text-wrap p-2">
             <div style="font-size: 1.1rem">
