@@ -16,12 +16,11 @@
         </div>
         <div
           class="col-2 col-lg-1 d-flex flex-row justify-content-around justify-content-md-between text-truncate align-items-center"
-          @click="item.fav = item.fav ? false : true"
         >
-          <font-awesome-icon
-            :icon="item.fav ? ['fas', 'star'] : ['far', 'star']"
-            :style="{ color: '#EBCB29' }"
-            size="lg"
+          <favoritos-component 
+          :user_id="user_id"
+          :proyect_id="item.id"
+          :favs="favs"
           />
         </div>
     </div>
@@ -29,8 +28,10 @@
 </template>
 
 <script>
+import FavoritosComponent from '../../FavoritosComponent.vue';
 export default {
-  props: ["item"],
+  components: { FavoritosComponent },
+  props: ["item","user_id","favs"],
   methods: {
     moveToProject: function (id) {
       this.$router.push({ name: "Proyecto", params: { id: id } });

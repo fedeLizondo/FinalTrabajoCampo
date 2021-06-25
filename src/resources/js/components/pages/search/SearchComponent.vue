@@ -37,6 +37,8 @@
           v-for="(item, index) in seleccionados"
           :key="index"
           :item="item"
+          :user_id="user_id"
+          :userFavs="favs"
         />
       </div>
     </div>
@@ -52,6 +54,7 @@ export default {
   data() {
     return {
       seleccionados: [],
+      favs:[],
       //showOptionsList: false,
       selectedItem: null,
       inputText: this.$route.query.search || "",
@@ -60,7 +63,6 @@ export default {
   methods: {
     update: async function (value) {
       //this.showOptionsList = value.length > 0;
-
       const response = axios.get(
         BASE_URL + "/api/proyecto?search=" + this.inputText + "&page=1"
       );
