@@ -2,7 +2,7 @@
   <div class="row h-100">
     <div class="col-12 text-center ">
       <div class="d-flex align-items-center">
-      <h1 class="mr-auto">
+      <h1 class="mx-auto mr-auto">
         {{ proyecto.nombre }}
       </h1>
       <favoritos-component

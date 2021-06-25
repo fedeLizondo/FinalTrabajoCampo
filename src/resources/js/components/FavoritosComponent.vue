@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { BASE_URL } from "../constants/constants.js";
+
 export default {
   props: ["user_id", "favs", "proyect_id"],
     computed: {
