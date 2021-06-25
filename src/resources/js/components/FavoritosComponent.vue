@@ -23,13 +23,13 @@ export default {
       );
     },
     getStyle() {
-      if (this.fav) return ["fas", "star"];
+      if (!this.fav) return ["fas", "star"];
       return ["far", "star"];
     },
   },
   methods: {
     changeState: function () {
-      if (fav) {
+      if (this.fav) {
         let favorito = this.favs.find((x) => x.proyect_id == this.proyect_id);
         if (Boolean(favorito)) {
           const response = axios.delete(
