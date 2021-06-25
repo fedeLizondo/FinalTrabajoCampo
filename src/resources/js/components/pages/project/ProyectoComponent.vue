@@ -1,23 +1,35 @@
 <template>
   <div class="row h-100">
-    
-    <h1 class="col-12 text-center">{{ proyecto.nombre }} 
-      <favoritos-component 
+    <div class="col-12 text-center">
+      <h1 class="col-12 text-center">
+        {{ proyecto.nombre }}
+      </h1>
+      <favoritos-component
         :user_id="user_id"
         :proyect_id="$route.params.id"
         :favs="userFavs"
       />
-    </h1>
-    <div class="col-md-6 col-lg-3 mt-2">
-      <actor-list-component :proyecto_id="$route.params.id" :canUpdate="canUpdate"/>
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
-      <diagrama-list-component :proyecto_id="$route.params.id" :canUpdate="canUpdate"/>
+      <actor-list-component
+        :proyecto_id="$route.params.id"
+        :canUpdate="canUpdate"
+      />
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
-      <especificacion-list-component :proyecto_id="$route.params.id" :canUpdate="canUpdate"/>
+      <diagrama-list-component
+        :proyecto_id="$route.params.id"
+        :canUpdate="canUpdate"
+      />
+    </div>
+
+    <div class="col-md-6 col-lg-3 mt-2">
+      <especificacion-list-component
+        :proyecto_id="$route.params.id"
+        :canUpdate="canUpdate"
+      />
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
@@ -30,12 +42,18 @@
 import MessageComponent from "../../MessageComponent.vue";
 import { BASE_URL } from "../../../constants/constants.js";
 import ActorListComponent from "./Actor/ActorListComponent.vue";
-import EspecificacionListComponent from "./Especificacion/EspecificacionListComponent.vue"
-import DiagramaListComponent from './Diagrama/DiagramaListComponent.vue';
-import FavoritosComponent from '../../FavoritosComponent.vue';
+import EspecificacionListComponent from "./Especificacion/EspecificacionListComponent.vue";
+import DiagramaListComponent from "./Diagrama/DiagramaListComponent.vue";
+import FavoritosComponent from "../../FavoritosComponent.vue";
 
 export default {
-  components: { MessageComponent, ActorListComponent, EspecificacionListComponent, DiagramaListComponent, FavoritosComponent },
+  components: {
+    MessageComponent,
+    ActorListComponent,
+    EspecificacionListComponent,
+    DiagramaListComponent,
+    FavoritosComponent,
+  },
   props: ["proyecto_id", "user_id"],
   data() {
     return {
@@ -48,20 +66,20 @@ export default {
       actores: [],
       especificaciones: [],
       diagramas: [],
-      grupo:[],
+      grupo: [],
       proyecto: {
         id: 0,
         nombre: "Ocurrio un error",
       },
       favoritos: [],
-      userFavs: []
+      userFavs: [],
     };
   },
   computed: {
-    canUpdate(){
-      if(!Boolean(this.user_id)) return false;
+    canUpdate() {
+      if (!Boolean(this.user_id)) return false;
       return this.grupo.some((x) => x.user_id == this.user_id);
-    }
+    },
   },
   methods: {
     getDiagrama: async function () {
@@ -84,24 +102,24 @@ export default {
       response.then((res) => (this.proyecto = res.data.data));
     },
     getFavoritos: function () {
-        const response = axios.get(
-        BASE_URL + "/api/proyecto/" + this.$route.params.id+ "/favorito"
+      const response = axios.get(
+        BASE_URL + "/api/proyecto/" + this.$route.params.id + "/favorito"
       );
       response.then((res) => (this.favoritos = res.data.data));
     },
     getUserFavs: function () {
-      if(!Boolean(this.user_id)) return;
-        const response = axios.get(
-        BASE_URL + "/api/user/" + this.user_id+ "/favorito"
+      if (!Boolean(this.user_id)) return;
+      const response = axios.get(
+        BASE_URL + "/api/user/" + this.user_id + "/favorito"
       );
       response.then((res) => (this.userFavs = res.data.data));
     },
     getGrupo: function () {
-       const response = axios.get(
+      const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.$route.params.id + "/grupo"
       );
       response.then((res) => (this.grupo = res.data.data));
-    }
+    },
   },
   mounted() {
     this.getEspecificacion();
@@ -109,7 +127,7 @@ export default {
     this.getProyecto();
     this.getFavoritos();
     this.getGrupo();
-    this.getUserFavs()
+    this.getUserFavs();
   },
 };
 </script>
