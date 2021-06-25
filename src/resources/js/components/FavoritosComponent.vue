@@ -25,7 +25,7 @@ export default {
       );
     },
     getStyle() {
-      if (!this.fav) return ["fas", "star"];
+      if (this.fav) return ["fas", "star"];
       return ["far", "star"];
     },
   },
