@@ -32,7 +32,7 @@ export default {
   methods: {
     changeState: function () {
       if (this.fav) {
-        let favorito = this.favs.find((x) => x.proyect_id == this.proyect_id);
+        let favorito = this.favs.find((x) => x.proyecto_id == this.proyect_id);
         if (Boolean(favorito)) {
           const response = axios.delete(
             `{{BASE_URL}}/api/proyecto/{{this.proyect_id}}/favorito/{{favorito.id}}`
