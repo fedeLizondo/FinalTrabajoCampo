@@ -81,7 +81,7 @@ export default {
       const response = axios.get(
         BASE_URL + "/api/user/" + this.user_id + "/favorito"
       );
-      response.then((res) => (this.userFavs = res.data.data));
+      response.then((res) => (this.favs = res.data.data));
     },
   },
   mounted() {
