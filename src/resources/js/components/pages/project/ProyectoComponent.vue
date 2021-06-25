@@ -1,7 +1,8 @@
 <template>
   <div class="row h-100">
-    <div class="col-12 text-center">
-      <h1 class="">
+    <div class="col-12 text-center ">
+      <div class="d-flex align-items-center">
+      <h1 class="mr-auto">
         {{ proyecto.nombre }}
       </h1>
       <favoritos-component
@@ -9,6 +10,7 @@
         :proyect_id="$route.params.id"
         :favs="userFavs"
       />
+      </div>
     </div>
 
     <div class="col-md-6 col-lg-3 mt-2">
