@@ -17,7 +17,7 @@ export default {
     fav() {
       if (!this.mustShow) return false;
 
-      return this.favs.some((x) => x.proyect_id == this.proyect_id);
+      return this.favs.some((x) => x.proyecto_id == this.proyect_id);
     },
     mustShow() {
       return (
