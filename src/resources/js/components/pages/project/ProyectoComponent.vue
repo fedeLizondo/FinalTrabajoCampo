@@ -1,7 +1,13 @@
 <template>
   <div class="row h-100">
     
-    <h1 class="col-12 text-center">{{ proyecto.nombre }}</h1>
+    <h1 class="col-12 text-center">{{ proyecto.nombre }} 
+      <favoritos-component 
+        :user_id="user_id"
+        :proyect_id="$route.params.id"
+        :favs="userFavs"
+      />
+    </h1>
     <div class="col-md-6 col-lg-3 mt-2">
       <actor-list-component :proyecto_id="$route.params.id" :canUpdate="canUpdate"/>
     </div>
@@ -26,9 +32,10 @@ import { BASE_URL } from "../../../constants/constants.js";
 import ActorListComponent from "./Actor/ActorListComponent.vue";
 import EspecificacionListComponent from "./Especificacion/EspecificacionListComponent.vue"
 import DiagramaListComponent from './Diagrama/DiagramaListComponent.vue';
+import FavoritosComponent from '../../FavoritosComponent.vue';
 
 export default {
-  components: { MessageComponent, ActorListComponent, EspecificacionListComponent, DiagramaListComponent },
+  components: { MessageComponent, ActorListComponent, EspecificacionListComponent, DiagramaListComponent, FavoritosComponent },
   props: ["proyecto_id", "user_id"],
   data() {
     return {
@@ -46,7 +53,8 @@ export default {
         id: 0,
         nombre: "Ocurrio un error",
       },
-      favoritos: []
+      favoritos: [],
+      userFavs: []
     };
   },
   computed: {
@@ -81,6 +89,13 @@ export default {
       );
       response.then((res) => (this.favoritos = res.data.data));
     },
+    getUserFavs: function () {
+      if(!Boolean(this.user_id)) return;
+        const response = axios.get(
+        BASE_URL + "/api/user/" + this.user_id+ "/favorito"
+      );
+      response.then((res) => (this.userFavs = res.data.data));
+    },
     getGrupo: function () {
        const response = axios.get(
         BASE_URL + "/api/proyecto/" + this.$route.params.id + "/grupo"
@@ -94,6 +109,7 @@ export default {
     this.getProyecto();
     this.getFavoritos();
     this.getGrupo();
+    this.getUserFavs()
   },
 };
 </script>

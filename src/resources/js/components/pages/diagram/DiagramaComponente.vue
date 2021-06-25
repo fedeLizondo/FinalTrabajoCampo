@@ -24,7 +24,7 @@
         <!--@nodeClick="editNode"-->
       </vue-mermaid>
 
-      <div v-if="!Boolean(diagrama.data)">
+      <div v-if="!Boolean(diagrama.data) && !Boolean(diagrama.grupo)">
           <h3>No hay entidades cargadas</h3>
       </div>
 
