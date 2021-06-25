@@ -13,7 +13,7 @@ import { BASE_URL } from "../constants/constants.js";
 
 export default {
   props: ["user_id", "favs", "proyect_id"],
-    computed: {
+  computed: {
     fav() {
       if (!this.mustShow) return false;
 
@@ -35,9 +35,9 @@ export default {
         let favorito = this.favs.find((x) => x.proyecto_id == this.proyect_id);
         if (Boolean(favorito)) {
           const response = axios.delete(
-            `${BASE_URL}/api/proyecto/${this.proyect_id }/favorito/${favorito.id}`
+            `${BASE_URL}/api/proyecto/${this.proyect_id}/favorito/${favorito.id}`
           );
-          response.then((res) => this.favs.push(res.data.data));
+          this.favs.splice(this.favs.indexOf(favorito), 1)
         }
       } else {
         //Agregar el favorito
