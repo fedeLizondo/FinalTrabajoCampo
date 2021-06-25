@@ -1,7 +1,7 @@
 <template>
   <div class="row h-100">
     <div class="col-12 text-center">
-      <h1 class="col-12 text-center">
+      <h1 class="">
         {{ proyecto.nombre }}
       </h1>
       <favoritos-component
