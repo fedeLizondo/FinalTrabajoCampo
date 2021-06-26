@@ -1,15 +1,28 @@
 <template>
   <div class="row h-100">
-    <div class="col-12 text-center ">
+    <div class="col-12 text-center">
       <div class="d-flex align-items-center">
-      <h1 class="mx-auto mr-auto">
-        {{ proyecto.nombre }}
-      </h1>
-      <favoritos-component
-        :user_id="user_id"
-        :proyect_id="$route.params.id"
-        :favs="userFavs"
-      />
+        <h1 class="mx-auto mr-auto">
+          {{ proyecto.nombre }}
+        </h1>
+
+        <favoritos-component
+          :user_id="user_id"
+          :proyect_id="$route.params.id"
+          :favs="userFavs"
+        />
+
+        <button
+          id="editActor"
+          type="button"
+          class="close mx-1"
+          aria-label="Update"
+          style="color: #757575"
+          v-on:click="createGroup()"
+          v-show="Boolean(this.user_id)"
+        >
+          <font-awesome-icon :icon="['fas', 'user-friends']" />
+        </button>
       </div>
     </div>
 
@@ -37,6 +50,12 @@
     <div class="col-md-6 col-lg-3 mt-2">
       <message-component :proyecto_id="$route.params.id" :user_id="user_id" />
     </div>
+
+    <group-modal-component
+      ref="groupModal"
+      :proyecto_id="$route.params.id"
+      :user_id="user_id"
+    />
   </div>
 </template>
 
@@ -121,6 +140,9 @@ export default {
         BASE_URL + "/api/proyecto/" + this.$route.params.id + "/grupo"
       );
       response.then((res) => (this.grupo = res.data.data));
+    },
+    createGroup: function () {
+      this.$refs.groupModal.openModal();
     },
   },
   mounted() {
