@@ -5,7 +5,7 @@
     </template>
 
     <template v-slot:body>
-      <div class="form-group">
+      <div class="form-group" v-show="canUpdate">
         <label for="relacionInput">Agregar al equipo:</label>
         <div
           :class="[
@@ -48,6 +48,7 @@
           <button
             class="btn btn-danger float-right"
             @click="removePeople(people)"
+            v-show="canUpdate"
           >
             <font-awesome-icon :icon="['fas', 'trash']" />
           </button>
@@ -116,6 +117,9 @@ export default {
     },
   },
   computed: {
+    canUpdate(){
+      return this.grupo.some((x) => x.user_id == this.user_id && x.is_admin);
+    },
     enableGuardar() {
       return Boolean(this.email) && this.validEmail && this.uniqueEmail;
     },
